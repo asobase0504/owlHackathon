@@ -62,7 +62,7 @@ void CTest3d::Update()
 //------------------------------------
 void CTest3d::Draw()
 {
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
+	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();
 	//アルファブレンディングを加算合成に設定
 	//pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	//pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
