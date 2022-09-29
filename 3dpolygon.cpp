@@ -79,6 +79,22 @@ HRESULT C3dpolygon::Init()
 
 	//頂点バッファをアンロックする
 	m_pVtxBuff->Unlock();
+
+	m_CounterAnim = 0;
+	m_PatternAnimX = 1;
+	m_PatternAnimY = 1;
+
+	m_DivisionX = 1;
+	m_DivisionY = 1;
+	m_DivisionMAX = m_DivisionX*m_DivisionY;
+
+	m_AnimationSpeed = 0;
+	m_AnimationSpeedCount = 0;
+
+	m_Timar = 0;
+	m_TimaCount = 0;
+	m_OnAnimation = false;
+
 	return S_OK;
 }
 
@@ -106,6 +122,50 @@ void C3dpolygon::Update()
 
 	m_MaxPolygon++;
 	m_pos.z = -0.01f*m_MaxPolygon;
+
+	if (m_OnAnimation)
+	{
+		m_TimaCount++;
+
+		if (m_TimaCount >= m_Timar)
+		{
+			m_AnimationSpeedCount++;
+			if (m_AnimationSpeedCount >= m_AnimationSpeed)
+			{
+				m_AnimationSpeedCount = 0;
+				m_PatternAnimX++;
+
+				if (m_PatternAnimX > m_DivisionX)
+				{//アニメーション
+					m_PatternAnimX = 0;
+					m_PatternAnimY++;
+					if (m_PatternAnimY >= m_DivisionY)
+					{
+						m_PatternAnimY = 0;
+						if (!m_Loop)
+						{
+							Uninit();
+						}
+						return;
+					}
+				}
+
+				float U = 1.0f / (m_DivisionX);
+				float V = 1.0f / (m_DivisionY);
+
+				SetTex(PositionVec4(
+					U * (m_PatternAnimX)
+					, U *(m_PatternAnimX)+U
+					, V * (m_PatternAnimY)
+					, V * (m_PatternAnimY)+V));
+				SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+			}
+		}
+		else
+		{
+			SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f));
+		}
+	}
 }
 
 //=============================================================================
@@ -261,4 +321,28 @@ void C3dpolygon::SetCollar(D3DXCOLOR Collar)
 LPDIRECT3DVERTEXBUFFER9 &C3dpolygon::GetVtx()
 {
 	return m_pVtxBuff;
+}
+
+//=============================================================================
+// Animationの枚数設定関数
+//=============================================================================
+void C3dpolygon::SetAnimation(const int U, const int V, const int Speed, const int Drawtimer, const bool loop)
+{
+	m_DivisionX = U;
+	m_DivisionY = V;
+	m_DivisionMAX = m_DivisionY*m_DivisionX;
+
+	m_PatternAnimX = 0;
+	m_PatternAnimY = 0;
+	m_AnimationSpeed = Speed;
+	m_Timar = Drawtimer;
+	m_OnAnimation = true;
+	m_Loop = loop;
+	//表示座標を更新
+	SetTex(PositionVec4(
+		1.0f / m_DivisionX * (m_PatternAnimX / (m_DivisionX))
+		, 1.0f / m_DivisionX *(m_PatternAnimX / (m_DivisionX)) + 1.0f / m_DivisionX
+		, 1.0f / m_DivisionY * (m_PatternAnimY % (m_DivisionY))
+		, 1.0f / m_DivisionY * (m_PatternAnimY % (m_DivisionY)+1.0f / m_DivisionY* m_DivisionY)));
+
 }

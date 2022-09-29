@@ -45,7 +45,12 @@ public:
 	void SetRot(D3DXVECTOR3 rot) { m_rot = rot; };
 	LPDIRECT3DVERTEXBUFFER9 &GetVtx();
 
+	void SetAnimation(const int U, const int V, const int Speed, const int Drawtimer, const bool loop);
+
 	static void PolygonReset() { m_MaxPolygon = 0; };
+
+	
+
 protected:
 	float m_nScale;
 	D3DXVECTOR3 m_rot;
@@ -58,6 +63,23 @@ private:
 	static int m_MaxPolygon;
 	LPDIRECT3DVERTEXBUFFER9	m_pVtxBuff = nullptr;
 	CTexture::TEXTURE m_texture;	// テクスチャの列挙型
+
+	int m_CounterAnim;
+	int m_PatternAnimX;
+	int m_PatternAnimY;
+
+	int m_DivisionX;
+	int m_DivisionY;
+	int m_DivisionMAX;
+
+	int m_AnimationSpeed;
+	int m_AnimationSpeedCount;
+
+	int m_Timar;
+	int m_TimaCount;
+
+	bool m_OnAnimation;
+	bool m_Loop;
 
 };
 

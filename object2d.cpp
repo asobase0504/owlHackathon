@@ -170,7 +170,10 @@ void CObject2d::Update()
 					if (m_PatternAnimY >= m_DivisionY)
 					{
 						m_PatternAnimY = 0;
-						//Uninit();
+						if (!m_Loop)
+						{
+							Uninit();
+						}
 						return;
 					}
 				}

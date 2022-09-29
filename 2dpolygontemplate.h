@@ -33,7 +33,8 @@ public:
 	void Draw() override;
 	static CTest* Create(D3DXVECTOR3 pos, bool b3D);
 private:
-
+	D3DXVECTOR3 m_Testrot;
+	
 	void move();
 };
 #endif
