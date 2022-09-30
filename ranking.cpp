@@ -190,7 +190,7 @@ void CRanking::Update(void)
 			CText::Create(CText::GON, 300, 10, Name.c_str());
 		}
 
-		if (CInputpInput->Trigger(CInput::KEY_DECISION))
+		if (CInputpInput->Trigger(KEY_DECISION))
 		{
 			//ƒ‚[ƒh‚Ìİ’è
 			if (m_Score == 0)

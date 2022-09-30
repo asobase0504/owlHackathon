@@ -121,14 +121,14 @@ void CResult::Update(void)
 	m_object2d[0]->SetPos(DataPos + DataMove);
 	m_object2d[0]->SetMove(DataMove);
 	CInput *CInputpInput = CInput::GetKey();
-	if (CInputpInput->Trigger(CInput::KEY_DECISION))
+	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		//モードの設定
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_TITLE);
 	}
 #ifdef _DEBUG
 
-	if (CInputpInput->Trigger(CInput::KEY_DEBUG))
+	if (CInputpInput->Trigger(DIK_F1))
 	{
 		//モードの設定
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_TITLE);
