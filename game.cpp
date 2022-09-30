@@ -58,6 +58,8 @@ CGame::~CGame()
 //========================
 HRESULT CGame::Init(void)
 {
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_WIND);
+
 	m_GameCount = 0;
 
 	srand((unsigned int)time(NULL)); // Œ»ÝŽž‚Ìî•ñ‚Å‰Šú‰»
@@ -70,7 +72,6 @@ HRESULT CGame::Init(void)
 	}
 
 	SetBossPop(false);
-	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_GAME);
 
 	m_Pause = new CPause;
 	m_Pause->Init();
