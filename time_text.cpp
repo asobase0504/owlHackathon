@@ -62,3 +62,9 @@ int CTImeText::SetText(float intime, D3DXVECTOR3 pos)
 
 	return m_text.size() - 1;
 }
+
+void CTImeText::AllDelete()
+{
+	m_text.clear();
+	m_pos.clear();
+}

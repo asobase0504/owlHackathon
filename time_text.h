@@ -26,6 +26,7 @@ public:	// メンバー関数
 	void Update();
 	void Draw();
 	int SetText(float inText,D3DXVECTOR3 pos);
+	void AllDelete();
 private: // 動的メンバー変数
 
 	/* フォント関係 */

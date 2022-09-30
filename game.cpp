@@ -123,7 +123,6 @@ HRESULT CGame::Init(void)
 	m_pGameSystem = new CGameSystem;
 	m_pGameSystem->SetCountUpToSignal();
 
-	CManager::GetInstance()->GetText()->SetText(0.12345678f, {100.0f,100.0f,0.0f});
 	return S_OK;
 }
 
@@ -132,6 +131,7 @@ HRESULT CGame::Init(void)
 //========================
 void CGame::Uninit(void)
 {
+	CManager::GetInstance()->GetText()->AllDelete();
 	CManager::GetInstance()->GetSound()->Stop();
 	CRanking::SetScore(CScore::GetScore());
 
