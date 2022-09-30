@@ -194,6 +194,18 @@ void CGame::Update(void)
 
 	m_pGameSystem->Update();
 
+	if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
+	{
+		if (!m_bCurtain)
+		{
+			m_nCnt = 120;
+			m_curtain = CCurtain::Create();
+			m_bCurtain = true;
+			m_pGameSystem->SetGameEnd();
+		}
+	}
+
+
 	if (m_pGameSystem->GetSignal())
 	{
 		if (!m_bCurtain)
@@ -203,17 +215,6 @@ void CGame::Update(void)
 			m_bCurtain = true;
 			m_pGo->FalseDraw();
 			
-		}
-	}
-
-	if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
-	{
-		if (!m_bCurtain)
-		{
-			m_nCnt = 120;
-			m_curtain = CCurtain::Create();
-			m_bCurtain = true;
-			m_pGameSystem->SetGameEnd();
 		}
 	}
 
@@ -240,7 +241,6 @@ void CGame::Update(void)
 	case CGameSystem::STATUS_PL1_WINNING:
 		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_2);
 		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_3);
-		SetTime();
 		break;
 	case CGameSystem::STATUS_PL2_WINNING:
 		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_3);
