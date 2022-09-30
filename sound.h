@@ -33,22 +33,13 @@ public:
 		LABEL_BGM_RESET,
 		LABEL_BGM_TUTORIAL,
 		LABEL_BGM_RANKING,
-		LABEL_SE_HIT,			// HIT
 		LABEL_SE_SHOT,			// SHOT
-		LABEL_SE_FLARE,			// FLARE
-		LABEL_SE_ICE,			// ICE
-		LABEL_SE_STORM,			// 
-		LABEL_SE_SUN,			// 
-		LABEL_SE_MOVE,			// 
-		LABEL_SE_NO,			// キャンセル
-		LABEL_SE_ON,			// 決定
-		LABEL_SE_KIKEN,			// 
-		LABEL_SE_TAIKO,				// 
-		LABEL_SE_RAION,				// 
-		LABEL_SE_ROBO,				
-		LABEL_SE_BOOTH,				// 
-		LABEL_SE_YOBI,				// 
-		LABEL_SE_GOLD,				// 
+		LABEL_SE_CROW,			// カラス
+		LABEL_SE_CAN,			// 空き缶の音
+		LABEL_SE_SET_UP,		// 銃を構える音
+		LABEL_SE_DROP_GUM,		// 銃を落とす
+		LABEL_SE_WEED,			// 草
+		LABEL_SE_WIND,			// 風
 		LABEL_MAX,	
 	};
 
