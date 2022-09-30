@@ -100,7 +100,7 @@ void LoadJson(const char* cUrl)
 			case CManager::MODE_RANKING:
 				break;
 			case CManager::MODE_TUTORIAL:
-				CTutorial::GetParticleManager()->SetBundledData(loadData, index);
+				//CTutorial::GetParticleManager()->SetBundledData(loadData, index);
 				break;
 			default:
 				break;
