@@ -88,13 +88,13 @@ HRESULT CGame::Init(void)
 	Bg[2]->SetBgType(CBg::STOP);
 
 	// ¶‚Ìl
-	m_player[0] = CObject2d::Create();
+	m_player[0] = CObject2d::Create(3);
 	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.25f, 500.0f, 0.0f));
 	m_player[0]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
 	m_player[0]->SetTexture(CTexture::TEXTURE_STARRY);
 
 	// ‰E‚Ìl
-	m_player[1] = CObject2d::Create();
+	m_player[1] = CObject2d::Create(3);
 	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.75f, 500.0f, 0.0f));
 	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
 	m_player[1]->SetTexture(CTexture::TEXTURE_STARRY);
@@ -153,7 +153,7 @@ void CGame::Update(void)
 	if (m_tumbleweedPopCount <= 0)
 	{
 		m_tumbleweedPopCount = rand() % 50;
-		CTumbleweed::Create({ 1000.0f,300.0f,0.0f }, true);
+		CTumbleweed::Create({ 800.0f,-100.0f,0.0f }, true);
 	}
 }
 
