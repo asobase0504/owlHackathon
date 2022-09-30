@@ -264,7 +264,7 @@ void CGame::Update(void)
 		break;
 	}
 
-	if (m_nCnt == -500)
+	if (m_nCnt == -300)
 	{
 		SetTime();
 	}
