@@ -120,6 +120,13 @@ HRESULT CGame::Init(void)
 	m_pGo->SetTexture(CTexture::TEXTURE_GO);
 	m_pGo->TrueDraw();
 
+	m_pReady = CObject2d::Create(3);
+	m_pReady->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.3f, 0.0f));
+	m_pReady->SetSize(D3DXVECTOR3(200.0f, 200.0f, 0.0f));
+	m_pReady->SetTexture(CTexture::TEXTURE_READY);
+
+
+
 	m_pGameSystem = new CGameSystem;
 	m_pGameSystem->SetCountUpToSignal();
 
@@ -210,6 +217,7 @@ void CGame::Update(void)
 	{
 		if (!m_bCurtain)
 		{
+			m_pReady->TrueDraw();
 			m_nCnt = 120;
 			m_curtain = CCurtain::Create();
 			m_bCurtain = true;
@@ -264,9 +272,14 @@ void CGame::Update(void)
 		break;
 	}
 
-	if (m_nCnt == -500)
+	if (m_nCnt == -300)
 	{
 		SetTime();
+	}
+
+	if (m_nCnt < -300)
+	{
+		m_pGo->TrueDraw();
 	}
 
 	if (m_nCnt < -900)

@@ -31,6 +31,8 @@ const CSound::SParam CSound::PARAM[] =
 	{ "data/SE/‘‚Ş‚µ‚è.wav", 0 },							// 
 	{ "data/SE/•—‚ª‚­1.wav", 0 },							// 
 	{ "data/SE/SELECT.wav", 0 },							// 
+	{ "data/SE/Ready.wav", 0 },								// 
+	{ "data/SE/Fire.wav", 0 },								// 
 };
 
 static_assert(sizeof(CSound::PARAM) / sizeof(CSound::PARAM[0]) == CSound::LABEL_MAX, "aho");

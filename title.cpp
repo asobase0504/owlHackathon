@@ -168,7 +168,7 @@ void CTitle::Update(void)
 	{
 		CManager* maneger = CManager::GetInstance();
 		//ƒ‚[ƒh‚ÌÝ’è
-		maneger->GetFade()->NextMode(CManager::MODE_GAME);
+		maneger->GetFade()->NextMode(CManager::MODE_TUTORIAL);
 	}
 	
 #ifdef _DEBUG

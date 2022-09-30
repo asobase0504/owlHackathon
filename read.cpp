@@ -48,8 +48,7 @@ void CRead::ReadRanking(float *pRanking)
 	//ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
 	fclose(pFile);
 
-	float fScore = 0;
-	int nAirframe = 0;
+	float fScore = 0.0f;
 	CRanking::NameData namedata = {};
 
 	for (int nCnt1 = 0; nCnt1 < CRanking::MAX_RANKING; nCnt1++)

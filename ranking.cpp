@@ -66,6 +66,7 @@ HRESULT CRanking::Init()
 
 void CRanking::Uninit()
 {
+	CManager::GetInstance()->GetText()->AllDelete();
 }
 
 void CRanking::Update()

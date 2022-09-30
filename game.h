@@ -39,6 +39,7 @@ private:
 	CObject2d *Bg;
 	CObject2d *Saboten[4];
 	CObject2d *m_pGo;
+	CObject2d *m_pReady;
 	CGameSystem *m_pGameSystem;
 	CCurtain *m_curtain;
 	int m_GameCount;
