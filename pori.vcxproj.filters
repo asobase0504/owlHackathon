@@ -186,6 +186,9 @@
     <ClCompile Include="blackin.cpp">
       <Filter>オブジェクト\Move2D</Filter>
     </ClCompile>
+    <ClCompile Include="curtain.cpp">
+      <Filter>オブジェクト\Move2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h">
@@ -324,6 +327,9 @@
       <Filter>オブジェクト\Move2D</Filter>
     </ClInclude>
     <ClInclude Include="blackin.h">
+      <Filter>オブジェクト\Move2D</Filter>
+    </ClInclude>
+    <ClInclude Include="curtain.h">
       <Filter>オブジェクト\Move2D</Filter>
     </ClInclude>
   </ItemGroup>

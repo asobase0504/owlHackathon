@@ -106,8 +106,8 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	// 右の人
-	CBlackIn::Create(true);
-	CBlackIn::Create(false);
+	m_Block[0] = CBlackIn::Create(true);
+	m_Block[1] = CBlackIn::Create(false);
 	//CBlackOut::Create(true);
 	//CBlackOut::Create(false);
 
@@ -157,7 +157,7 @@ void CGame::Update(void)
 	}
 	if (CInputpInput->Trigger(DIK_F2))
 	{
-		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
+		CText::Create(CText::GON, 120, 10, "モンハンたのしい...");
 		return;
 	}
 

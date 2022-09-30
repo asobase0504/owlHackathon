@@ -29,9 +29,11 @@ public:
 	void Update() override;
 	void Draw() override;
 	static CBlackIn* Create(bool isLeft);
+
+	bool GetStop() { return isStop; }
 private:
 	bool isLeft;
-	bool isOut;
+	bool isStop;
 	int nLife;
 	D3DXVECTOR3 m_rot;
 
