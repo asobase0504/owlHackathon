@@ -88,7 +88,7 @@ CTumbleweed *CTumbleweed::Create()
 	CTumbleweed * pObject;
 	if (pos.y <= -260.0f)
 	{
-		pObject = new CTumbleweed(2);
+		pObject = new CTumbleweed(1);
 	}
 	else
 	{

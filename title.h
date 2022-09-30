@@ -49,7 +49,8 @@ private:
 	CObject2d *fade;
 	int m_addX;
 	int m_addY;
-	
+	int m_tumbleweedPopCount;
+
 	MODE NextMode;
 	bool Sizcontroller;
 	bool ModeSelect;
