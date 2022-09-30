@@ -39,5 +39,6 @@ private:
 	int m_GameCount;
 
 	int m_tumbleweedPopCount;
+	int m_birdPopCount;
 };
 #endif

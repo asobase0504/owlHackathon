@@ -30,6 +30,7 @@
 #include "text.h"
 
 #include "tumbleweed.h"
+#include "bird.h"
 
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
@@ -92,17 +93,18 @@ HRESULT CGame::Init(void)
 
 	// ¶‚Ìl
 	m_player[0] = CObject2d::Create(3);
-	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.25f, 500.0f, 0.0f));
+	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 550.0f, 0.0f));
 	m_player[0]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
-	m_player[0]->SetTexture(CTexture::TEXTURE_STARRY);
+	m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_1);
 
 	// ‰E‚Ìl
 	m_player[1] = CObject2d::Create(3);
-	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.75f, 500.0f, 0.0f));
+	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 550.0f, 0.0f));
 	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
-	m_player[1]->SetTexture(CTexture::TEXTURE_STARRY);
+	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
-	m_tumbleweedPopCount = rand() % 200;
+	m_tumbleweedPopCount = rand() % 70;
+	m_birdPopCount = rand() % 70;
 
 	return S_OK;
 }
@@ -156,8 +158,15 @@ void CGame::Update(void)
 	m_tumbleweedPopCount--;
 	if (m_tumbleweedPopCount <= 0)
 	{
-		m_tumbleweedPopCount = rand() % 200;
+		m_tumbleweedPopCount = rand() % 150;
 		CTumbleweed::Create();
+	}
+
+	m_birdPopCount--;
+	if (m_birdPopCount <= 0)
+	{
+		m_birdPopCount = rand() % 150;
+		CBird::Create();
 	}
 }
 
