@@ -84,6 +84,7 @@ public: /* ’è‹` */
 		TEXTURE_PLAYER2_1,		// ƒKƒ“ƒ}ƒ“‚Q-‚P
 		TEXTURE_PLAYER2_2,		// ƒKƒ“ƒ}ƒ“‚Q-2
 		TEXTURE_PLAYER2_3,		// ƒKƒ“ƒ}ƒ“‚Q-3
+		TEXTURE_PLAYER_CIKIN,	// ƒKƒ“ƒ}ƒ“3-1
 		TEXTURE_BIRD,			// ’¹
 		TEXTURE_SABOTEN,		// ƒTƒ{ƒeƒ“
 		TEXTURE_GO,				// GO
