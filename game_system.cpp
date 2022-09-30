@@ -56,7 +56,10 @@ void CGameSystem::Update()
 	m_fPlayerTime[1] = pInput->GetTimeUpToReactionKey(1);
 
 	// Œ‹‰Ê‚ÌŽ¯•Ê
-	ResultIdentification();
+	if (m_bSignal)
+	{
+		ResultIdentification();
+	}
 }
 
 //=====================================
@@ -84,13 +87,13 @@ void CGameSystem::ResultIdentification()
 
 	if (m_fPlayerTime[0] == 500.0f)
 	{
-		m_GameStatu = STATUS_PL1_CHICKEN;
+		m_GameStatu = STATUS_PL2_WINNING;
 		m_bGameEnd = true;
 		return;
 	}
 	else if (m_fPlayerTime[1] == 500.0f)
 	{
-		m_GameStatu = STATUS_PL2_CHICKEN;
+		m_GameStatu = STATUS_PL1_WINNING;
 		m_bGameEnd = true;
 		return;
 	}
