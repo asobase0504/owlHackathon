@@ -51,7 +51,7 @@ void CTumbleweed::Update()
 	move();
 	CObject2d::Update();
 
-	if (nLife <= 50)
+	if (nLife <= 0)
 	{
 		Uninit();
 	}
@@ -83,10 +83,10 @@ CTumbleweed *CTumbleweed::Create(D3DXVECTOR3 pos, bool b3D)
 
 		pObject->Init();
 		pObject->SetPos(Poppos);
-		pObject->nLife = 50;
-		pObject->SetTexture(CTexture::TEXTURE_EXPLOSION);		// テクスチャ選択
-		pObject->SetMove(D3DXVECTOR3(0.0f, -1.0f, 0.0f));		// moveの設定
-		pObject->SetSize(D3DXVECTOR3(300.0f, 300.0f, 0.0f));	// サイズ設定
+		pObject->nLife = 700;
+		pObject->SetTexture(CTexture::TEXTURE_TITLE);		// テクスチャ選択
+		pObject->SetMove(D3DXVECTOR3(FloatRandam(-2.0f,-5.0f), 0.0f, 0.0f));		// moveの設定
+		pObject->SetSize(D3DXVECTOR3(50.0f, 50.0f, 0.0f));	// サイズ設定
 		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定	
 	}
 	return pObject;
