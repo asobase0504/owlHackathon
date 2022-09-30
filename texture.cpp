@@ -43,7 +43,7 @@ const char* CTexture::s_FileName[] =
 	"Data/TEXTURE/town.png",		//îwåiÇQ
 	"Data/TEXTURE/moon.png",		//îwåiÇR
 	"Data/TEXTURE/BG.png",			//Ç±Ç±Ç©ÇÁTITLE
-	"Data/TEXTURE/GonBG.png",
+	"Data/TEXTURE/Title2.png",
 	"Data/TEXTURE/Fox.png",
 	"Data/TEXTURE/gamestart.png",
 	"Data/TEXTURE/start.png",
