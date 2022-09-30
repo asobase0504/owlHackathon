@@ -80,6 +80,9 @@ public: /* 定義 */
 		TEXTURE_WILDERNESS,		// 荒野BG
 		TEXTURE_PLAYER1_1,		// ガンマン１-１
 		TEXTURE_PLAYER1_2,		// ガンマン１-２
+		TEXTURE_PLAYER2_1,		// ガンマン２-１
+		TEXTURE_BIRD,			// 鳥
+		TEXTURE_SABOTEN,		// サボテン
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};
