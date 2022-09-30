@@ -74,15 +74,15 @@ CTumbleweed *CTumbleweed::Create(D3DXVECTOR3 pos, bool b3D)
 
 	if (pObject != nullptr)
 	{
-		D3DXVECTOR3 Poppos = pos;
+		D3DXVECTOR3 popPos = pos;
 
 		if (b3D)
 		{
-			Poppos = ScreenCastWorld(&Poppos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
+			popPos = ScreenCastWorld(&popPos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
 		}
 
 		pObject->Init();
-		pObject->SetPos(Poppos);
+		pObject->SetPos(popPos);
 		pObject->nLife = 700;
 		pObject->SetTexture(CTexture::TEXTURE_TITLE);		// テクスチャ選択
 		pObject->SetMove(D3DXVECTOR3(FloatRandam(-2.0f,-5.0f), 0.0f, 0.0f));		// moveの設定
