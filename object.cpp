@@ -5,6 +5,9 @@
 //
 //=============================================================================
 
+//-----------------------------------------------------------------------------
+// include
+//-----------------------------------------------------------------------------
 #include "object.h"
 #include "object2d.h"
 #include "player.h"
@@ -17,12 +20,13 @@
 #include "game.h"
 #include "pause.h"
 
+//-----------------------------------------------------------------------------
+// 静的メンバー変数の宣言
+//-----------------------------------------------------------------------------
 CObject *CObject::m_pObject[MAX_LIST][MAX_OBJECT] = {};
 int CObject::m_AllMember = 0; 
 int CObject::m_AllEnemy = 0;
-CScore * CObject::pScore;
 bool CObject::notBoss = false;
-CBg * CObject::Bg[3];
 
 //=============================================================================
 // コンストラクト関数
@@ -58,7 +62,6 @@ void CObject::AllUpdate()
 	{
 		for (int i = 0; i < MAX_OBJECT; i++)
 		{
-
 			if (m_pObject[j][i] != nullptr)
 			{
 				m_pObject[j][i]->Update();
@@ -76,7 +79,6 @@ void CObject::TypeUpdate(EObjectType Type)
 	{
 		for (int i = 0; i < MAX_OBJECT; i++)
 		{
-
 			if (m_pObject[j][i] != nullptr)
 			{
 				if (m_pObject[j][i]->m_Type == Type)
@@ -115,7 +117,6 @@ void CObject::TypeDraw(EObjectType Type)
 	{
 		for (int i = 0; i < MAX_OBJECT; i++)
 		{
-
 			if (m_pObject[j][i] != nullptr)
 			{
 				if (m_pObject[j][i]->m_Type == Type)
@@ -143,7 +144,6 @@ void CObject::AllUninit()
 				delete m_pObject[j][i];
 				m_pObject[j][i] = nullptr;
 			}
-
 		}
 	}
 	m_AllMember = 0;
@@ -176,23 +176,6 @@ void CObject::ModeNotUninit()
 //=============================================================================
 void CObject::AllCreate()
 {
-	Bg[0] = CBg::Create();
-	Bg[0]->SetMove(D3DXVECTOR3(0.0001f, 0.0f, 0.0f));
-	Bg[0]->SetTexture(CTexture::TEXTURE_STARRY);
-	Bg[0]->SetBgType(CBg::MOVE);
-
-	Bg[1] = CBg::Create();
-	Bg[1]->SetMove(D3DXVECTOR3(0.001f, 0.0f, 0.0f));
-	Bg[1]->SetTexture(CTexture::TEXTURE_TOWN);
-	Bg[1]->SetBgType(CBg::MOVE);
-
-	Bg[2] = CBg::Create();
-	Bg[2]->SetTexture(CTexture::TEXTURE_MOON);
-	Bg[2]->SetBgType(CBg::STOP);
-	
-
-	pScore = CScore::Create(D3DXVECTOR3(500.0f, 30.0f, 0.0f));
-	pScore->Set(0);
 }
 
 //=============================================================================
@@ -266,14 +249,6 @@ CObject**CObject::GetObjectData(int nCount)
 
 //=============================================================================
 // スコアのデータを取得する関数
-//=============================================================================
-CScore*CObject::GetScore()
-{
-	return pScore;
-}
-
-//=============================================================================
-// objectのIdを取得する関数
 //=============================================================================
 int * CObject::GetId()
 {

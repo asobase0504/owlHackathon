@@ -4,8 +4,6 @@
 // Author : 浜田琉雅
 //
 //=============================================================================
-
-
 #ifndef _OBJECT2D_H_			// このマクロ定義がされてなかったら
 #define _OBJECT2D_H_			// 二重インクルード防止のマクロ定義
 
@@ -59,11 +57,11 @@ public:
 protected:
 	int  m_nTimer;
 	float m_nScale;
-	D3DXVECTOR3 m_Size;
-	D3DXVECTOR3 m_move; //polygonの位置
-	D3DXVECTOR3 m_pos; //polygonの位置
+	D3DXVECTOR3 m_Size;	// 大きさ
+	D3DXVECTOR3 m_move;	// 移動量
+	D3DXVECTOR3 m_pos;	// 位置
 	D3DXCOLOR m_col;	// 色
-	D3DXVECTOR3 m_rot;
+	D3DXVECTOR3 m_rot;	// 回転量
 	D3DXMATRIX m_mtxWorld;					// マトリックス
 private:
 	LPDIRECT3DVERTEXBUFFER9	m_pVtxBuff = NULL;
@@ -73,10 +71,12 @@ private:
 	int m_PatternAnimX;
 	int m_PatternAnimY;
 
+	/* 分割数 */
 	int m_DivisionX;
 	int m_DivisionY;
 	int m_DivisionMAX;
 
+	/* アニメーション速度 */
 	int m_AnimationSpeed;
 	int m_AnimationSpeedCount;
 

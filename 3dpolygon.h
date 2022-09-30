@@ -4,8 +4,6 @@
 // Author : 浜田琉雅
 //
 //=============================================================================
-
-
 #ifndef _3DPOLYGON_H_			// このマクロ定義がされてなかったら
 #define _3DPOLYGON_H_			// 二重インクルード防止のマクロ定義
 
@@ -13,8 +11,6 @@
 #include "texture.h"
 #include "object2d.h"
 
-#define SIZEX (45.0f)
-#define SIZEY (90.0f)
 #define TIMER (m_nTimer + 90)
 
 class  C3dpolygon : public CObject
@@ -49,14 +45,12 @@ public:
 
 	static void PolygonReset() { m_MaxPolygon = 0; };
 
-	
-
 protected:
 	float m_nScale;
 	D3DXVECTOR3 m_rot;
-	D3DXVECTOR3 m_pos; //polygonの位置
+	D3DXVECTOR3 m_pos;		// polygonの位置
 	D3DXVECTOR3 m_Size;
-	D3DXMATRIX m_mtxWorld;					// マトリックス
+	D3DXMATRIX m_mtxWorld;	// マトリックス
 	int  m_nTimer;
 	D3DXVECTOR3  m_Move;
 private:

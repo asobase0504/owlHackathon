@@ -14,7 +14,9 @@ namespace hmd
 	float easeInQuad(float X);
 }
 
-
+///=============================================================================
+//マトリックスを回転させるやつ
+//=============================================================================
 D3DXMATRIX *hmd::giftmtx(D3DXMATRIX *pOut, D3DXVECTOR3 pos, D3DXVECTOR3 rot)
 {
 	// TODO: 関数化する
@@ -36,7 +38,6 @@ D3DXMATRIX *hmd::giftmtx(D3DXMATRIX *pOut, D3DXVECTOR3 pos, D3DXVECTOR3 rot)
 	D3DXMatrixMultiply(pOut, pOut, &mtxTrans);
 	return pOut;
 }
-
 
 //
 //イージング

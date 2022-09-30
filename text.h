@@ -4,7 +4,6 @@
 // Author:hamada ryuuga
 //
 //============================
-
 #ifndef _TEXT_H_
 #define _TEXT_H_
 
@@ -23,22 +22,27 @@ public:
 
 	CText(int list);
 	~CText();
+
 	HRESULT Init() override;
 	void Uninit() override;
 	void Update() override;
 	void Draw() override;
+
 	static CText* Create(Type talkType, int DeleteTime, int SpeedText, const char * Text);
 
 	void Releasetimer(int nTimar);
+
+private:
+	void TextLetter(const char * Text, int SpeedText);
+
 private:
 	D3DXCOLOR  m_col;
-	int m_DesTimarMax;//消える最大時間
-	int m_DesTimar;//消える時間
-
-	int m_TextSize;//文字のサイズ
-	int m_Addnumber;//1つの文字が加算されるまでの時間
-	int m_AddCount;//文字が加算されるまでのカウント
-	int m_AddLetter;//何文字目入れるか指定
+	int m_DesTimarMax;		// 消える最大時間
+	int m_DesTimar;			// 消える時間
+	int m_TextSize;			// 文字のサイズ
+	int m_Addnumber;		// 1つの文字が加算されるまでの時間
+	int m_AddCount;			// 文字が加算されるまでのカウント
+	int m_AddLetter;		// 何文字目入れるか指定
 
 	bool m_isRelease;
 
@@ -46,9 +50,6 @@ private:
 
 	std::string m_Text;
 	std::string m_ALLText;
-
-	void TextLetter(const char * Text, int SpeedText);
 };
-
 
 #endif#pragma once

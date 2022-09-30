@@ -30,8 +30,6 @@
 // プロトタイプ宣言
 //=====================================
 // 制御関数
-
-
 void OutputStatus();
 void LoadJson(const char* cUrl);
 

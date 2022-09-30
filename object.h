@@ -34,7 +34,6 @@ public:
 		MAX,
 		NONE
 	};
-
 	
 	const static int MAX_OBJECT = 2560;
 	const static int MAX_LIST = 4;
@@ -44,7 +43,6 @@ public:
 	virtual void Uninit() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
-
 
 	static void AllUpdate();
 	static void TypeUpdate(EObjectType Type);
@@ -56,16 +54,15 @@ public:
 
 	static int& GetMaxEnemy() { return m_AllEnemy; };
 	static bool& GetMaxBoss() { return notBoss; };
-	static CBg* GetBg(int number) { return  Bg[number]; };
+
 	static void SetBossPop(bool Boss) { notBoss = Boss; };
 	int * GetId();
+	
 	CObject ** GetObjectData(int nCount);
 	void SetUp(EObjectType Type);
 
 	void Release();
 	EObjectType GetType();
-
-	CScore*GetScore();
 
 protected:
 	static CObject *m_pObject[MAX_LIST][MAX_OBJECT];
@@ -77,9 +74,6 @@ private:
 	//int	m_nID;
 	EObjectType m_Type;
 	static int m_AllMember;
-	static CScore * pScore;
-	static CBg * Bg[3];
-
 
 };
 #endif

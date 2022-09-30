@@ -5,6 +5,9 @@
 //
 //============================
 
+//-----------------------------------------------------------------------------
+// include
+//-----------------------------------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,8 +22,6 @@
 
 #include "score.h"
 
-#include "multiply.h"
-
 #include "player.h"
 #include "manager.h"
 #include "fade.h"
@@ -28,10 +29,12 @@
 #include "game.h"
 
 #include "tutorial.h"
+#include "game.h"
 int CObject3d::m_drop = 0;
-//------------------------------------
+
+//-----------------------------------------------------------------------------
 // コンストラクタ
-//------------------------------------
+//-----------------------------------------------------------------------------
 CObject3d::CObject3d() :
 	m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_posOld(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
@@ -65,17 +68,17 @@ CObject3d::CObject3d() :
 
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // デストラクタ
-//------------------------------------
+//-----------------------------------------------------------------------------
 CObject3d::~CObject3d()
 {
 	assert(m_pMotion == nullptr);
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // 初期化
-//------------------------------------
+//-----------------------------------------------------------------------------
 HRESULT CObject3d::Init(void)
 {
 	D3DXVECTOR3 *Camerarot = CRenderer::GetCamera()->GetRot();
@@ -92,9 +95,9 @@ HRESULT CObject3d::Init(void)
 	return S_OK;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // 終了
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::Uninit(void)
 {
 	m_pMotion->Uninit();
@@ -106,9 +109,9 @@ void CObject3d::Uninit(void)
 	Release();
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // 更新
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::Update(void)
 {
 
@@ -171,85 +174,81 @@ void CObject3d::Update(void)
 	}
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // 描画
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::Draw(void)
 {
-
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();
 	D3DXMATRIX mtxScale, mtxTrans, mtxRot;	// 計算用マトリックス
 	D3DMATERIAL9 marDef;
 	D3DXVECTOR3 scale(1.8f, 1.8f, 1.8f);
 
-	
-		// ワールドマトリックスの初期化
-		// 行列初期化関数(第1引数の行列を単位行列に初期化)
-		D3DXMatrixIdentity(&m_mtxWorld);
-		
-		// 行列拡縮関数
-		D3DXMatrixScaling(&mtxScale, m_nScale.x, m_nScale.y, m_nScale.z);
-	
-		// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
-		D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxScale);
+	// ワールドマトリックスの初期化
+	// 行列初期化関数(第1引数の行列を単位行列に初期化)
+	D3DXMatrixIdentity(&m_mtxWorld);
 
-		// 向きを反映
-		// 行列回転関数(第1引数にヨー(y)ピッチ(x)ロール(z)方向の回転行列を作成)
-		D3DXMatrixRotationYawPitchRoll(&mtxRot, m_rot.y, m_rot.x, m_rot.z);
-		// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
-		D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxRot);
+	// 行列拡縮関数
+	D3DXMatrixScaling(&mtxScale, m_nScale.x, m_nScale.y, m_nScale.z);
 
-		// 位置を反映
-		// 行列移動関数(第１引数にX,Y,Z方向の移動行列を作成)
-		D3DXMatrixTranslation(&mtxTrans, m_pos.x, m_pos.y, m_pos.z);
-		// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
-		D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxTrans);
+	// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
+	D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxScale);
 
-		if (m_pos.x <=SCREEN_WIDTH)
+	// 向きを反映
+	// 行列回転関数(第1引数にヨー(y)ピッチ(x)ロール(z)方向の回転行列を作成)
+	D3DXMatrixRotationYawPitchRoll(&mtxRot, m_rot.y, m_rot.x, m_rot.z);
+	// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
+	D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxRot);
+
+	// 位置を反映
+	// 行列移動関数(第１引数にX,Y,Z方向の移動行列を作成)
+	D3DXMatrixTranslation(&mtxTrans, m_pos.x, m_pos.y, m_pos.z);
+	// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
+	D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxTrans);
+
+	if (m_pos.x <= SCREEN_WIDTH)
+	{
+		// テクスチャの設定
+		pDevice->SetTexture(0, NULL);
+
+		if (m_pMotion)
 		{
-			// テクスチャの設定
-			pDevice->SetTexture(0, NULL);
-
-			if (m_pMotion)
-			{
-				// パーツの描画設定
-				m_pMotion->SetParts(m_mtxWorld, m_ModelCollar);
-			}
+			// パーツの描画設定
+			m_pMotion->SetParts(m_mtxWorld, m_ModelCollar);
 		}
-		// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
-		pDevice->SetMaterial(&marDef);
-	
+	}
+	// 行列掛け算関数(第2引数×第3引数第を１引数に格納)
+	pDevice->SetMaterial(&marDef);
 }
 
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // POSだけセット
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::SetPos(const D3DXVECTOR3 &pos)
 {
 	m_pos = pos;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // SetMove関数
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::SetMove(const D3DXVECTOR3 &move)
 {
 	m_move = move;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // 設定
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::Set(const D3DXVECTOR3 &pos, const D3DXVECTOR3 &rot,  char * pFileName)
 {
 	// 情報の初期化
 	m_pos = pos;											// 位置の初期化
 	m_posOld = m_pos;										// 過去位置の初期化
-	m_posOld = m_pos;										// 過去位置の初期化
 	m_rot = rot;											// 向きの初期化
-	m_modelMin = D3DXVECTOR3(100.0f, 100.0f, 100.0f);		// 頂点座標の最小値
-	m_modelMax = D3DXVECTOR3(-100.0f, -100.0f, -100.0f);	// 頂点座標の最大値
+	m_modelMin = D3DXVECTOR3(FLT_MAX, FLT_MAX, FLT_MAX);	// 頂点座標の最小値
+	m_modelMax = D3DXVECTOR3(-FLT_MAX, -FLT_MAX, -FLT_MAX);	// 頂点座標の最大値
 	m_mtxWorld = {};										// ワールドマトリックス
 	//m_rotDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// 目的の向き
 	m_motionType = ANIME_NORMAL;							// ニュートラルモーション
@@ -263,47 +262,49 @@ void CObject3d::Set(const D3DXVECTOR3 &pos, const D3DXVECTOR3 &rot,  char * pFil
 	assert(m_pMotion != nullptr);
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // GetPos
-//------------------------------------
+//-----------------------------------------------------------------------------
 const D3DXVECTOR3 * CObject3d::GetPos() const
 {
 	return &m_pos;
 }
-//------------------------------------
+
+//-----------------------------------------------------------------------------
 // GetSize
-//------------------------------------
+//-----------------------------------------------------------------------------
 const D3DXVECTOR3 * CObject3d::GetSize() const
 {
 	return &m_nScale;
 }
-//------------------------------------
-//GetRot
-//------------------------------------
+
+//-----------------------------------------------------------------------------
+// GetRot
+//-----------------------------------------------------------------------------
 const D3DXVECTOR3 * CObject3d::GetRot() const
 {
 	return nullptr;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // SetSize
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::SetSize(D3DXVECTOR3 &Size)
 {
 	m_nScale = Size;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // SetLife
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::SetLife(int Life)
 {
 	m_Life = Life;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // HitLife
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::HitLife(int Damage)
 {
 	m_Life -= Damage;
@@ -313,7 +314,9 @@ void CObject3d::HitLife(int Damage)
 	m_Invincible = INVINCIBLE;
 	EObjectType Type =  GetType();
 
+	// 当たり判定
 	OnHit();
+
 	if (Type != PLAYER)
 	{//Player以外の処理
 		if (m_drop % 3 == 0)
@@ -324,7 +327,6 @@ void CObject3d::HitLife(int Damage)
 		
 		if (m_Life <= 0)
 		{//LIFEが尽きたとき
-	
 			switch (*CManager::GetInstance()->GetMode())
 			{
 			case CManager::MODE_GAME:
@@ -334,16 +336,11 @@ void CObject3d::HitLife(int Damage)
 				
 				break;
 			}
-		
 
 			for (int i = 0; i < 5; i++)
 			{
-				
-				GetScore()->Add(50);
-				
-				
+				CGame::GetScore()->Add(50);
 				D3DXVECTOR3 scale(3.8f, 3.8f, 3.8f);
-				
 			}
 			m_drop++;
 			if (m_drop >= CreateDrop)
@@ -353,9 +350,7 @@ void CObject3d::HitLife(int Damage)
 			}
 			//objectの破棄
 			Uninit();
-		
 		}
-
 	}
 	else
 	{
@@ -366,17 +361,18 @@ void CObject3d::HitLife(int Damage)
 		}
 	}
 }
-//------------------------------------
+
+//-----------------------------------------------------------------------------
 // GetDamegeData
-//------------------------------------
+//-----------------------------------------------------------------------------
 CObject3d::DAMEGE &CObject3d::GetDamegeData()
 {
 	return m_Damegeis;
 }
 
-//------------------------------------
+//-----------------------------------------------------------------------------
 // SetRot
-//------------------------------------
+//-----------------------------------------------------------------------------
 void CObject3d::SetRot(D3DXVECTOR3 &Rot)
 {
 	m_rot = Rot;

@@ -15,7 +15,6 @@
 
 class CTest : public CObject2d
 {
-
 public:
 	
 	enum PosType

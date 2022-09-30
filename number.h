@@ -4,25 +4,22 @@
 // Author:hamada ryuuga
 //
 //============================
-
 #ifndef _NUMBER_H_
 #define _NUMBER_H_
 
 #include "object2d.h"
 
-
-
 class CNumber : public CObject2d
 {
 public:
-
-	
 	CNumber(int list);
 	~CNumber();
+
 	HRESULT Init() override;
 	void Uninit() override;
 	void Update() override;
 	void Draw() override;
+
 	static CNumber* Create();
 	
 	void SetSpeed(float Speed) { m_Speed = Speed; }
@@ -30,6 +27,7 @@ public:
 	void SetMove(bool Move) { m_Move = Move; }
 	
 	void Releasetimer(int nTimar);
+
 private:
 	D3DXCOLOR m_col;
 	float m_Speed;
@@ -40,6 +38,5 @@ private:
 	bool m_Move;
 	
 };
-
 
 #endif
