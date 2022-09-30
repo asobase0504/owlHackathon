@@ -129,14 +129,8 @@
     <ClCompile Include="bg.cpp">
       <Filter>オブジェクト\モデル系</Filter>
     </ClCompile>
-    <ClCompile Include="ranking.cpp">
-      <Filter>メイン\画面遷移</Filter>
-    </ClCompile>
     <ClCompile Include="name.cpp">
       <Filter>システム</Filter>
-    </ClCompile>
-    <ClCompile Include="nemeset.cpp">
-      <Filter>メイン\画面遷移</Filter>
     </ClCompile>
     <ClCompile Include="fade.cpp">
       <Filter>メイン\画面遷移</Filter>
@@ -188,6 +182,12 @@
     </ClCompile>
     <ClCompile Include="curtain.cpp">
       <Filter>オブジェクト\Move2D</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking.cpp">
+      <Filter>システム</Filter>
+    </ClCompile>
+    <ClCompile Include="read.cpp">
+      <Filter>システム</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,14 +269,8 @@
     <ClInclude Include="Resource.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ranking.h">
-      <Filter>メイン\画面遷移</Filter>
-    </ClInclude>
     <ClInclude Include="name.h">
       <Filter>システム</Filter>
-    </ClInclude>
-    <ClInclude Include="nemeset.h">
-      <Filter>メイン\画面遷移</Filter>
     </ClInclude>
     <ClInclude Include="fade.h">
       <Filter>メイン\画面遷移</Filter>
@@ -331,6 +325,12 @@
     </ClInclude>
     <ClInclude Include="curtain.h">
       <Filter>オブジェクト\Move2D</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>システム</Filter>
+    </ClInclude>
+    <ClInclude Include="read.h">
+      <Filter>システム</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

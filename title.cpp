@@ -125,13 +125,6 @@ HRESULT CTitle::Init(void)
 	m_object2d[1]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y, 0.0f));
 	m_object2d[1]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 
-	//ランキングの文字
-	m_object2d[2] = CObject2d::Create(2);
-	m_object2d[2]->SetTexture(CTexture::TEXTURE_TITLERANKIN);
-	m_object2d[2]->SetSize(CManager::Pos);
-	m_object2d[2]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y + y, 0.0f));
-	m_object2d[2]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
-
 	y += 120.0f;
 
 	//おわりの文字
@@ -144,8 +137,6 @@ HRESULT CTitle::Init(void)
 	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_TITLE);
 
 	m_tumbleweedPopCount = rand() % 70;
-
-	CRanking::SetScore(0);
 
 	return S_OK;
 }
@@ -177,83 +168,10 @@ void CTitle::Update(void)
 	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		CManager* maneger = CManager::GetInstance();
-		//maneger->GetSound()->Play(CSound::LABEL_SE_ON);
-		if (ModeSelect)
-		{//一回押された	
-			switch (NextMode)
-			{
-			case MODE::MODE_GAME:
-				//モードの設定
-				maneger->GetFade()->NextMode(CManager::MODE_GAME);
-				break;
-			case MODE::MODE_TUTORIAL:
-				//モードの設定
-				maneger->GetFade()->NextMode(CManager::MODE_TUTORIAL);
-				break;
-			case MODE::MODE_RANKING:
-				//モードの設定
-				maneger->GetFade()->NextMode(CManager::MODE_RANKING);
-				break;
-			case MODE::MODE_END:
-				//ゲームの終了
-				PostQuitMessage(0);
-				break;
-			default:
-				break;
-			}		
-		}
-		else
-		{
-			//画面黒くする
-			fade->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
-
-			//文字を出し
-			for (int i = 0; i < 4; i++)
-			{
-				m_object2d[i]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
-			}
-
-			//今使ってるやつを明るく
-			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-			ModeSelect = true;
-		}
-
+		//モードの設定
+		maneger->GetFade()->NextMode(CManager::MODE_GAME);
 	}
-	if (ModeSelect)
-	{
-		if (CInputpInput->Trigger(KEY_UP))
-		{
-			//CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
-			//モード選択
-			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
-
-			NextMode = (MODE)(NextMode - 1);
-
-
-			if (NextMode < MODE::MODE_GAME)
-			{
-				NextMode = MODE::MODE_END;
-			}
-
 	
-			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-		}
-		if (CInputpInput->Trigger(KEY_DOWN))
-		{
-			//CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
-			//モード選択
-			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
-
-			NextMode = (MODE)(NextMode + 1);
-
-			if (NextMode >= MODE::MODE_MAX)
-			{
-				NextMode = MODE::MODE_GAME;
-			}
-
-			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-		}
-	}
 #ifdef _DEBUG
 
 	if (CInputpInput->Trigger(DIK_F1))
