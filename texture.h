@@ -78,6 +78,8 @@ public: /* 定義 */
 		TEXTURE_EXPLOSION,
 		TEXTURE_TUMBLEWEED,		// タンブルウィード
 		TEXTURE_WILDERNESS,		// 荒野BG
+		TEXTURE_PLAYER1_1,		// ガンマン１-１
+		TEXTURE_PLAYER1_2,		// ガンマン１-２
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};
