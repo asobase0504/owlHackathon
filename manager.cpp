@@ -73,7 +73,7 @@ HRESULT CManager::Init(HWND hWnd, bool /*bWindow*/, HINSTANCE hInstance)
 	m_Input = CInput::Create();
 
 	// 初期化処理
-	if (FAILED(m_cRenderer->Init(hWnd, TRUE)))	//画面サイズ
+	if (FAILED(m_cRenderer->Init(hWnd, false)))	//画面サイズ
 	{//初期化処理が失敗した場合
 		return -1;
 	}

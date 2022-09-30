@@ -61,6 +61,12 @@ HRESULT CRanking::Init()
 		CManager::GetInstance()->GetText()->SetText(m_fScore[(MAX_RANKING-1) - i], pos);
 	}
 
+	CObject2d* rank = new CObject2d;
+	rank->Init();
+	rank->SetPos({ CManager::SCREEN_WIDTH * 0.5f - 380.0f,CManager::SCREEN_HEIGHT * 0.5f - 50.0f, 0.0f });
+	rank->SetSize({ 100.0f,250.0f, 0.0f});
+	rank->SetTexture(CTexture::TEXTURE_12345);
+
 	return S_OK;
 }
 

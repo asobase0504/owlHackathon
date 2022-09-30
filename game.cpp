@@ -285,7 +285,7 @@ void CGame::Update(void)
 		m_pGo->TrueDraw();
 	}
 
-	if (m_nCnt < -900)
+	if (m_nCnt < -700)
 	{
 		CInputpInput->ResetInputTime();
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RANKING);
