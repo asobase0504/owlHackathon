@@ -56,6 +56,7 @@ public:
 	float GetTimeUpToReactionKey(int nNum);//”½‰ž‚Ü‚Å‚ÌŽžŠÔ
 	void TimeUpToReactionKeyTimeStart();
 	float CurrentTime();
+	void ResetInputTime();
 	//*
 
 private:

@@ -596,3 +596,13 @@ float CInput::CurrentTime()
 	}
 	return (timeGetTime() - m_fTimeBeginning) / 1000.0f;
 }
+
+void CInput::ResetInputTime()
+{
+	m_bTimeStart = false;
+	m_fTimeBeginning = 0.0f;
+	m_fTimeEnd[0] = 0.0f;
+	m_fTimeEnd[1] = 0.0f;
+	m_bChicken[0] = false;
+	m_bChicken[1] = false;
+}

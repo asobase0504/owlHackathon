@@ -172,6 +172,10 @@ void CGame::Uninit(void)
 //========================
 void CGame::Update(void)
 {
+	if (m_nCnt < -900)
+	{
+		return;
+	}
 	m_GameCount++;
 
 	CInput *CInputpInput = CInput::GetKey();
@@ -276,7 +280,11 @@ void CGame::Update(void)
 		break;
 	}
 
-	
+	if (m_nCnt < -900)
+	{
+		CInputpInput->ResetInputTime();
+		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RESULT);
+	}
 }
 
 //========================
