@@ -89,7 +89,7 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
 	m_player[1]->SetTexture(CTexture::TEXTURE_STARRY);
 
-	m_tumbleweedPopCount = rand() % 50;
+	m_tumbleweedPopCount = rand() % 200;
 
 	return S_OK;
 }
@@ -142,8 +142,8 @@ void CGame::Update(void)
 	m_tumbleweedPopCount--;
 	if (m_tumbleweedPopCount <= 0)
 	{
-		m_tumbleweedPopCount = rand() % 50;
-		CTumbleweed::Create({ 800.0f,-100.0f,0.0f }, true);
+		m_tumbleweedPopCount = rand() % 200;
+		CTumbleweed::Create();
 	}
 }
 

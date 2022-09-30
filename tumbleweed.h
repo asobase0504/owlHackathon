@@ -43,7 +43,7 @@ public:
 	void Uninit() override;
 	void Update() override;
 	void Draw() override;
-	static CTumbleweed* Create(D3DXVECTOR3 pos, bool b3D);
+	static CTumbleweed* Create();
 private:
 	void move();
 private:
