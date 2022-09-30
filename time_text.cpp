@@ -48,7 +48,7 @@ void CTImeText::Draw()
 		RECT rect = { (int)m_pos[i].x, (int)m_pos[i].y, SCREEN_WIDTH, SCREEN_HEIGHT };
 		sprintf(str, ("%1.4f"), m_text[i]);
 
-		m_font->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DXCOLOR(0.2f,0.2f,0.2f,1.0f));
+		m_font->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DXCOLOR(0.1f,0.1f,0.1f,1.0f));
 	}
 }
 
