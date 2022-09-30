@@ -46,6 +46,7 @@ HRESULT CRanking::Init()
 	for (int i = 0; i < MAX_RANKING; i++)
 	{
 		D3DXVECTOR3 pos(CManager::GetInstance()->Pos);
+		pos.x *= 0.75f;
 		pos.y -= 70.0f * i;
 		CManager::GetInstance()->GetText()->SetText(m_fScore[i], pos);
 	}
