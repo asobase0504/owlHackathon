@@ -27,7 +27,7 @@ CNumber::~CNumber()
 HRESULT CNumber::Init()
 {
 	CObject2d::Init();
-	CObject2d::SetTexture(CTexture::TEXTURE_SCORE);
+	CObject2d::SetTexture(CTexture::TEXTURE_NONE);
 	SetTex(PositionVec4(
 		0.0f, 0.1f, 0.0f, 1.0f));
 

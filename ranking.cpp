@@ -117,17 +117,17 @@ inline HRESULT CRanking::Init(void)
 
 
 	m_Object2d[0] = CObject2d::Create();
-	m_Object2d[0]->SetTexture(CTexture::TEXTURE_RANKINBG);
+	m_Object2d[0]->SetTexture(CTexture::TEXTURE_NONE);
 	m_Object2d[0]->SetSize(CManager::Pos);
 	m_Object2d[0]->SetPos(CManager::Pos);
 
 	m_Object2d[1] = CObject2d::Create();
-	m_Object2d[1]->SetTexture(CTexture::TEXTURE_RANKIN);
+	m_Object2d[1]->SetTexture(CTexture::TEXTURE_NONE);
 	m_Object2d[1]->SetSize(D3DXVECTOR3(100.0f, 300.0f, 0.0f));
 	m_Object2d[1]->SetPos(D3DXVECTOR3(CManager::Pos.x - 120.0f, 350.0f, 0.0f));
 
 	m_Object2d[2] = CObject2d::Create();
-	m_Object2d[2]->SetTexture(CTexture::TEXTURE_RANKINTITLEOFF);
+	m_Object2d[2]->SetTexture(CTexture::TEXTURE_NONE);
 	m_Object2d[2]->SetSize(D3DXVECTOR3(200.0f, 100.0f, 0.0f));
 	m_Object2d[2]->SetPos(D3DXVECTOR3(200.0f, 150.0f, 0.0f));
 
@@ -175,7 +175,7 @@ void CRanking::Update(void)
 
 	if (finished)
 	{
-		m_Object2d[2]->SetTexture(CTexture::TEXTURE_RANKINTITLEON);
+		m_Object2d[2]->SetTexture(CTexture::TEXTURE_NONE);
 
 
 		if (!m_RankingSet)

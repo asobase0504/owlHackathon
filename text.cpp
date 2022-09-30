@@ -151,11 +151,11 @@ CText *CText::Create(Type talkType,int DeleteTime, int SpeedText,const char * Te
 		switch (talkType)
 		{
 		case CText::GON:
-			pObject->SetTexture(CTexture::TEXTURE_GONBOX);
+			pObject->SetTexture(CTexture::TEXTURE_NONE);
 			break;
 
 		case CText::MASUO:
-			pObject->SetTexture(CTexture::TEXTURE_MASUOBOX);
+			pObject->SetTexture(CTexture::TEXTURE_NONE);
 			break;
 
 		case CText::MAX:

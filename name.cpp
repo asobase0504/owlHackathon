@@ -30,7 +30,7 @@ CName::~CName()
 HRESULT CName::Init()
 {
 	CObject2d::Init();
-	CObject2d::SetTexture(CTexture::TEXTURE_ALPHABET);
+	CObject2d::SetTexture(CTexture::TEXTURE_NONE);
 	col = PositionVec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	m_DivisionX = 7;
@@ -188,7 +188,7 @@ CName *CName::Create()
 	{
 		pObject->Init();
 
-		pObject->SetTexture(CTexture::TEXTURE_ALPHABET);
+		pObject->SetTexture(CTexture::TEXTURE_NONE);
 	}
 
 	return pObject;
