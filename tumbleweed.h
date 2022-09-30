@@ -27,7 +27,7 @@ public:
 		MAX			// Ç†ÇÒÇΩÇæÇÍÇ‚ÅH
 	};
 
-	CTumbleweed();
+	CTumbleweed(int nList);
 	~CTumbleweed() override;
 
 	HRESULT Init() override;

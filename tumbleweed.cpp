@@ -11,7 +11,7 @@
 //------------------------------------
 // コンストラクタ
 //------------------------------------
-CTumbleweed::CTumbleweed() :CObject2d(0)
+CTumbleweed::CTumbleweed(int nList) :CObject2d(nList)
 {
 }
 
@@ -72,7 +72,7 @@ CTumbleweed *CTumbleweed::Create()
 {
 	int isLeft = rand() % 2;
 
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-120.0f, -150.0f), 0.0f);
+	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-180.0f, -270.0f), 0.0f);
 	D3DXVECTOR3 move(FloatRandam(2.0f, 5.0f), 0.0f, 0.0f);
 
 	if (isLeft == 0)
@@ -80,7 +80,15 @@ CTumbleweed *CTumbleweed::Create()
 		move *= -1;
 	}
 
-	CTumbleweed * pObject = new CTumbleweed;
+	CTumbleweed * pObject;
+	if (pos.y <= -220.0f)
+	{
+		pObject = new CTumbleweed(3);
+	}
+	else
+	{
+		pObject = new CTumbleweed(0);
+	}
 
 	if (pObject != nullptr)
 	{

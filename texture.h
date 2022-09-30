@@ -81,6 +81,7 @@ public: /* ’è‹` */
 		TEXTURE_PLAYER1_1,		// ƒKƒ“ƒ}ƒ“‚P-‚P
 		TEXTURE_PLAYER1_2,		// ƒKƒ“ƒ}ƒ“‚P-‚Q
 		TEXTURE_PLAYER2_1,		// ƒKƒ“ƒ}ƒ“‚Q-‚P
+		TEXTURE_BIRD,			// ’¹
 		TEXTURE_SABOTEN,		// ƒTƒ{ƒeƒ“
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// Žg—p‚µ‚È‚¢
