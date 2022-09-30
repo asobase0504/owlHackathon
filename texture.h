@@ -50,6 +50,10 @@ public: /* 定義 */
 		TEXTURE_DRAW,			// 引き分け
 		TEXTURE_CROW1,			// カラス1
 		TEXTURE_CROW2,			// カラス2
+
+		/* ↓　ランキング　↓ */
+		TEXTURE_RANKING,		// ランキング
+
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};
