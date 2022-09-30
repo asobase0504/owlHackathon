@@ -552,7 +552,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 			{
 				m_fTimeEnd[0] = timeGetTime();
 			}
-			return  m_fTimeEnd[1] - m_fTimeBeginning;
+			return  m_fTimeEnd[0] - m_fTimeBeginning;
 		}
 		break;
 	case 1:

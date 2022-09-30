@@ -25,6 +25,7 @@ public:
 		STATUS_DRAW,
 		STATUS_PL1_CHICKEN,
 		STATUS_PL2_CHICKEN,
+		STATUS_DOUBLE_CHICKEN,
 		STATUS_MAX
 	};
 	static const int PLAYER_COUNT_MAX = 2;
@@ -37,8 +38,11 @@ public:
 	void SetCountUpToSignal();
 	void ResultIdentification();
 	GameStatus GetGameStatus() { return m_GameStatu; }
+	void SetStatus();
 	bool GetSignal() { return m_bSignal; }
 	bool GetGameEnd() { return m_bGameEnd; }
+	void SetGameEnd() { m_bGameEnd = true; }
+	float GetPlayerTime(int nNum) { return m_fPlayerTime[nNum]; }
 
 private:
 	bool m_bGameEnd;
