@@ -108,10 +108,9 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	// ‰E‚Ìl
-	CBlackIn::Create(true);
-	CBlackIn::Create(false);
-	//CBlackOut::Create(true);
-	//CBlackOut::Create(false);
+	/*CBlackIn::Create(true);
+	CBlackIn::Create(false);*/
+	
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
@@ -201,9 +200,38 @@ void CGame::Update(void)
 	if (m_pGameSystem->GetSignal())
 	{
 		m_pGo->FalseDraw();
+		/*CBlackOut::Create(true);
+		CBlackOut::Create(false);*/
 	}
 
+	if (!m_pGameSystem->GetGameEnd())
+	{
+		return;
+	}
 
+	switch (m_pGameSystem->GetGameStatus())
+	{
+	case CGameSystem::STATUS_PL1_WINNING:
+		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_2);
+		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_3);
+		break;
+	case CGameSystem::STATUS_PL2_WINNING:
+		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_3);
+		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_2);
+		break;
+	case CGameSystem::STATUS_DRAW:
+		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_3);
+		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_3);
+		break;
+	/*case CGameSystem::STATUS_PL1_CHICKEN:
+		break;
+	case CGameSystem::STATUS_PL2_CHICKEN:
+		break;*/
+	default:
+		break;
+	}
+
+	
 }
 
 //========================

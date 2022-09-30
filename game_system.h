@@ -38,6 +38,7 @@ public:
 	void ResultIdentification();
 	GameStatus GetGameStatus() { return m_GameStatu; }
 	bool GetSignal() { return m_bSignal; }
+	bool GetGameEnd() { return m_bGameEnd; }
 
 private:
 	bool m_bGameEnd;
