@@ -80,14 +80,14 @@ void CBg::Draw()
 //-----------------------------------------------------------------------------
 CBg *CBg::Create()
 {
-	CBg * pObject = nullptr;
+	CBg *pObject = nullptr;
 	pObject = new CBg(0);
 
 	if (pObject != nullptr)
 	{
 		pObject->Init();
-		pObject->SetPos(D3DXVECTOR3(0.0f, 0.0f,10200.0f));
-		pObject->SetSize(D3DXVECTOR3(640.0f, 360.0f,0.0f));
+		pObject->SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+		pObject->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f,0.0f));
 		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	}
 
