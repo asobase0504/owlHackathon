@@ -334,7 +334,9 @@ bool CInput::Trigger(STAN_DART_INPUT_KEY key)
 		break;
 	case KEY_DECISION:
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_RETURN)
-			|| m_pJoyPad->GetTriggerAll(JOYPAD_A))
+			|| m_pJoyPad->GetTriggerAll(JOYPAD_A)
+			|| m_pJoyPad->GetTriggerAll(JOYPAD_R1)
+			|| m_pJoyPad->GetTriggerAll(JOYPAD_L1))
 		{
 			return true;
 		}
