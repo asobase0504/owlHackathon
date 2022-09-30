@@ -10,6 +10,9 @@
 //*****************************************************************************
 #include "ranking.h"
 #include "read.h"
+#include "input.h"
+#include "manager.h"
+#include "fade.h"
 
 //*****************************************************************************
 // コンストラクタ
@@ -28,7 +31,7 @@ CRanking::~CRanking()
 //*****************************************************************************
 // 初期化
 //*****************************************************************************
-void CRanking::Init(D3DXVECTOR3 pos)
+HRESULT CRanking::Init()
 {
 	m_bNewScore = false;
 
@@ -38,6 +41,28 @@ void CRanking::Init(D3DXVECTOR3 pos)
 	}
 	CRead Cread;
 	Cread.ReadRanking(&m_fScore[0]);
+	return S_OK;
+}
+
+void CRanking::Uninit()
+{
+}
+
+void CRanking::Update()
+{
+	CInput *CInputpInput = CInput::GetKey();
+
+	if (CInputpInput->Press(KEY_DECISION))
+	{
+		CManager* maneger = CManager::GetInstance();
+		//モードの設定
+		maneger->GetFade()->NextMode(CManager::MODE_TITLE);
+	}
+
+}
+
+void CRanking::Draw()
+{
 }
 
 //*****************************************************************************
