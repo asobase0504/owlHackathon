@@ -205,6 +205,7 @@ void CGame::Update(void)
 	{
 		if (!m_bCurtain)
 		{
+			m_pReady->TrueDraw();
 			m_nCnt = 120;
 			m_curtain = CCurtain::Create();
 			m_bCurtain = true;
@@ -300,8 +301,13 @@ void CGame::SetTime()
 {
 	if (!isText)
 	{
-		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0) * 0.001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.15f, 350.0f, 0.0f));
-		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1) * 0.001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.25f, 350.0f, 0.0f));
+		if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
+		{
+			return;
+		}
+
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0), D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.15f, 350.0f, 0.0f));
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1), D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.25f, 350.0f, 0.0f));
 		isText = true;
 	}
 }
