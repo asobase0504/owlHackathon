@@ -68,26 +68,34 @@ void CTumbleweed::Draw()
 //------------------------------------
 // create
 //------------------------------------
-CTumbleweed *CTumbleweed::Create(D3DXVECTOR3 pos, bool b3D)
+CTumbleweed *CTumbleweed::Create()
 {
+	int isLeft = IntRandam(1, 0);
+
+	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : 0.0f, FloatRandam(-120.0f, -150.0f), 0.0f);
+
+	D3DXVECTOR3 move(FloatRandam(2.0f, 5.0f), 0.0f, 0.0f);
+
+	if (isLeft == 0)
+	{
+		move *= -1;
+	}
+
 	CTumbleweed * pObject = new CTumbleweed;
 
 	if (pObject != nullptr)
 	{
-		D3DXVECTOR3 Poppos = pos;
+		D3DXVECTOR3 popPos = pos;
 
-		if (b3D)
-		{
-			Poppos = ScreenCastWorld(&Poppos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
-		}
+		popPos = ScreenCastWorld(&popPos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
 
 		pObject->Init();
-		pObject->SetPos(Poppos);
+		pObject->SetPos(popPos);
 		pObject->nLife = 700;
-		pObject->SetTexture(CTexture::TEXTURE_TITLE);		// テクスチャ選択
-		pObject->SetMove(D3DXVECTOR3(FloatRandam(-2.0f,-5.0f), 0.0f, 0.0f));		// moveの設定
-		pObject->SetSize(D3DXVECTOR3(50.0f, 50.0f, 0.0f));	// サイズ設定
-		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定	
+		pObject->SetTexture(CTexture::TEXTURE_TUMBLEWEED);		// テクスチャ選択
+		pObject->SetMove(move);		// moveの設定
+		pObject->SetSize(D3DXVECTOR3(25.0f, 25.0f, 0.0f));	// サイズ設定
+		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定
 	}
 	return pObject;
 }
