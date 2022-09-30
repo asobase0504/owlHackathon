@@ -101,24 +101,18 @@ private:
 	void DrawFPS();
 #endif // _DEBUG
 
-
 	// Direct3Dオブジェクト
 	LPDIRECT3D9 m_pD3D = nullptr;
 	// Deviceオブジェクト
 	LPDIRECT3DDEVICE9 m_pD3DDevice = nullptr;
-
 	
 #ifdef _DEBUG
 	// フォント
 	LPD3DXFONT m_pFont = nullptr;
 #endif // _DEBUG
-
-	
 	static CCamera* pCamera[2];
 	static CLight* pLight;
 	static CParticle* particle;
-
-
 };
 
 
