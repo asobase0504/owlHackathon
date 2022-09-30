@@ -181,14 +181,14 @@ void CGame::Update(void)
 	m_tumbleweedPopCount--;
 	if (m_tumbleweedPopCount <= 0)
 	{
-		m_tumbleweedPopCount = rand() % 150;
+		m_tumbleweedPopCount = rand() % 150 + 50;
 		CTumbleweed::Create();
 	}
 
 	m_birdPopCount--;
 	if (m_birdPopCount <= 0)
 	{
-		m_birdPopCount = rand() % 150;
+		m_birdPopCount = rand() % 150 + 50;
 		CBird::Create();
 	}
 
