@@ -30,6 +30,7 @@
 #include "text.h"
 
 #include "tumbleweed.h"
+#include "bird.h"
 
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
@@ -103,6 +104,7 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	m_tumbleweedPopCount = rand() % 70;
+	m_birdPopCount = rand() % 70;
 
 	return S_OK;
 }
@@ -156,8 +158,15 @@ void CGame::Update(void)
 	m_tumbleweedPopCount--;
 	if (m_tumbleweedPopCount <= 0)
 	{
-		m_tumbleweedPopCount = rand() % 70;
+		m_tumbleweedPopCount = rand() % 150;
 		CTumbleweed::Create();
+	}
+
+	m_birdPopCount--;
+	if (m_birdPopCount <= 0)
+	{
+		m_birdPopCount = rand() % 150;
+		CBird::Create();
 	}
 }
 

@@ -29,7 +29,6 @@ HRESULT CBird::Init()
 {
 	CObject2d::Init();
 
-	m_Testrot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	return S_OK;
 }
 
@@ -66,8 +65,8 @@ CBird *CBird::Create()
 {
 	int isLeft = rand() % 2;
 
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-120.0f, -150.0f), 0.0f);
-	D3DXVECTOR3 move(FloatRandam(2.0f, 5.0f), 0.0f, 0.0f);
+	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(180.0f, 280.0f), 0.0f);
+	D3DXVECTOR3 move(FloatRandam(4.0f, 7.0f), 0.0f, 0.0f);
 
 	if (isLeft == 0)
 	{
@@ -99,8 +98,5 @@ CBird *CBird::Create()
 //------------------------------------
 void CBird::move()
 {
-	m_Testrot.z += 0.1f;
-	//“®‚«“ü‚ê‚½‚¢‚Æ‚«‚Í‚±‚±‚É	SetMove()‚Å•Ï‚¦‚ê‚é‚æ
-	SetRot(m_Testrot);
 	m_pos += m_move;
 }
