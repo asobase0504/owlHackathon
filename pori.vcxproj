@@ -164,6 +164,7 @@
     <ClCompile Include="blackin.cpp" />
     <ClCompile Include="blackout.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="curtain.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="blackin.h" />
     <ClInclude Include="blackout.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="curtain.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="game.h" />

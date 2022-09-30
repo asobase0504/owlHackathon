@@ -13,6 +13,7 @@ class CParticleManager;
 class CObject2d;
 class CPause; 
 class CGameSystem;
+class CCurtain;
 
 class CGame :public CObject
 {
@@ -38,6 +39,7 @@ private:
 	CObject2d *Saboten[4];
 	CObject2d *m_pGo;
 	CGameSystem *m_pGameSystem;
+	CCurtain *m_curtain;
 	int m_GameCount;
 
 	int m_tumbleweedPopCount;

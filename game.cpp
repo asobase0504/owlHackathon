@@ -31,8 +31,7 @@
 
 #include "tumbleweed.h"
 #include "bird.h"
-#include "blackout.h"
-#include "blackin.h"
+#include "curtain.h"
 
 #include "game_system.h"
 
@@ -108,9 +107,7 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	// 右の人
-	/*CBlackIn::Create(true);
-	CBlackIn::Create(false);*/
-	
+	m_curtain = CCurtain::Create();
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
@@ -175,7 +172,7 @@ void CGame::Update(void)
 	}
 	if (CInputpInput->Trigger(DIK_F2))
 	{
-		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
+		CText::Create(CText::GON, 120, 10, "モンハンたのしい...");
 		return;
 	}
 

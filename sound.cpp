@@ -16,7 +16,7 @@
 //==================================================
 const CSound::SParam CSound::PARAM[] =
 {// 各音素材のパラメータ
-	{ "data/BGM/yukiguni.wav", -1},				// タイトル
+	{ "data/BGM/BURAI_BLUES.wav", -1},				// タイトル
 	{ "data/BGM/Game.wav", -1 },				// game
 	{ "data/BGM/Tricky Future.wav", -1 },		// Boss1
 	{ "data/BGM/オレンジトンネルを抜ける.wav", -1 },	// Boss2
