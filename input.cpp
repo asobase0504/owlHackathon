@@ -13,6 +13,8 @@
 #include "inputkeyboard.h"
 #include "inputjoypad.h"
 
+#include "manager.h"
+#include "sound.h"
 //-----------------------------------------------------------------------------
 //Ã“Iƒƒ“ƒo•Ï”éŒ¾
 //-----------------------------------------------------------------------------
@@ -542,6 +544,8 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_LSHIFT)
 			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
 		{
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 			if (!m_bTimeStart)
 			{
 				m_bChicken[0] = true;
@@ -559,6 +563,8 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_RSHIFT)
 			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
 		{
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 			if (!m_bTimeStart)
 			{
 				m_bChicken[1] = true;
