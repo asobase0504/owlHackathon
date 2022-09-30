@@ -542,7 +542,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 	{
 	case 0:
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_LSHIFT)
-			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
+			|| m_pJoyPad->GetTrigger(JOYPAD_R1, 0))
 		{
 			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
 
@@ -561,7 +561,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		break;
 	case 1:
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_RSHIFT)
-			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
+			|| m_pJoyPad->GetTrigger(JOYPAD_L1, 0))
 		{
 			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
 
