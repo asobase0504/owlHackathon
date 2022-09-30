@@ -39,11 +39,7 @@ HRESULT CText::Init()
 	// フォントを使えるようにする
 	DESIGNVECTOR design;
 
-	AddFontResourceEx(
-		"data/font/FZゴンタかな.otf", //ttfファイルへのパス
-		FR_PRIVATE,
-		&design
-	);
+	AddFontResourceEx("data/font/FZゴンタかな.otf", FR_PRIVATE, &design);
 
 	// デバッグ情報表示用フォントの生成
 	D3DXCreateFont(CManager::GetInstance()->GetRenderer()->GetDevice(), 38, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
@@ -127,7 +123,6 @@ void CText::Draw()
 
 	m_pFont->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DCOLOR_ARGB(0xff, 0xff, 0xff, 0xff));
 
-
 	// 新規深度値 <= Zバッファ深度値 (初期設定)
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
@@ -139,7 +134,7 @@ void CText::Draw()
 //-----------------------------------------------------------------------------
 // 生成関数
 //-----------------------------------------------------------------------------
-CText *CText::Create(Type talkType,int DeleteTime, int SpeedText,const char * Text)
+CText *CText::Create(Type /*talkType*/,int DeleteTime, int SpeedText,const char * Text)
 {
 	CText * pObject = nullptr;
 	pObject = new CText(3);
@@ -148,30 +143,11 @@ CText *CText::Create(Type talkType,int DeleteTime, int SpeedText,const char * Te
 	{
 		pObject->Init();
 
-		switch (talkType)
-		{
-		case CText::GON:
-			pObject->SetTexture(CTexture::TEXTURE_GONBOX);
-			break;
-
-		case CText::MASUO:
-			pObject->SetTexture(CTexture::TEXTURE_MASUOBOX);
-			break;
-
-		case CText::MAX:
-			break;
-
-		default:
-			break;
-		}
-
-		pObject->SetPos(D3DXVECTOR3(640.0f, 500.0f, 0.0f));
-		pObject->SetSize(D3DXVECTOR3(640.0f, 200.0f, 0.0f));
+		pObject->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f,0.0f));
 
 		pObject->Releasetimer(DeleteTime);
 		pObject->TextLetter(Text, SpeedText);
 	}
-
 	return pObject;
 }
 

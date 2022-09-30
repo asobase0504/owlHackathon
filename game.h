@@ -47,5 +47,8 @@ private:
 	int m_nCnt;
 	bool m_bCurtain;
 	bool m_bCurtainIn;
+
+	int m_1pTimeId;
+	int m_2pTimeId;
 };
 #endif

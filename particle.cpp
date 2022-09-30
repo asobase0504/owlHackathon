@@ -150,7 +150,7 @@ CParticle* CParticle::Create(const Info& inParticle, const D3DXVECTOR3& inPos)
 		//particle->SetTexture(particle->m_data.nIdxTex);
 		particle->SetCollar(D3DXCOLOR(particle->m_data.color.colBigin.r, particle->m_data.color.colBigin.g, particle->m_data.color.colBigin.b, particle->m_data.color.colBigin.a));
 		
-		particle->CObject2d::SetTexture(CTexture::TEXTURE_SMOKE);
+		particle->CObject2d::SetTexture(CTexture::TEXTURE_NONE);
 
 		return particle;
 	}

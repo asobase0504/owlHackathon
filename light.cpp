@@ -62,7 +62,7 @@ void CLight::Update(void)
 //=========================================
 // 設定
 //=========================================
-void CLight::Set(D3DLIGHTTYPE type,D3DXCOLOR col, D3DXVECTOR3 vec, int nNum)
+void CLight::Set(D3DLIGHTTYPE /*type*/,D3DXCOLOR col, D3DXVECTOR3 vec, int nNum)
 {
 	// デバイスへのポインタの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();

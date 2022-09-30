@@ -13,6 +13,8 @@
 #include "inputkeyboard.h"
 #include "inputjoypad.h"
 
+#include "manager.h"
+#include "sound.h"
 //-----------------------------------------------------------------------------
 //Ã“Iƒƒ“ƒo•Ï”éŒ¾
 //-----------------------------------------------------------------------------
@@ -542,6 +544,8 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_LSHIFT)
 			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
 		{
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 			if (!m_bTimeStart)
 			{
 				m_bChicken[0] = true;
@@ -550,7 +554,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 
 			if (m_fTimeEnd[0] == 0.0f)
 			{
-				m_fTimeEnd[0] = timeGetTime();
+				m_fTimeEnd[0] = (float)timeGetTime();
 			}
 			return  m_fTimeEnd[0] - m_fTimeBeginning;
 		}
@@ -559,6 +563,8 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		if (m_pKeyboard->GetKeyboardTrigger(DIK_RSHIFT)
 			|| m_pJoyPad->GetTrigger(JOYPAD_A, nNum))
 		{
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 			if (!m_bTimeStart)
 			{
 				m_bChicken[1] = true;
@@ -567,7 +573,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 
 			if (m_fTimeEnd[1] == 0.0f)
 			{
-				m_fTimeEnd[1] = timeGetTime();
+				m_fTimeEnd[1] = (float)timeGetTime();
 			}
 			return  m_fTimeEnd[1] - m_fTimeBeginning;
 		}
@@ -582,7 +588,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 void CInput::TimeUpToReactionKeyTimeStart()
 {
 	m_bTimeStart = true;
-	m_fTimeBeginning = timeGetTime();
+	m_fTimeBeginning = (float)timeGetTime();
 	m_fTimeEnd[0] = 0.0f;
 	m_fTimeEnd[1] = 0.0f;
 

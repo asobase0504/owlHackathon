@@ -19,6 +19,7 @@ class CResult;
 class CTitle;
 class CFade;
 class CSound;
+class CTImeText;
 
 class CManager
 {
@@ -69,6 +70,7 @@ public:	// メンバー関数
 	CTexture* GetTexture();	// テクスチャの情報の取得
 	CFade* GetFade();	// 
 	MODE* GetMode();	//
+	CTImeText* GetText();
 	void SetMode(CManager::MODE mode);
 	CSound * CManager::GetSound();
 
@@ -78,6 +80,7 @@ private:
 	CFade* m_Fade;
 	CObject*m_Game;
 	CSound*m_Sound;
+	CTImeText* m_text;
 	MODE m_mode;
 
 	CInput *m_Input;

@@ -21,6 +21,8 @@
 #include "ranking.h"
 #include "tutorial.h"
 
+#include "time_text.h"
+
 //-----------------------------------------------------------------------------
 // 静的メンバー変数の初期化
 //-----------------------------------------------------------------------------
@@ -48,7 +50,8 @@ CManager::CManager() :
 	m_cRenderer(nullptr),
 	m_Fade(nullptr),
 	m_Game(nullptr),
-	m_Sound(nullptr)
+	m_Sound(nullptr),
+	m_text(nullptr)
 {
 }
 
@@ -63,7 +66,7 @@ CManager::~CManager()
 //=============================================================================
 // 初期化
 //=============================================================================
-HRESULT CManager::Init(HWND hWnd, bool bWindow, HINSTANCE hInstance)
+HRESULT CManager::Init(HWND hWnd, bool /*bWindow*/, HINSTANCE hInstance)
 {
 	m_cRenderer = new CRenderer;
 
@@ -99,7 +102,8 @@ HRESULT CManager::Init(HWND hWnd, bool bWindow, HINSTANCE hInstance)
 
 	m_Fade = CFade::Create();
 
-	
+	m_text = new CTImeText;
+	m_text->Init();
 	
 	return S_OK;
 }
@@ -131,7 +135,15 @@ void CManager::Uninit()
 		delete m_Sound;
 		m_Sound = nullptr;
 	}
-	
+
+	if (m_text != nullptr)
+	{// 終了処理
+
+		m_text->Uninit();
+		delete m_text;
+		m_text = nullptr;
+	}
+
 	//入力処理の終了処理
 	m_Input->Uninit();
 
@@ -187,6 +199,11 @@ CFade * CManager::GetFade()
 CManager::MODE * CManager::GetMode()
 {
 	return &m_mode;
+}
+
+CTImeText * CManager::GetText()
+{
+	return m_text;
 }
 
 //=============================================================================

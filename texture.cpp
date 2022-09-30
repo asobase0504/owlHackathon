@@ -18,72 +18,31 @@
 //==================================================
 const char* CTexture::s_FileName[] =
 {// ÉeÉNÉXÉ`ÉÉÇÃÉpÉX
-	"data/TEXTURE/wa.jpg",			//ã âÊëú
-	"data/TEXTURE/gon.png",			//GON
-	"data/TEXTURE/fire.png",		//âŒ
-	"data/TEXTURE/ice.png",			//ïX
-	"data/TEXTURE/storm.png",		//ïó
-	"data/TEXTURE/sun.png",         //óã
-	"data/TEXTURE/daia.png",		//CRYSTAL
-	"data/TEXTURE/Score001.png",	//score
-	"data/TEXTURE/impact.png",		//âŒ
-	"data/TEXTURE/Iceburst.png",	//ïX	
-	"data/TEXTURE/tempest.png",		//ïó
-	"data/TEXTURE/rain.png",		//óã
-	"data/TEXTURE/smoke.jpg",		//âå
-	"data/TEXTURE/light.png",		//åı
-	"data/TEXTURE/Box.png",			//BOXîwåi
-	"data/TEXTURE/HIT.png",			//åıÅiÉNÉäÉXÉ^ÉãÇÃHITÅj
-	"data/TEXTURE/MagicCircle1.png",//ñÇñ@êw
-	"data/TEXTURE/MagicCircle3.png",
-	"data/TEXTURE/MagicCircle4.png",
-	"data/TEXTURE/MagicCircle5.png",
-	"data/TEXTURE/MagicCircle2.png",
-	"Data/TEXTURE/star.png",		//îwåiÇP
-	"Data/TEXTURE/town.png",		//îwåiÇQ
-	"Data/TEXTURE/moon.png",		//îwåiÇR
-	"Data/TEXTURE/BG.png",			//Ç±Ç±Ç©ÇÁTITLE
-	"Data/TEXTURE/Title2.png",
-	"Data/TEXTURE/Fox.png",
-	"Data/TEXTURE/PressEnterorA.png",
-	"Data/TEXTURE/start.png",
-	"Data/TEXTURE/tutorial.png",
-	"Data/TEXTURE/ranking.png",
-	"Data/TEXTURE/end.png",			
-	"Data/TEXTURE/Getrotation.png",	//Ç±Ç±Ç©ÇÁÉäÉUÉãÉg
-	"Data/TEXTURE/siro.jpg",
-	"Data/TEXTURE/wallpaper_00405.jpg",//Ç±Ç±Ç©ÇÁÉâÉìÉLÉìÉO
-	"Data/TEXTURE/ranking_rank.png",
-	"Data/TEXTURE/ranking000.png",
-	"Data/TEXTURE/ranking001.png",
-	"Data/TEXTURE/alphabet_ucase.png",
-	"Data/TEXTURE/cover.png",
-	"Data/TEXTURE/tutoria.png",
-	"Data/TEXTURE/sky_00290.png",
-	"Data/TEXTURE/pause004.png",
-	"Data/TEXTURE/pause000.png",
-	"Data/TEXTURE/pause001.png",
-	"Data/TEXTURE/pause002.png",
-	"Data/TEXTURE/Bosscover.png",
-	"Data/TEXTURE/controller.png",
-	"Data/TEXTURE/gonText.png",
-	"Data/TEXTURE/kumaText.png",
-	"Data/TEXTURE/NameSet000.png",
-	"Data/TEXTURE/pipo-gwspinitem013.png",
-	"Data/TEXTURE/explosion.png",
-	"Data/TEXTURE/tumbleweed.png",
-	"Data/TEXTURE/wilderness.png",
-	"Data/TEXTURE/gunman1_1.png",
-	"Data/TEXTURE/gunman1_2.png",
-	"Data/TEXTURE/gunman1_3.png",
-	"Data/TEXTURE/gunman3_1.png",
-	"Data/TEXTURE/gunman3_2.png",
-	"Data/TEXTURE/gunman3_3.png",
-	"Data/TEXTURE/cikin.png",
-	"Data/TEXTURE/bird.png",
-	"Data/TEXTURE/saboten.png",
-	"Data/TEXTURE/GO.png",
-	"Data/TEXTURE/maku.jpeg",
+	/* Å´ É^ÉCÉgÉã Å´ */
+	"Data/TEXTURE/Title/Title.png",
+	"Data/TEXTURE/Title/PressEnterorA.png",
+	"Data/TEXTURE/Title/Start.png",
+	"Data/TEXTURE/Title/Tutorial.png",
+	"Data/TEXTURE/Title/TutorialBG.png",
+	
+	/* Å´ ÉQÅ[ÉÄ Å´ */
+	"Data/TEXTURE/Game/tumbleweed.png",
+	"Data/TEXTURE/Game/wilderness.png",
+	"Data/TEXTURE/Game/gunman1_1.png",
+	"Data/TEXTURE/Game/gunman1_2.png",
+	"Data/TEXTURE/Game/gunman1_3.png",
+	"Data/TEXTURE/Game/gunman3_1.png",
+	"Data/TEXTURE/Game/gunman3_2.png",
+	"Data/TEXTURE/Game/gunman3_3.png",
+	"Data/TEXTURE/Game/cikin.png",
+	"Data/TEXTURE/Game/bird.png",
+	"Data/TEXTURE/Game/saboten.png",
+	"Data/TEXTURE/Game/Ready.png",
+	"Data/TEXTURE/Game/GO.png",
+	"Data/TEXTURE/Game/maku.jpeg",
+	"Data/TEXTURE/Game/1PWin.png",
+	"Data/TEXTURE/Game/2PWin.png",
+	"Data/TEXTURE/Game/Draw.png",
 };
 
 static_assert(sizeof(CTexture::s_FileName) / sizeof(CTexture::s_FileName[0]) == CTexture::TEXTURE_MAX, "aho");

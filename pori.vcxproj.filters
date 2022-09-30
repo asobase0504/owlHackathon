@@ -183,6 +183,9 @@
     <ClCompile Include="curtain.cpp">
       <Filter>オブジェクト\Move2D</Filter>
     </ClCompile>
+    <ClCompile Include="time_text.cpp">
+      <Filter>オブジェクト\モデル系\UI</Filter>
+    </ClCompile>
     <ClCompile Include="ranking.cpp">
       <Filter>システム</Filter>
     </ClCompile>
@@ -325,6 +328,9 @@
     </ClInclude>
     <ClInclude Include="curtain.h">
       <Filter>オブジェクト\Move2D</Filter>
+    </ClInclude>
+    <ClInclude Include="time_text.h">
+      <Filter>オブジェクト\モデル系\UI</Filter>
     </ClInclude>
     <ClInclude Include="ranking.h">
       <Filter>システム</Filter>
