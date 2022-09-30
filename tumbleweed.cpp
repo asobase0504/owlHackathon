@@ -70,10 +70,9 @@ void CTumbleweed::Draw()
 //------------------------------------
 CTumbleweed *CTumbleweed::Create()
 {
-	int isLeft = IntRandam(1, 0);
+	int isLeft = rand() % 2;
 
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : 0.0f, FloatRandam(-120.0f, -150.0f), 0.0f);
-
+	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-120.0f, -150.0f), 0.0f);
 	D3DXVECTOR3 move(FloatRandam(2.0f, 5.0f), 0.0f, 0.0f);
 
 	if (isLeft == 0)

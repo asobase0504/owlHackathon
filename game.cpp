@@ -150,6 +150,7 @@ void CGame::Update(void)
 		CText::Create(CText::GON,120, 10, "ƒ‚ƒ“ƒnƒ“‚½‚Ì‚µ‚¢...");
 		return;
 	}
+
 	m_PaticleManager->Update();
 
 	m_tumbleweedPopCount--;
