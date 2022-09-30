@@ -40,6 +40,7 @@ public:
 		LABEL_SE_DROP_GUM,		// e‚ð—Ž‚Æ‚·
 		LABEL_SE_WEED,			// ‘
 		LABEL_SE_WIND,			// •—
+		LABEL_SE_SELECT,		// ‘I‘ð‰¹
 		LABEL_MAX,	
 	};
 

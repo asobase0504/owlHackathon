@@ -46,5 +46,6 @@ private:
 	int m_birdPopCount;
 	int m_nCnt;
 	bool m_bCurtain;
+	bool m_bCurtainIn;
 };
 #endif

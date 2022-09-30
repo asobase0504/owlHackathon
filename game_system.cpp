@@ -55,6 +55,8 @@ void CGameSystem::Update()
 	m_fPlayerTime[0] = pInput->GetTimeUpToReactionKey(0);
 	m_fPlayerTime[1] = pInput->GetTimeUpToReactionKey(1);
 
+	SetStatus();
+
 	// Œ‹‰Ê‚ÌŽ¯•Ê
 	if (m_bSignal)
 	{
@@ -85,15 +87,29 @@ void CGameSystem::ResultIdentification()
 		return;
 	}
 
-	if (m_fPlayerTime[0] == 500.0f)
+	if (m_fPlayerTime[0] == 500.0f
+		&& m_fPlayerTime[1] == 500.0f)
 	{
-		m_GameStatu = STATUS_PL2_WINNING;
+		m_GameStatu = STATUS_DOUBLE_CHICKEN;
 		m_bGameEnd = true;
+		return;
+	}
+	else if (m_fPlayerTime[0] == 500.0f)
+	{
+		m_GameStatu = STATUS_PL1_CHICKEN;
+		m_bGameEnd = true; 
 		return;
 	}
 	else if (m_fPlayerTime[1] == 500.0f)
 	{
-		m_GameStatu = STATUS_PL1_WINNING;
+		m_GameStatu = STATUS_PL2_CHICKEN;
+		m_bGameEnd = true;
+		return;
+	}
+
+	if (m_fPlayerTime[0] == m_fPlayerTime[1])
+	{
+		m_GameStatu = STATUS_DRAW;
 		m_bGameEnd = true;
 		return;
 	}
@@ -109,13 +125,28 @@ void CGameSystem::ResultIdentification()
 		m_bGameEnd = true;
 		return;
 	}
-	else if (m_fPlayerTime[0] == m_fPlayerTime[1])
-	{
-		m_GameStatu = STATUS_DRAW;
-		m_bGameEnd = true;
-		return;
-	}
+	
 
 	m_GameStatu = STATUS_WAITING;
 	return;
+}
+
+void CGameSystem::SetStatus()
+{
+	if (m_fPlayerTime[0] == 500.0f
+		&& m_fPlayerTime[1] == 500.0f)
+	{
+		m_GameStatu = STATUS_DOUBLE_CHICKEN;
+		return;
+	}
+	else if (m_fPlayerTime[0] == 500.0f)
+	{
+		m_GameStatu = STATUS_PL1_CHICKEN;
+		return;
+	}
+	else if (m_fPlayerTime[1] == 500.0f)
+	{
+		m_GameStatu = STATUS_PL2_CHICKEN;
+		return;
+	}
 }

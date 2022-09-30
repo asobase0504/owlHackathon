@@ -64,6 +64,7 @@ HRESULT CGame::Init(void)
 	m_GameCount = 0;
 	m_nCnt = 0;
 	m_bCurtain = false;
+	m_bCurtainIn = false;
 	srand((unsigned int)time(NULL)); // Œ»İ‚Ìî•ñ‚Å‰Šú‰»
 
 	m_PaticleManager = new CParticleManager;
@@ -166,6 +167,10 @@ void CGame::Uninit(void)
 //========================
 void CGame::Update(void)
 {
+	if (m_nCnt < -900)
+	{
+		return;
+	}
 	m_GameCount++;
 
 	CInput *CInputpInput = CInput::GetKey();
@@ -200,6 +205,18 @@ void CGame::Update(void)
 
 	m_pGameSystem->Update();
 
+	if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
+	{
+		if (!m_bCurtain)
+		{
+			m_nCnt = 120;
+			m_curtain = CCurtain::Create();
+			m_bCurtain = true;
+			m_pGameSystem->SetGameEnd();
+		}
+	}
+
+
 	if (m_pGameSystem->GetSignal())
 	{
 		if (!m_bCurtain)
@@ -208,6 +225,7 @@ void CGame::Update(void)
 			m_curtain = CCurtain::Create();
 			m_bCurtain = true;
 			m_pGo->FalseDraw();
+			
 		}
 	}
 
@@ -218,9 +236,15 @@ void CGame::Update(void)
 
 	m_nCnt--;
 
-	if (m_nCnt < 0)
+	if (m_nCnt == 0)
 	{
+		m_bCurtainIn = m_curtain->GetInStop();
 		m_curtain->SetOut();
+	}
+
+	if (!m_bCurtainIn)
+	{
+		return;
 	}
 
 	switch (m_pGameSystem->GetGameStatus())
@@ -237,12 +261,24 @@ void CGame::Update(void)
 		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_3);
 		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_3);
 		break;
-	/*case CGameSystem::STATUS_PL1_CHICKEN:
+	case CGameSystem::STATUS_PL1_CHICKEN:
+		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER_CIKIN);
 		break;
 	case CGameSystem::STATUS_PL2_CHICKEN:
-		break;*/
+		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER_CIKIN);
+		break;
+	case CGameSystem::STATUS_DOUBLE_CHICKEN:
+		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER_CIKIN);
+		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER_CIKIN);
+		break;
 	default:
 		break;
+	}
+
+	if (m_nCnt < -900)
+	{
+		CInputpInput->ResetInputTime();
+		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RANKING);
 	}
 }
 
