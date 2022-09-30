@@ -142,6 +142,14 @@ void CGame::Uninit(void)
 
 	}
 
+	if (m_curtain != nullptr)
+	{
+		m_curtain->Uninit();
+		delete m_curtain;
+		m_curtain = nullptr;
+
+	}
+
 	if (m_Pause != nullptr)
 	{
 		m_Pause->Uninit();
