@@ -34,7 +34,6 @@
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
 CPause *CGame::m_Pause = nullptr;
-CObject2d * CGame::Bg[3];
 
 //========================
 // コンストラクター
@@ -73,10 +72,23 @@ HRESULT CGame::Init(void)
 	m_Pause->Init();
 	m_Pause->SetUp(CObject::PAUSE);
 
-	Bg[0] = CObject2d::Create();
-	Bg[0]->SetTexture(CTexture::TEXTURE_WILDERNESS);
-	Bg[0]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
-	Bg[0]->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+	// 背景の荒野
+	Bg = CObject2d::Create();
+	Bg->SetTexture(CTexture::TEXTURE_WILDERNESS);
+	Bg->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+	Bg->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+
+	// サボテン
+	Saboten[0] = CObject2d::Create();
+	Saboten[0]->SetTexture(CTexture::TEXTURE_SABOTEN);
+	Saboten[0]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f + 300.0f, CManager::SCREEN_HEIGHT * 0.5f + 100.0f, 0.0f));
+	Saboten[0]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
+
+	// サボテン
+	Saboten[1] = CObject2d::Create();
+	Saboten[1]->SetTexture(CTexture::TEXTURE_SABOTEN);
+	Saboten[1]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f - 300.0f, CManager::SCREEN_HEIGHT * 0.5f + 150.0f, 0.0f));
+	Saboten[1]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
 
 	// 左の人
 	m_player[0] = CObject2d::Create(3);

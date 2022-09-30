@@ -33,7 +33,8 @@ private:
 	static CObject2d* m_player[2];
 
 	static CPause *m_Pause;
-	static CObject2d * Bg[3];
+	CObject2d *Bg;
+	CObject2d *Saboten[4];
 
 	int m_GameCount;
 
