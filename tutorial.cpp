@@ -72,6 +72,8 @@ void CTutorial::Update(void)
 	CInput *CInputpInput = CInput::GetKey();
 	if (CInputpInput->Trigger(KEY_DECISION))
 	{
+		CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 		//ƒ‚[ƒh‚ÌÝ’è
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_GAME);
 	}

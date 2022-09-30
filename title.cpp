@@ -166,6 +166,8 @@ void CTitle::Update(void)
 
 	if (CInputpInput->Trigger(KEY_DECISION))
 	{
+		CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
+
 		CManager* maneger = CManager::GetInstance();
 		//ƒ‚[ƒh‚ÌÝ’è
 		maneger->GetFade()->NextMode(CManager::MODE_TUTORIAL);
