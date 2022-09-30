@@ -87,6 +87,7 @@ public: /* 定義 */
 		TEXTURE_BIRD,			// 鳥
 		TEXTURE_SABOTEN,		// サボテン
 		TEXTURE_GO,				// GO
+		TEXTURE_MAKU,			// 幕
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};

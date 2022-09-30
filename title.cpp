@@ -48,26 +48,31 @@ HRESULT CTitle::Init(void)
 	D3DXVECTOR3 Size(3.8f, 3.8f, 3.8f);
 	D3DXVECTOR3 Rot(0.0f, 1.57f, 0.0f);
 
+	// ”wŒi‚Ìr–ì
+	Bg = CObject2d::Create();
+	Bg->SetTexture(CTexture::TEXTURE_WILDERNESS);
+	Bg->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+	Bg->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
 
+	// ƒTƒ{ƒeƒ“
+	Saboten[0] = CObject2d::Create();
+	Saboten[0]->SetTexture(CTexture::TEXTURE_SABOTEN);
+	Saboten[0]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f + 300.0f, CManager::SCREEN_HEIGHT * 0.5f + 100.0f, 0.0f));
+	Saboten[0]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
 
-	//¯‚Ì”wŒi
-	m_Bg[0] = CBg::Create();
-	m_Bg[0]->SetTexture(CTexture::TEXTURE_STARRY);
-	m_Bg[0]->SetSize(CManager::Pos);
-	m_Bg[0]->SetPos(BGPos);
-	m_Bg[0]->SetBgType(CBg::MOVE);
-	m_Bg[0]->SetMove(D3DXVECTOR3(0.0001f, 0.0f, 0.0f));
-	m_Bg[0]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
+	// ƒTƒ{ƒeƒ“
+	Saboten[1] = CObject2d::Create();
+	Saboten[1]->SetTexture(CTexture::TEXTURE_SABOTEN);
+	Saboten[1]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f - 300.0f, CManager::SCREEN_HEIGHT * 0.5f + 150.0f, 0.0f));
+	Saboten[1]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
 	
-	//GonFox‚ÌTITLE•¶Žš
-	m_Bg[1] = CBg::Create();
-	m_Bg[1]->SetTexture(CTexture::TEXTURE_GAME);
-	m_Bg[1]->SetSize(CManager::Pos*0.8f);
-	m_Bg[1]->SetPos(BGPos);
-	m_Bg[1]->SetBgType(CBg::STOP);
-	m_Bg[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.7f));
-
+	////GonFox‚ÌTITLE•¶Žš
+	//m_Bg[1] = CBg::Create();
+	//m_Bg[1]->SetTexture(CTexture::TEXTURE_GAME);
+	//m_Bg[1]->SetSize(CManager::Pos*0.8f);
+	//m_Bg[1]->SetPos(BGPos);
+	//m_Bg[1]->SetBgType(CBg::STOP);
+	//m_Bg[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.7f));
 	
 	//GonFox‚ÌTITLE•¶Žš
 	m_list[0] = CObject2d::Create(1);
@@ -131,8 +136,6 @@ HRESULT CTitle::Init(void)
 
 	CRanking::SetScore(0);
 
-	CTest::Create(D3DXVECTOR3(0.0f, 1.57f, 0.0f) , true);
-
 	return S_OK;
 }
 
@@ -142,55 +145,7 @@ HRESULT CTitle::Init(void)
 void CTitle::Uninit(void)
 {
 	CManager::GetInstance()->GetSound()->Stop();
-	/*for (int i = 0; i < 4; i++)
-	{
-		if (m_Bg[i] !=nullptr)
-		{
-			m_Bg[i]->Uninit();
-			m_Bg[i] = nullptr;
-		}
-	}
 
-	for (int i = 0; i < 4; i++)
-	{
-		if (m_object2d[i] != nullptr)
-		{
-			m_object2d[i]->Uninit();
-			m_object2d[i] = nullptr;
-		}
-	}
-
-	for (int i = 0; i < 2; i++)
-	{
-		if (m_list[i] != nullptr)
-		{
-			m_list[i]->Uninit();
-			m_list[i] = nullptr;
-		}
-	}
-
-	if (m_Player != nullptr)
-	{
-		m_Player->Uninit();
-		m_Player = nullptr;
-	}
-
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_Enemy[i] != nullptr)
-		{
-			m_Enemy[i]->Uninit();
-			m_Enemy[i] = nullptr;
-		}
-	}
-	for (int i = 0; i < 4; i++)
-	{
-		if (m_3dpolygon[i] != nullptr)
-		{
-			m_3dpolygon[i]->Uninit();
-			m_3dpolygon[i] = nullptr;
-		}
-	}*/
 	CModelManager::ReleaseAll();
 }
 
@@ -232,7 +187,7 @@ void CTitle::Update(void)
 
 		//‚«‚Â‚Ë‚ð‚à‚¿‚à‚¿‚³‚¹‚é‚â‚Â
 		D3DXVECTOR3 addPos = D3DXVECTOR3(1.0f + (float)m_addX, 1.0f + (float)m_addY, 0.0f);
-		m_Bg[1]->SetSize(CManager::Pos *0.8f + addPos);
+		//m_Bg[1]->SetSize(CManager::Pos *0.8f + addPos);
 
 		//“_–Å‚³‚¹‚é
 		m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, a));

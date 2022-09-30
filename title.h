@@ -37,6 +37,8 @@ public:
 	
 private:
 	CBg *m_Bg[4];
+	CObject2d *Bg;
+	CObject2d *Saboten[4];
 
 	C3dpolygon *m_3dpolygon[4];
 
