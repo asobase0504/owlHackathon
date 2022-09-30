@@ -53,6 +53,7 @@ public: /* 定義 */
 
 		/* ↓　ランキング　↓ */
 		TEXTURE_RANKING,		// ランキング
+		TEXTURE_RANKINGTEXT,	// Rankingの文字
 
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
