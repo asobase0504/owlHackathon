@@ -26,7 +26,8 @@ public: /* 定義 */
 		/* ↓ タイトル ↓ */
 		TEXTURE_TITLE,			// タイトルロゴ
 		TEXTURE_PRESSENTER,		// プレスエンター
-		TEXTURE_TUTORIAL,		// チュートリアル文字
+		TEXTURE_START,			// スタート
+		TEXTURE_TUTORIAL,		// チュートリアル
 		TEXTURE_TUTORIALBG,		// チュートリアル背景
 
 		/* ↓　ゲーム　↓ */
