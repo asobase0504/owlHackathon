@@ -16,6 +16,8 @@
 #include "3dpolygon.h"
 #include "pause.h"
 #include "game.h"
+#include "manager.h"
+#include "time_text.h"
 
  CCamera* CRenderer::pCamera[2];
  CLight*  CRenderer::pLight;
@@ -226,7 +228,10 @@ void CRenderer::Draw()
 	{
 		pCamera[0]->Set(0);
 		CObject::AllDraw();	
-
+		if (CManager::GetInstance()->GetText() != nullptr)
+		{
+			CManager::GetInstance()->GetText()->Draw();
+		}
 #ifdef _DEBUG
 		// FPS•\Ž¦
 		DrawFPS();

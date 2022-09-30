@@ -90,7 +90,7 @@ CTest3d *CTest3d::Create()
 	if (pObject != nullptr)
 	{
 		pObject->Init();
-		pObject->SetTexture(CTexture::TEXTURE_EXPLOSION);//テクスチャ選択
+		pObject->SetTexture(CTexture::TEXTURE_NONE);//テクスチャ選択
 		pObject->SetSize(D3DXVECTOR3(640.0f, 360.0f, 0.0f));//サイズ設定
 		pObject->SetPos(D3DXVECTOR3(0.0f, 0.0f, 10200.0f));//座標設定
 		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));//色設定

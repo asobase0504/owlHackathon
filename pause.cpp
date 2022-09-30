@@ -35,14 +35,14 @@ HRESULT CPause::Init(void)
 	m_OnPause = false;
 	//モード選択時の背景黒くするやつ
 	m_Bg = CObject2d::Create(2);
-	m_Bg->SetTexture(CTexture::TEXTURE_PAUSEBG);
+	m_Bg->SetTexture(CTexture::TEXTURE_NONE);
 	m_Bg->SetSize(D3DXVECTOR3(450.0f, CManager::Pos.y, 0.0f));
 	m_Bg->SetPos(CManager::Pos);
 	m_Bg->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 
 	//ゲームの文字
 	m_object2d[0] = CObject2d::Create(2);
-	m_object2d[0]->SetTexture(CTexture::TEXTURE_PAUSEGAME);
+	m_object2d[0]->SetTexture(CTexture::TEXTURE_NONE);
 	m_object2d[0]->SetSize(D3DXVECTOR3(150.0f, 50.0f, 0.0f));
 	m_object2d[0]->SetPos(CManager::Pos);
 	m_object2d[0]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
@@ -52,7 +52,7 @@ HRESULT CPause::Init(void)
 
 	//チュートリアルの文字
 	m_object2d[1] = CObject2d::Create(2);
-	m_object2d[1]->SetTexture(CTexture::TEXTURE_PAUSERETURN);
+	m_object2d[1]->SetTexture(CTexture::TEXTURE_NONE);
 	m_object2d[1]->SetSize(D3DXVECTOR3(150.0f, 50.0f, 0.0f));
 	m_object2d[1]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y + y, 0.0f));
 	m_object2d[1]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
@@ -61,7 +61,7 @@ HRESULT CPause::Init(void)
 
 	//ランキングの文字
 	m_object2d[2] = CObject2d::Create(2);
-	m_object2d[2]->SetTexture(CTexture::TEXTURE_PAUSETITLE);
+	m_object2d[2]->SetTexture(CTexture::TEXTURE_NONE);
 	m_object2d[2]->SetSize(D3DXVECTOR3(150.0f, 50.0f, 0.0f));
 	m_object2d[2]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y + y, 0.0f));
 	m_object2d[2]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
@@ -69,7 +69,7 @@ HRESULT CPause::Init(void)
 
 	//ランキングの文字
 	m_object2d[3] = CObject2d::Create(2);
-	m_object2d[3]->SetTexture(CTexture::TEXTURE_PAUSEMENU);
+	m_object2d[3]->SetTexture(CTexture::TEXTURE_NONE);
 	m_object2d[3]->SetSize(D3DXVECTOR3(300.0f, 100.0f, 0.0f));
 	m_object2d[3]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y - y, 0.0f));
 	m_object2d[3]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
