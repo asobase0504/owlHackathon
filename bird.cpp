@@ -50,6 +50,7 @@ void CBird::Uninit()
 void CBird::Update()
 {
 	CObject2d::Update();
+
 	//動き
 	move();
 }
@@ -83,7 +84,7 @@ CBird *CBird::Create()
 		pObject->Init();
 		pObject->SetPos(popPos);
 		pObject->nLife = 700;
-		pObject->SetTexture(CTexture::TEXTURE_BIRD);		// テクスチャ選択
+		pObject->SetTexture(CTexture::TEXTURE_CROW1);		// テクスチャ選択
 		pObject->SetMove(move);		// moveの設定
 		pObject->SetSize(D3DXVECTOR3(25.0f, 25.0f, 0.0f));	// サイズ設定
 		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定
