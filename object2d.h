@@ -53,7 +53,8 @@ public:
 	void SetRot(D3DXVECTOR3 Rot) { m_rot = Rot; };
 
 	void SetAnimation(const int U, const int V, const int Speed, const int Drawtimer, const bool loop);
-
+	void TrueDraw() { m_bDraw = true; }
+	void FalseDraw() { m_bDraw = false; }
 protected:
 	int  m_nTimer;
 	float m_nScale;
@@ -85,7 +86,7 @@ private:
 
 	bool m_OnAnimation;
 	bool m_Loop;
-
+	bool m_bDraw = false;
 };
 
 #endif

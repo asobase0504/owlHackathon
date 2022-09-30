@@ -533,7 +533,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 
 	if (m_bChicken[nNum])
 	{
-		return -100.0f;
+		return 500.0f;
 	}
 
 	switch (nNum)
@@ -545,7 +545,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 			if (!m_bTimeStart)
 			{
 				m_bChicken[0] = true;
-				return -100.0f;
+				return 500.0f;
 			}
 
 			if (m_fTimeEnd[0] == 0.0f)
@@ -562,7 +562,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 			if (!m_bTimeStart)
 			{
 				m_bChicken[1] = true;
-				return -100.0f;
+				return 500.0f;
 			}
 
 			if (m_fTimeEnd[1] == 0.0f)
@@ -576,7 +576,7 @@ float CInput::GetTimeUpToReactionKey(int nNum)
 		break;
 	}
 
-	return -1.0f;
+	return 1000.0f;
 }
 
 void CInput::TimeUpToReactionKeyTimeStart()
