@@ -264,6 +264,11 @@ void CGame::Update(void)
 		break;
 	}
 
+	if (m_nCnt == -500)
+	{
+		SetTime();
+	}
+
 	if (m_nCnt < -900)
 	{
 		CInputpInput->ResetInputTime();
@@ -282,8 +287,8 @@ void CGame::SetTime()
 {
 	if (!isText)
 	{
-		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 350.0f, 0.0f));
-		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 350.0f, 0.0f));
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0) * 0.001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.15f, 350.0f, 0.0f));
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1) * 0.001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.25f, 350.0f, 0.0f));
 		isText = true;
 	}
 }
