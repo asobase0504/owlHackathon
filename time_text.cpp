@@ -18,15 +18,15 @@ HRESULT CTImeText::Init()
 	LPDIRECT3DDEVICE9 device = CManager::GetInstance()->GetRenderer()->GetDevice();
 
 	// 項目のフォントの生成
-	D3DXCreateFont(device, 28, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
-		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, _T("Harenosora"), &m_font);
+	D3DXCreateFont(device, 64, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
+		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, _T("FZゴンタかな"), &m_font);
 
 	return E_NOTIMPL;
 }
 
 void CTImeText::Uninit()
 {
-	RemoveFontResourceEx(TEXT("data/font/Harenosora.otf"), FR_PRIVATE, &m_design);
+	RemoveFontResourceEx(TEXT("data/font/FZゴンタかな.otf"), FR_PRIVATE, &m_design);
 
 	if (m_font != nullptr)
 	{
@@ -48,7 +48,7 @@ void CTImeText::Draw()
 		RECT rect = { (int)m_pos[i].x, (int)m_pos[i].y, SCREEN_WIDTH, SCREEN_HEIGHT };
 		sprintf(str, ("%1.4f"), m_text[i]);
 
-		m_font->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DXCOLOR(1.0f,1.0f,1.0f,1.0f));
+		m_font->DrawText(NULL, str, -1, &rect, DT_LEFT, D3DXCOLOR(0.2f,0.2f,0.2f,1.0f));
 	}
 }
 

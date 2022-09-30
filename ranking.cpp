@@ -13,6 +13,7 @@
 #include "input.h"
 #include "manager.h"
 #include "fade.h"
+#include "time_text.h"
 
 //*****************************************************************************
 // コンストラクタ
@@ -41,6 +42,15 @@ HRESULT CRanking::Init()
 	}
 	CRead Cread;
 	Cread.ReadRanking(&m_fScore[0]);
+
+	for (int i = 0; i < MAX_RANKING; i++)
+	{
+		D3DXVECTOR3 pos(CManager::GetInstance()->Pos);
+		pos.x *= 0.75f;
+		pos.y -= 70.0f * i;
+		CManager::GetInstance()->GetText()->SetText(m_fScore[i], pos);
+	}
+
 	return S_OK;
 }
 
