@@ -8,6 +8,9 @@
 #include "tumbleweed.h"
 #include "utility.h"
 
+#include "sound.h"
+#include "manager.h"
+
 //------------------------------------
 // コンストラクタ
 //------------------------------------
@@ -28,6 +31,8 @@ CTumbleweed::~CTumbleweed()
 HRESULT CTumbleweed::Init()
 {
 	CObject2d::Init();
+
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_WEED);
 
 	m_rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	nLife = 0;

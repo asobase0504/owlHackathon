@@ -58,8 +58,11 @@ CGame::~CGame()
 //========================
 HRESULT CGame::Init(void)
 {
-	m_GameCount = 0;
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_WIND);
 
+	m_GameCount = 0;
+	m_nCnt = 0;
+	m_bCurtain = false;
 	srand((unsigned int)time(NULL)); // Œ»ÝŽž‚Ìî•ñ‚Å‰Šú‰»
 
 	m_PaticleManager = new CParticleManager;
@@ -70,7 +73,6 @@ HRESULT CGame::Init(void)
 	}
 
 	SetBossPop(false);
-	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_GAME);
 
 	m_Pause = new CPause;
 	m_Pause->Init();
@@ -107,7 +109,7 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	// ‰E‚Ìl
-	m_curtain = CCurtain::Create();
+	//m_curtain = CCurtain::Create();
 	
 
 	m_tumbleweedPopCount = rand() % 70;
@@ -205,13 +207,25 @@ void CGame::Update(void)
 
 	if (m_pGameSystem->GetSignal())
 	{
-		m_pGo->FalseDraw();
-		m_curtain->SetOut();
+		if (!m_bCurtain)
+		{
+			m_nCnt = 120;
+			m_curtain = CCurtain::Create();
+			m_bCurtain = true;
+			m_pGo->FalseDraw();
+		}
 	}
 
 	if (!m_pGameSystem->GetGameEnd())
 	{
 		return;
+	}
+
+	m_nCnt--;
+
+	if (m_nCnt < 0)
+	{
+		m_curtain->SetOut();
 	}
 
 	switch (m_pGameSystem->GetGameStatus())

@@ -82,13 +82,13 @@ CBlackIn *CBlackIn::Create(bool isLeft)
 		{
 			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 			popPos.x -= CManager::GetInstance()->Pos.x * 1.5f;
-			pObject->SetMove(D3DXVECTOR3(5.0f, 0.0f, 0.0f));		// moveの設定
+			pObject->SetMove(D3DXVECTOR3(10.0f, 0.0f, 0.0f));		// moveの設定
 		}
 		else
 		{
 			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 			popPos.x += CManager::GetInstance()->Pos.x * 1.5f;
-			pObject->SetMove(D3DXVECTOR3(-5.0f, 0.0f, 0.0f));		// moveの設定
+			pObject->SetMove(D3DXVECTOR3(-10.0f, 0.0f, 0.0f));		// moveの設定
 		}
 
 		popPos = ScreenCastWorld(&popPos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
