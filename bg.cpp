@@ -86,10 +86,9 @@ CBg *CBg::Create()
 	if (pObject != nullptr)
 	{
 		pObject->Init();
-		pObject->SetSize(D3DXVECTOR3(640.0f, 360.0f,0.0f));
 		pObject->SetPos(D3DXVECTOR3(0.0f, 0.0f,10200.0f));
-		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));
-
+		pObject->SetSize(D3DXVECTOR3(640.0f, 360.0f,0.0f));
+		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	}
 
 	return pObject;
