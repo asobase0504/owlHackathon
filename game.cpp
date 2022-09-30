@@ -132,6 +132,8 @@ HRESULT CGame::Init(void)
 
 	isText = false;
 
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_READY);
+
 	return S_OK;
 }
 
