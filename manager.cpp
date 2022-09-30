@@ -12,7 +12,7 @@
 #include "input.h"
 #include "game.h"
 #include "title.h"
-#include "result.h"
+#include "ranking.h"
 #include "fade.h"
 #include "sound.h"
 
@@ -237,8 +237,8 @@ void CManager::SetMode(MODE mode)
 	case CManager::MODE_GAME:
 		m_Game = new CGame;
 		break;
-	case CManager::MODE_RESULT:
-		m_Game = new CResult;
+	case CManager::MODE_RANKING:
+		m_Game = new CRanking;
 		break;
 	case CManager::MODE_TUTORIAL:
 		m_Game = new CTutorial;
