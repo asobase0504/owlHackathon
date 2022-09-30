@@ -43,10 +43,7 @@ void CTImeText::Draw()
 {
 	TCHAR str[256];
 
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 device = CManager::GetInstance()->GetRenderer()->GetDevice();
-
-	for (int i = 0; i < m_text.size(); i++)
+	for (int i = 0; i < (int)m_text.size(); i++)
 	{
 		RECT rect = { (int)m_pos[i].x, (int)m_pos[i].y, SCREEN_WIDTH, SCREEN_HEIGHT };
 		sprintf(str, ("%1.4f"), m_text[i]);

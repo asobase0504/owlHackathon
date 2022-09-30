@@ -134,7 +134,7 @@ void CText::Draw()
 //-----------------------------------------------------------------------------
 // ê∂ê¨ä÷êî
 //-----------------------------------------------------------------------------
-CText *CText::Create(Type talkType,int DeleteTime, int SpeedText,const char * Text)
+CText *CText::Create(Type /*talkType*/,int DeleteTime, int SpeedText,const char * Text)
 {
 	CText * pObject = nullptr;
 	pObject = new CText(3);

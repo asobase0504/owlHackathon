@@ -29,7 +29,7 @@ CInputKeyboard::~CInputKeyboard()
 //*************************************************************************************
 //初期化
 //*************************************************************************************
-HRESULT CInputKeyboard::Init(HINSTANCE hInstance, HWND hWnd)
+HRESULT CInputKeyboard::Init(HINSTANCE /*hInstance*/, HWND hWnd)
 {
 	
 	//入力デバイス（キーボード）の生成

@@ -32,7 +32,7 @@ CDirectInput::~CDirectInput()
 //*************************************************************************************
 //DirectInputオブジェクトの生成
 //*************************************************************************************
-HRESULT CDirectInput::Create(HINSTANCE hInstance, HWND hWnd)
+HRESULT CDirectInput::Create(HINSTANCE hInstance, HWND /*hWnd*/)
 {
 	//DirectInputオブジェクトの生成
 	if (FAILED(DirectInput8Create(hInstance, DIRECTINPUT_VERSION,

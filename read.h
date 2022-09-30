@@ -1,47 +1,33 @@
 //=============================================================================
 //
-// ranking.h
+// read.h
 // Author : koduna hirohito
 //
 //=============================================================================
-#ifndef _RANKING_H_			//このマクロ定義がされなかったら
-#define _RANKING_H_			//2重インクルード防止のマクロ定義
+#ifndef _READ_H_			//このマクロ定義がされなかったら
+#define _READ_H_			//2重インクルード防止のマクロ定義
 
 //*****************************************************************************
 // インクルード
 //*****************************************************************************
 #include "main.h"
-#include "name.h"
+#include "ranking.h"
 
 //*****************************************************************************
 // クラス定義
 //*****************************************************************************
-class CRanking
+class CRead
 {
-private:
-	static const int MAX_RANKING_DIGIT = 8;
-	static const int MAX_AIRFRAME = 3;
-	static const int MAX_STAGE = 6;
-	static const int RANKING_MAX = 4;
-
+	static const int LINE_MAX_READING_LENGTH = 256;
 public:
-	struct NameData
-	{
-		int nNameNumIndex[RANKING_MAX];
-	};
 
-
-	static const int MAX_RANKING = 5;
-	CRanking();
-	~CRanking();
-
-	void Init(D3DXVECTOR3 pos);
-	void Create();
+	CRead();
+	~CRead();
+	void ReadRanking(float *pRanking);
+	void SaveRanking(const float *pRanking);
 
 private:
-	float m_fScore[MAX_RANKING];
-	bool m_bNewScore;
-	NameData m_NameData[MAX_RANKING];
+	
 };
 
 #endif

@@ -135,7 +135,6 @@ void CGame::Uninit(void)
 {
 	CManager::GetInstance()->GetText()->AllDelete();
 	CManager::GetInstance()->GetSound()->Stop();
-	CRanking::SetScore(CScore::GetScore());
 
 	if (m_PaticleManager != nullptr)
 	{
@@ -195,18 +194,6 @@ void CGame::Update(void)
 
 	m_pGameSystem->Update();
 
-	if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
-	{
-		if (!m_bCurtain)
-		{
-			m_nCnt = 120;
-			m_curtain = CCurtain::Create();
-			m_bCurtain = true;
-			m_pGameSystem->SetGameEnd();
-		}
-	}
-
-
 	if (m_pGameSystem->GetSignal())
 	{
 		if (!m_bCurtain)
@@ -216,6 +203,17 @@ void CGame::Update(void)
 			m_bCurtain = true;
 			m_pGo->FalseDraw();
 			
+		}
+	}
+
+	if (m_pGameSystem->GetGameStatus() >= CGameSystem::STATUS_PL1_CHICKEN)
+	{
+		if (!m_bCurtain)
+		{
+			m_nCnt = 120;
+			m_curtain = CCurtain::Create();
+			m_bCurtain = true;
+			m_pGameSystem->SetGameEnd();
 		}
 	}
 
