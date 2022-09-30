@@ -12,7 +12,9 @@
 //------------------------------------
 // コンストラクタ
 //------------------------------------
-CBlackIn::CBlackIn() :CObject2d(3)
+CBlackIn::CBlackIn() :
+	CObject2d(3),
+	isStop(false)
 {
 }
 
@@ -51,7 +53,7 @@ void CBlackIn::Update()
 
 	if ((isLeft && m_pos.x >= CManager::GetInstance()->Pos.x * 0.5f) || (!isLeft && m_pos.x <= CManager::GetInstance()->Pos.x * 1.5f))
 	{
-
+		isStop = true;
 	}
 	else
 	{

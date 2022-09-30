@@ -123,3 +123,15 @@ CCurtain *CCurtain::Create()
 
 	return pObject;
 }
+
+bool CCurtain::GetInStop()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		if (!m_blackIn[i]->GetStop())
+		{
+			return false;
+		}
+	}
+	return true;
+}

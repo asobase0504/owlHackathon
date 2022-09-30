@@ -35,8 +35,10 @@ public:
 	void SetOut();
 
 	static CCurtain* Create();
+
+	bool GetInStop();
 private:
-	bool isIn;
+	bool isInStop;
 	CBlackIn* m_blackIn[2];
 	CBlackOut* m_blackOut[2];
 };
