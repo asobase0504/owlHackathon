@@ -66,7 +66,7 @@ CManager::~CManager()
 //=============================================================================
 // èâä˙âª
 //=============================================================================
-HRESULT CManager::Init(HWND hWnd, bool bWindow, HINSTANCE hInstance)
+HRESULT CManager::Init(HWND hWnd, bool /*bWindow*/, HINSTANCE hInstance)
 {
 	m_cRenderer = new CRenderer;
 

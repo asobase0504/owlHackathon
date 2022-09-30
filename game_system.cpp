@@ -22,7 +22,7 @@ CGameSystem::CGameSystem()
 	m_bSignal = false;
 	m_bGameEnd = false;
 	m_nCountUpToSignalMax = -1;
-	m_fCountUpToSignal = -1.0;
+	m_fCountUpToSignal = -1;
 	m_GameStatu = STATUS_WAITING;
 	srand((unsigned)time(NULL)); // Œ»İ‚Ìî•ñ‚Å‰Šú‰»
 }
