@@ -12,6 +12,7 @@
 class CParticleManager;
 class CObject2d;
 class CPause; 
+class CGameSystem;
 
 class CGame :public CObject
 {
@@ -35,7 +36,8 @@ private:
 	static CPause *m_Pause;
 	CObject2d *Bg;
 	CObject2d *Saboten[4];
-
+	CObject2d *m_pGo;
+	CGameSystem *m_pGameSystem;
 	int m_GameCount;
 
 	int m_tumbleweedPopCount;

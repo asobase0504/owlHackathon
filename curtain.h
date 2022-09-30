@@ -1,16 +1,19 @@
 //=============================================================================
 //
-// 鳥の動き
+// 暗幕
 // Author : YudaKaito
 //
 //=============================================================================
-#ifndef _BIRD_H_			// このマクロ定義がされてなかったら
-#define _BIRD_H_			// 二重インクルード防止のマクロ定義
+#ifndef _CURTAIN_H_			// このマクロ定義がされてなかったら
+#define _CURTAIN_H_			// 二重インクルード防止のマクロ定義
 
 #include "renderer.h"
 #include "object2d.h"
 
-class CBird : public CObject2d
+class CBlackIn;
+class CBlackOut;
+
+class CCurtain
 {
 public:
 
@@ -21,19 +24,20 @@ public:
 		MAX			// あんただれや？
 	};
 
-	CBird();
-	~CBird() override;
+	CCurtain();
+	~CCurtain();
+	
+	HRESULT Init();
+	void Uninit();
+	void Update();
+	void Draw();
 
-	HRESULT Init() override;
-	void Uninit() override;
-	void Update() override;
-	void Draw() override;
+	void SetOut();
 
-	static CBird* Create();
+	static CCurtain* Create();
 private:
-	void move();
-private:
-	D3DXVECTOR3 m_Testrot;
-	int nLife;
+	bool isIn;
+	CBlackIn* m_blackIn[2];
+	CBlackOut* m_blackOut[2];
 };
 #endif

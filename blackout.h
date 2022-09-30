@@ -1,16 +1,17 @@
 //=============================================================================
 //
-// 鳥の動き
-// Author : YudaKaito
+// 暗転
+// Author : 浜田琉雅
 //
 //=============================================================================
-#ifndef _BIRD_H_			// このマクロ定義がされてなかったら
-#define _BIRD_H_			// 二重インクルード防止のマクロ定義
+#ifndef _BLACKOUT_H_			// このマクロ定義がされてなかったら
+#define _BLACKOUT_H_			// 二重インクルード防止のマクロ定義
 
 #include "renderer.h"
 #include "object2d.h"
 
-class CBird : public CObject2d
+
+class CBlackOut : public CObject2d
 {
 public:
 
@@ -21,19 +22,19 @@ public:
 		MAX			// あんただれや？
 	};
 
-	CBird();
-	~CBird() override;
-
+	CBlackOut();
+	~CBlackOut() override;
 	HRESULT Init() override;
 	void Uninit() override;
 	void Update() override;
 	void Draw() override;
-
-	static CBird* Create();
+	static CBlackOut* Create(bool isLeft);
 private:
-	void move();
-private:
-	D3DXVECTOR3 m_Testrot;
+	bool isLeft;
+	bool isOut;
 	int nLife;
+	D3DXVECTOR3 m_rot;
+
+	void move();
 };
 #endif

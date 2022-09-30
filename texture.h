@@ -83,6 +83,7 @@ public: /* 定義 */
 		TEXTURE_PLAYER2_1,		// ガンマン２-１
 		TEXTURE_BIRD,			// 鳥
 		TEXTURE_SABOTEN,		// サボテン
+		TEXTURE_GO,				// GO
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};

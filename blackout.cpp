@@ -1,31 +1,32 @@
 //============================
 //
-// 鳥の動き
-// Author: Yuda Kaito
+// ２Dpolygon設定
+// Author:Yuda Kaito
 //
 //============================
 
-#include "bird.h"
+#include "blackout.h"
 #include "utility.h"
+#include "manager.h"
 
 //------------------------------------
 // コンストラクタ
 //------------------------------------
-CBird::CBird() :CObject2d(0)
+CBlackOut::CBlackOut() :CObject2d(3)
 {
 }
 
 //------------------------------------
 // デストラクタ
 //------------------------------------
-CBird::~CBird()
+CBlackOut::~CBlackOut()
 {
 }
 
 //------------------------------------
 // 初期化
 //------------------------------------
-HRESULT CBird::Init()
+HRESULT CBlackOut::Init()
 {
 	CObject2d::Init();
 
@@ -35,7 +36,7 @@ HRESULT CBird::Init()
 //------------------------------------
 // 終了
 //------------------------------------
-void CBird::Uninit()
+void CBlackOut::Uninit()
 {
 	CObject2d::Uninit();
 }
@@ -43,17 +44,22 @@ void CBird::Uninit()
 //------------------------------------
 // 更新
 //------------------------------------
-void CBird::Update()
+void CBlackOut::Update()
 {
 	CObject2d::Update();
 	//動き
 	move();
+	nLife--;
+	if (nLife <= 0)
+	{
+		Uninit();
+	}
 }
 
 //------------------------------------
 // 描画
 //------------------------------------
-void CBird::Draw()
+void CBlackOut::Draw()
 {
 	CObject2d::Draw();
 }
@@ -61,33 +67,38 @@ void CBird::Draw()
 //------------------------------------
 // create
 //------------------------------------
-CBird *CBird::Create()
+CBlackOut *CBlackOut::Create(bool isLeft)
 {
-	int isLeft = rand() % 2;
-
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(180.0f, 280.0f), 0.0f);
-	D3DXVECTOR3 move(FloatRandam(4.0f, 7.0f), 0.0f, 0.0f);
-
-	if (isLeft == 0)
-	{
-		move *= -1;
-	}
-
-	CBird * pObject = new CBird;
+	CBlackOut * pObject = new CBlackOut;
 
 	if (pObject != nullptr)
 	{
-		D3DXVECTOR3 popPos = pos;
+		D3DXVECTOR3 popPos;
+		pObject->isLeft = isLeft;
+		if (pObject->isLeft)
+		{
+			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+			popPos.x -= CManager::GetInstance()->Pos.x * 0.5f;
+			pObject->SetMove(D3DXVECTOR3(-1.0f, 0.0f, 0.0f));		// moveの設定
+		}
+		else
+		{
+			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+			popPos.x += CManager::GetInstance()->Pos.x * 0.5f;
+			pObject->SetMove(D3DXVECTOR3(1.0f, 0.0f, 0.0f));		// moveの設定
+		}
 
 		popPos = ScreenCastWorld(&popPos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
 
 		pObject->Init();
 		pObject->SetPos(popPos);
-		pObject->nLife = 700;
-		pObject->SetTexture(CTexture::TEXTURE_BIRD);		// テクスチャ選択
-		pObject->SetMove(move);		// moveの設定
-		pObject->SetSize(D3DXVECTOR3(25.0f, 25.0f, 0.0f));	// サイズ設定
-		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定
+		pObject->SetTexture(CTexture::TEXTURE_NONE);		// テクスチャ選択
+		D3DXVECTOR3 size(CManager::Pos);
+		size.x *= 0.5f;
+		pObject->SetSize(size);	// サイズ設定
+		pObject->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 1.0f));	// 色設定
+
+		pObject->nLife = 650;
 	}
 	return pObject;
 }
@@ -96,7 +107,14 @@ CBird *CBird::Create()
 //------------------------------------
 // 動き系統
 //------------------------------------
-void CBird::move()
+void CBlackOut::move()
 {
+	//if (isLeft)
+	//{
+	//	m_rot.z -= 0.01f;
+	//}
+
+	////動き入れたいときはここに	SetMove()で変えれるよ
+	//SetRot(m_rot);
 	m_pos += m_move;
 }

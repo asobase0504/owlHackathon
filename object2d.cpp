@@ -201,6 +201,11 @@ void CObject2d::Update()
 //=============================================================================
 void CObject2d::Draw()
 {
+	if (m_bDraw)
+	{
+		return;
+	}
+
 	LPDIRECT3DDEVICE9 pDevice;		//デバイスへのポインタ
 
 	 //デバイスの取得

@@ -31,6 +31,10 @@
 
 #include "tumbleweed.h"
 #include "bird.h"
+#include "blackout.h"
+#include "blackin.h"
+
+#include "game_system.h"
 
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
@@ -92,19 +96,36 @@ HRESULT CGame::Init(void)
 	Saboten[1]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
 
 	// 左の人
-	m_player[0] = CObject2d::Create(3);
+	m_player[0] = CObject2d::Create(1);
 	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 550.0f, 0.0f));
-	m_player[0]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[0]->SetSize(D3DXVECTOR3(150.0f, 150.0f, 0.0f));
 	m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_1);
 
 	// 右の人
-	m_player[1] = CObject2d::Create(3);
+	m_player[1] = CObject2d::Create(1);
 	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 550.0f, 0.0f));
-	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[1]->SetSize(D3DXVECTOR3(150.0f, 150.0f, 0.0f));
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
+
+	// 右の人
+	m_Block[0] = CBlackIn::Create(true);
+	m_Block[1] = CBlackIn::Create(false);
+	//CBlackOut::Create(true);
+	//CBlackOut::Create(false);
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
+
+	// GO
+	m_pGo = CObject2d::Create(3);
+	m_pGo->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.3f, 0.0f));
+	m_pGo->SetSize(D3DXVECTOR3(200.0f, 200.0f, 0.0f));
+	m_pGo->SetTexture(CTexture::TEXTURE_GO);
+	m_pGo->TrueDraw();
+
+	m_pGameSystem = new CGameSystem;
+	m_pGameSystem->SetCountUpToSignal();
+
 
 	return S_OK;
 }
@@ -130,6 +151,12 @@ void CGame::Uninit(void)
 		m_Pause->Uninit();
 		m_Pause = nullptr;
 	}
+
+	if (m_pGameSystem != nullptr)
+	{
+		delete m_pGameSystem;
+		m_pGameSystem = nullptr;
+	}
 }
 
 //========================
@@ -149,7 +176,7 @@ void CGame::Update(void)
 	}
 	if (CInputpInput->Trigger(DIK_F2))
 	{
-		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
+		CText::Create(CText::GON, 120, 10, "モンハンたのしい...");
 		return;
 	}
 
@@ -168,6 +195,15 @@ void CGame::Update(void)
 		m_birdPopCount = rand() % 150;
 		CBird::Create();
 	}
+
+	m_pGameSystem->Update();
+
+	if (m_pGameSystem->GetSignal())
+	{
+		m_pGo->FalseDraw();
+	}
+
+
 }
 
 //========================
