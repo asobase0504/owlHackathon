@@ -88,12 +88,18 @@ HRESULT CTitle::Init(void)
 	}
 	
 	//ゲームスタートの文字
-	m_list[1] = CObject2d::Create(1);
-	m_list[1]->SetTexture(CTexture::TEXTURE_FOXTITLE);
-	m_list[1]->SetSize(CManager::Pos);
-	m_list[1]->SetPos(CManager::Pos);
-	m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
+	{
+		m_list[1] = CObject2d::Create(1);
+		m_list[1]->SetTexture(CTexture::TEXTURE_FOXTITLE);
+		D3DXVECTOR3 size = CManager::Pos;
+		size.y *= 0.15f;
+		size.x *= 0.25f;
+		m_list[1]->SetSize(size);
+		D3DXVECTOR3 pos = CManager::Pos;
+		pos.y *= 1.25f;
+		m_list[1]->SetPos(pos);
+		m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	}
 
 	//モード選択時の背景黒くするやつ
 	fade = CObject2d::Create(2);
