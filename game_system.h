@@ -47,6 +47,7 @@ public:
 private:
 	bool m_bGameEnd;
 	bool m_bSignal;
+	int m_nCnt;
 	int m_nCountUpToSignalMax;
 	int m_fCountUpToSignal;
 	float m_fPlayerTime[PLAYER_COUNT_MAX];

@@ -23,6 +23,7 @@ CGameSystem::CGameSystem()
 	m_bGameEnd = false;
 	m_nCountUpToSignalMax = -1;
 	m_fCountUpToSignal = -1;
+	m_nCnt = 0;
 	m_GameStatu = STATUS_WAITING;
 	srand((unsigned)time(NULL)); // Œ»İ‚Ìî•ñ‚Å‰Šú‰»
 }
@@ -57,6 +58,16 @@ void CGameSystem::Update()
 
 	SetStatus();
 
+	if (m_bSignal)
+	{
+		m_nCnt++;
+	}
+
+	if (m_nCnt < 60)
+	{
+		return;
+	}
+
 	// Œ‹‰Ê‚Ì¯•Ê
 	if (m_bSignal)
 	{
@@ -80,12 +91,6 @@ void CGameSystem::SetCountUpToSignal()
 //=====================================
 void CGameSystem::ResultIdentification()
 {
-	if (m_fPlayerTime[0] >= 1000.0f
-		&& m_fPlayerTime[1] >= 1000.0f)
-	{
-		m_GameStatu = STATUS_WAITING;
-		return;
-	}
 
 	if (m_fPlayerTime[0] == 500.0f
 		&& m_fPlayerTime[1] == 500.0f)
@@ -107,7 +112,8 @@ void CGameSystem::ResultIdentification()
 		return;
 	}
 
-	if (m_fPlayerTime[0] == m_fPlayerTime[1])
+	if (m_fPlayerTime[0] == m_fPlayerTime[1]
+		&& 1000.0f > m_fPlayerTime[0])
 	{
 		m_GameStatu = STATUS_DRAW;
 		m_bGameEnd = true;
@@ -127,7 +133,13 @@ void CGameSystem::ResultIdentification()
 	}
 	
 
-	m_GameStatu = STATUS_WAITING;
+	if (m_fPlayerTime[0] >= 1000.0f
+		&& m_fPlayerTime[1] >= 1000.0f)
+	{
+		m_GameStatu = STATUS_DOUBLE_CHICKEN;
+		m_bGameEnd = true;
+		return;
+	}
 	return;
 }
 

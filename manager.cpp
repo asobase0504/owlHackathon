@@ -12,9 +12,8 @@
 #include "input.h"
 #include "game.h"
 #include "title.h"
-#include "result.h"
+#include "ranking.h"
 #include "fade.h"
-#include "nemeset.h"
 #include "sound.h"
 
 #include "texture.h"
@@ -28,6 +27,7 @@
 // Ã“Iƒƒ“ƒo[•Ï”‚Ì‰Šú‰»
 //-----------------------------------------------------------------------------
 CManager * CManager::m_manager = nullptr;
+float CManager::m_fTime = 0.0f;
 const D3DXVECTOR3 CManager::Pos = D3DXVECTOR3(1280.0f * 0.5f, 720.0f * 0.5f, 0.0f);
 
 //=============================================================================
@@ -237,14 +237,8 @@ void CManager::SetMode(MODE mode)
 	case CManager::MODE_GAME:
 		m_Game = new CGame;
 		break;
-	case CManager::MODE_RESULT:
-		m_Game = new CResult;
-		break;
 	case CManager::MODE_RANKING:
 		m_Game = new CRanking;
-		break;
-	case CManager::MODE_NAMESET:
-		m_Game = new CNemeSet;
 		break;
 	case CManager::MODE_TUTORIAL:
 		m_Game = new CTutorial;

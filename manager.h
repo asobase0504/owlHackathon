@@ -49,9 +49,11 @@ public:
 
 public: // 静的メンバー変数
 	static CManager* m_manager;
-
+	static float m_fTime;
 public: // 静的関数
 	static CManager* GetInstance();
+	static float GetPLTime() { return m_fTime; }
+	static void SetPLTime(float fTime) { m_fTime = fTime; }
 
 private: // シングルトン
 	CManager();

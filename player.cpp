@@ -462,44 +462,44 @@ void CPlayer::TutorialMove()	//動きセット
 	}
 
 	//	必殺技
-	if (CInputpInput->Trigger(KEY_DECISION))
-	{
-		//	particleManagerの取得
-		CParticleManager* particleManager = CTutorial::GetParticleManager();
+	//if (CInputpInput->Trigger(KEY_DECISION))
+	//{
+	//	//	particleManagerの取得
+	//	//CParticleManager* particleManager = CTutorial::GetParticleManager();
 
-		if (particleManager->GetEmitter().size() == 0)
-		{
+	//	if (particleManager->GetEmitter().size() == 0)
+	//	{
 
-			D3DXVECTOR3 Pos = ScreenCastWorld(
-				&m_pos,			// スクリーン座標
-				D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));
+	//		D3DXVECTOR3 Pos = ScreenCastWorld(
+	//			&m_pos,			// スクリーン座標
+	//			D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));
 
-			//CastMagicの中につかった情報を入れる
-			m_CastMagic = m_NowMagic;
+	//		//CastMagicの中につかった情報を入れる
+	//		m_CastMagic = m_NowMagic;
 
-			switch (m_NowMagic)
-			{
-			case CPlayer::NOW_FIRE:
-				particleManager->Create(Pos, 0, CParticleManager::NOW_FIRE);
-				break;
-			case CPlayer::NOW_ICE:
-				particleManager->Create(Pos, 0, CParticleManager::NOW_ICE);
-				break;
-			case CPlayer::NOW_STORM:
+	//		switch (m_NowMagic)
+	//		{
+	//		case CPlayer::NOW_FIRE:
+	//			particleManager->Create(Pos, 0, CParticleManager::NOW_FIRE);
+	//			break;
+	//		case CPlayer::NOW_ICE:
+	//			particleManager->Create(Pos, 0, CParticleManager::NOW_ICE);
+	//			break;
+	//		case CPlayer::NOW_STORM:
 
-				particleManager->Create(Pos, 0, CParticleManager::NOW_STORM);
-				break;
-			case CPlayer::NOW_SUN:
-				particleManager->Create(Pos, 0, CParticleManager::NOW_SUN);
-				break;
-			case CPlayer::NOW_NON:
-				break;
-			default:
-				break;
-			}
+	//			particleManager->Create(Pos, 0, CParticleManager::NOW_STORM);
+	//			break;
+	//		case CPlayer::NOW_SUN:
+	//			particleManager->Create(Pos, 0, CParticleManager::NOW_SUN);
+	//			break;
+	//		case CPlayer::NOW_NON:
+	//			break;
+	//		default:
+	//			break;
+	//		}
 
-		}
-	}
+	//	}
+	//}
 
 	m_move.x += (0.0f - m_move.x)*ATTENUATION;//（目的の値-現在の値）＊減衰係数
 	m_move.z += (0.0f - m_move.z)*ATTENUATION;

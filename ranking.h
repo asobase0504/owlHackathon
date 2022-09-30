@@ -1,69 +1,52 @@
-//**************************************************
+//=============================================================================
 //
-// 制作 ( ランキング )
-// Author  : hamada ryuuga
+// ranking.h
+// Author : koduna hirohito
 //
-//**************************************************
-#ifndef _RANKING_H_
-#define _RANKING_H_
+//=============================================================================
+#ifndef _RANKING_H_			//このマクロ定義がされなかったら
+#define _RANKING_H_			//2重インクルード防止のマクロ定義
 
-#include "score.h"
-#include <string>       // ヘッダファイルインクルード
-//------------------------------------
-//マクロ定義
-//------------------------------------
-#define MAX_RANK	(6)	//ランク数
-#define MAX_RANKSCORE	(8)	//桁数
+//*****************************************************************************
+// インクルード
+//*****************************************************************************
+#include "main.h"
+#include "name.h"
+#include "object.h"
 
-//------------------------------------
-//プロトタイプ宣言
-//------------------------------------
-
-class CScore;
-class CObject2d;
-class CName;
-
-class CRanking : public CObject
+//*****************************************************************************
+// クラス定義
+//*****************************************************************************
+class CRanking :public CObject
 {
+private:
+	static const int MAX_RANKING_DIGIT = 8;
+	static const int MAX_AIRFRAME = 3;
+	static const int MAX_STAGE = 6;
+	static const int RANKING_MAX = 4;
+
 public:
+	struct NameData
+	{
+		int nNameNumIndex[RANKING_MAX];
+	};
+
+
+	static const int MAX_RANKING = 5;
 	CRanking();
 	~CRanking();
-	HRESULT Init();
-	void Uninit();
-	void Update();
-	void Draw();
 
-	static void APIUp();
-	static void GoScore();
-	static void OnlineSetScore();
-	static void SetScore(int nScore);
-	static void GetScore();
-	static int GetMyScore() { return m_Score; };
-	static void SetName();
-	static void SetPlayNeme(const std::string PlayName) { m_PlayName = PlayName; };
-	static std::string GetMACAddr();
-	static void SetName(int number, std::string Name) { m_Name[number] = Name; };
+	HRESULT Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
+
+	void Create();
 
 private:
-
-	static int m_Score;
-	static CScore *m_Ranking[MAX_RANK];
-	static std::string m_PlayName;
-	static	std::string m_Name[5];
-	static bool m_Stop;
-	CObject2d *m_Object2d[4];
-
-	CName*m_ListName[3];
-	CName*m_PlayNameSet[10];
-
-	D3DXVECTOR3 m_NemePos;
-
-	int m_NowPlay;
-
-	bool m_OnrankingSet;
-	bool m_RankingSet;
+	float m_fScore[MAX_RANKING];
+	bool m_bNewScore;
+	NameData m_NameData[MAX_RANKING];
 };
-
-
 
 #endif

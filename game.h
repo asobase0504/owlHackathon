@@ -30,6 +30,7 @@ public:
 
 	//static CObject2d* GetBg(int number) { return  Bg[number]; };
 
+	void SetTime();
 private:
 	static CParticleManager* m_PaticleManager;	// パーティクルマネジャー
 	static CObject2d* m_player[2];
@@ -50,5 +51,7 @@ private:
 
 	int m_1pTimeId;
 	int m_2pTimeId;
+
+	bool isText;
 };
 #endif

@@ -123,6 +123,8 @@ HRESULT CGame::Init(void)
 	m_pGameSystem = new CGameSystem;
 	m_pGameSystem->SetCountUpToSignal();
 
+	isText = false;
+
 	return S_OK;
 }
 
@@ -133,7 +135,6 @@ void CGame::Uninit(void)
 {
 	CManager::GetInstance()->GetText()->AllDelete();
 	CManager::GetInstance()->GetSound()->Stop();
-	CRanking::SetScore(CScore::GetScore());
 
 	if (m_PaticleManager != nullptr)
 	{
@@ -180,14 +181,14 @@ void CGame::Update(void)
 	m_tumbleweedPopCount--;
 	if (m_tumbleweedPopCount <= 0)
 	{
-		m_tumbleweedPopCount = rand() % 150;
+		m_tumbleweedPopCount = rand() % 150 + 50;
 		CTumbleweed::Create();
 	}
 
 	m_birdPopCount--;
 	if (m_birdPopCount <= 0)
 	{
-		m_birdPopCount = rand() % 150;
+		m_birdPopCount = rand() % 150 + 50;
 		CBird::Create();
 	}
 
@@ -275,4 +276,14 @@ void CGame::Update(void)
 //========================
 void CGame::Draw(void)
 {
+}
+
+void CGame::SetTime()
+{
+	if (!isText)
+	{
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 350.0f, 0.0f));
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 350.0f, 0.0f));
+		isText = true;
+	}
 }
