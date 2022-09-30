@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include "input.h"
+#include "manager.h"
 
 //=====================================
 // コンストラクタ
@@ -42,6 +43,19 @@ void CGameSystem::Update()
 {
 	if (m_bGameEnd)
 	{
+		if (m_GameStatu >= STATUS_PL1_CHICKEN)
+		{
+			CManager::SetPLTime(15.0f);
+			return;
+		}
+		if (m_fPlayerTime[0] < m_fPlayerTime[1])
+		{
+			CManager::SetPLTime(m_fPlayerTime[0]);
+		}
+		else
+		{
+			CManager::SetPLTime(m_fPlayerTime[1]);
+		}
 		return;
 	}
 	CInput *pInput = CInput::GetKey();

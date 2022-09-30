@@ -35,7 +35,7 @@ void CRead::ReadRanking(float *pRanking)
 	float aTime[CRanking::MAX_RANKING + 1] = {};
 	aTime[CRanking::MAX_RANKING] = fPLTime;
 	FILE *pFile = nullptr;			//ファイルポインター宣言
-	pFile = fopen("data/Ranking.txt", "r");
+	pFile = fopen("Ranking.txt", "r");
 
 	if (pFile == nullptr)
 	{//開けなかった時用
@@ -79,7 +79,7 @@ void CRead::ReadRanking(float *pRanking)
 void CRead::SaveRanking(const float *pRanking)
 {
 	FILE *pFile = nullptr;			//ファイルポインター宣言
-	pFile = fopen("data/Ranking.txt", "w");
+	pFile = fopen("Ranking.txt", "w");
 
 	if (pFile == nullptr)
 	{//開けなかった時用
