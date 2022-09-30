@@ -128,6 +128,11 @@ bool CCurtain::GetInStop()
 {
 	for (int i = 0; i < 2; i++)
 	{
+		if (m_blackIn[i] == nullptr)
+		{
+			return false;
+		}
+
 		if (!m_blackIn[i]->GetStop())
 		{
 			return false;
