@@ -41,6 +41,8 @@ public:
 		LABEL_SE_WEED,			// 草
 		LABEL_SE_WIND,			// 風
 		LABEL_SE_SELECT,		// 選択音
+		LABEL_SE_READY,			// レディ
+		LABEL_SE_FIRE,			// ファイア
 		LABEL_MAX,	
 	};
 
