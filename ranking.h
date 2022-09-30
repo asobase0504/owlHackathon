@@ -14,6 +14,8 @@
 #include "name.h"
 #include "object.h"
 
+class CObject2d;
+
 //*****************************************************************************
 // ƒNƒ‰ƒX’è‹`
 //*****************************************************************************
@@ -47,6 +49,7 @@ private:
 	float m_fScore[MAX_RANKING];
 	bool m_bNewScore;
 	NameData m_NameData[MAX_RANKING];
+	CObject2d *Bg;
 };
 
 #endif

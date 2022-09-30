@@ -15,6 +15,8 @@
 #include "fade.h"
 #include "time_text.h"
 
+#include "manager.h"
+#include "sound.h"
 //*****************************************************************************
 // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 //*****************************************************************************
@@ -34,6 +36,14 @@ CRanking::~CRanking()
 //*****************************************************************************
 HRESULT CRanking::Init()
 {
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_RANKING);
+
+	// ”wŒi‚Ìr–ì
+	Bg = CObject2d::Create();
+	Bg->SetTexture(CTexture::TEXTURE_RANKING);
+	Bg->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+	Bg->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+
 	m_bNewScore = false;
 
 	for (int nCnt = 0; nCnt < MAX_RANKING; nCnt++)
@@ -47,7 +57,7 @@ HRESULT CRanking::Init()
 	{
 		D3DXVECTOR3 pos(CManager::GetInstance()->Pos);
 		pos.x *= 0.75f;
-		pos.y -= 70.0f * i;
+		pos.y -= 100.0f * i - 200.0f;
 		CManager::GetInstance()->GetText()->SetText(m_fScore[i], pos);
 	}
 
@@ -56,6 +66,7 @@ HRESULT CRanking::Init()
 
 void CRanking::Uninit()
 {
+	CManager::GetInstance()->GetText()->AllDelete();
 }
 
 void CRanking::Update()

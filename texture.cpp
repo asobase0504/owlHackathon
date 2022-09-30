@@ -47,7 +47,7 @@ const char* CTexture::s_FileName[] =
 	"Data/TEXTURE/Game/Crow02.png",
 
 	/* « ƒ‰ƒ“ƒLƒ“ƒO « */
-	"Data/TEXTURE/RANKING/ranking.png",
+	"Data/TEXTURE/RANKING/ranking.jpg",
 };
 
 static_assert(sizeof(CTexture::s_FileName) / sizeof(CTexture::s_FileName[0]) == CTexture::TEXTURE_MAX, "aho");
