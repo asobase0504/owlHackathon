@@ -93,7 +93,7 @@ void CPause::Update(void)
 	
 	CInput *CInputpInput = CInput::GetKey();
 
-	if (CInputpInput->Trigger(CInput::KEY_PAUSE)&& *CManager::GetInstance()->GetFade()->GetFade() == CFade::FADENON)
+	if (CInputpInput->Trigger(KEY_PAUSE)&& *CManager::GetInstance()->GetFade()->GetFade() == CFade::FADENON)
 	{
 		if (m_OnPause)
 		{
@@ -120,7 +120,7 @@ void CPause::Update(void)
 		}
 
 	}
-	if (CInputpInput->Trigger(CInput::KEY_DECISION))
+	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		if (m_OnPause)
 		{
@@ -171,7 +171,7 @@ void CPause::Update(void)
 	}
 	if (m_OnPause)
 	{
-		if (CInputpInput->Trigger(CInput::KEY_UP))
+		if (CInputpInput->Trigger(KEY_UP))
 		{
 			//モード選択
 			m_object2d[m_NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
@@ -186,7 +186,7 @@ void CPause::Update(void)
 
 			m_object2d[m_NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		}
-		if (CInputpInput->Trigger(CInput::KEY_DOWN))
+		if (CInputpInput->Trigger(KEY_DOWN))
 		{
 			//モード選択
 			m_object2d[m_NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));

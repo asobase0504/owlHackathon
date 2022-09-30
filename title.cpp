@@ -239,7 +239,7 @@ void CTitle::Update(void)
 	}
 	CInput *CInputpInput = CInput::GetKey();
 
-	if (CInputpInput->Trigger(CInput::KEY_DECISION))
+	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		CManager* maneger = CManager::GetInstance();
 		maneger->GetSound()->Play(CSound::LABEL_SE_ON);
@@ -286,7 +286,7 @@ void CTitle::Update(void)
 	}
 	if (ModeSelect)
 	{
-		if (CInputpInput->Trigger(CInput::KEY_UP))
+		if (CInputpInput->Trigger(KEY_UP))
 		{
 			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
 			//モード選択
@@ -303,7 +303,7 @@ void CTitle::Update(void)
 	
 			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		}
-		if (CInputpInput->Trigger(CInput::KEY_DOWN))
+		if (CInputpInput->Trigger(KEY_DOWN))
 		{
 			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
 			//モード選択
@@ -321,12 +321,12 @@ void CTitle::Update(void)
 	}
 #ifdef _DEBUG
 
-	if (CInputpInput->Trigger(CInput::KEY_DEBUG))
+	if (CInputpInput->Trigger(DIK_F1))
 	{
 		//モードの設定
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_GAME);
 	}
-	if (CInputpInput->Trigger(CInput::KEY_F2))
+	if (CInputpInput->Trigger(DIK_F2))
 	{
 		//モードの設定
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_NAMESET);

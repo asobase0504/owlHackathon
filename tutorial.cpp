@@ -114,7 +114,7 @@ void CTutorial::Uninit(void)
 void CTutorial::Update(void)
 {
 	CInput *CInputpInput = CInput::GetKey();
-	if (CInputpInput->Trigger(CInput::KEY_DELETE))
+	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		//ƒ‚[ƒh‚ÌÝ’è
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_TITLE);

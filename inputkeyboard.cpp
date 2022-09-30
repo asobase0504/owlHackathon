@@ -16,7 +16,6 @@
 //*************************************************************************************
 CInputKeyboard::CInputKeyboard()
 {
-	m_pInput = nullptr;
 	m_pDevKeyboard = nullptr;
 }
 
@@ -32,13 +31,7 @@ CInputKeyboard::~CInputKeyboard()
 //*************************************************************************************
 HRESULT CInputKeyboard::Init(HINSTANCE hInstance, HWND hWnd)
 {
-	//DirectInputオブジェクトの生成
-	if (FAILED(DirectInput8Create(hInstance, DIRECTINPUT_VERSION,
-		IID_IDirectInput8, (void**)&m_pInput, NULL)))
-	{
-		return E_FAIL;
-	}
-
+	
 	//入力デバイス（キーボード）の生成
 	if (FAILED(m_pInput->CreateDevice(GUID_SysKeyboard, &m_pDevKeyboard, NULL)))
 	{
@@ -75,13 +68,6 @@ void CInputKeyboard::Uninit(void)
 		m_pDevKeyboard->Unacquire();		//キーボードへのアクセス権を放棄
 		m_pDevKeyboard->Release();
 		m_pDevKeyboard = NULL;
-	}
-
-	//DirectInputオブジェクトの破壊
-	if (m_pInput != NULL)
-	{
-		m_pInput->Release();
-		m_pInput = NULL;
 	}
 }
 

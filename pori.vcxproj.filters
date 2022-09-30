@@ -49,6 +49,9 @@
     <Filter Include="オブジェクト\Move2D">
       <UniqueIdentifier>{23a4da3a-e36e-4168-9ccc-5f6d492c3610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{4ebae737-e2d6-4772-ac42-2a99d7c5bed9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="object.cpp">
@@ -61,12 +64,6 @@
       <Filter>オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="file.cpp">
-      <Filter>システム</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>システム</Filter>
-    </ClCompile>
-    <ClCompile Include="inputkeyboard.cpp">
       <Filter>システム</Filter>
     </ClCompile>
     <ClCompile Include="light.cpp">
@@ -150,9 +147,6 @@
     <ClCompile Include="tutorial.cpp">
       <Filter>メイン\画面遷移</Filter>
     </ClCompile>
-    <ClCompile Include="inputcontroller.cpp">
-      <Filter>システム</Filter>
-    </ClCompile>
     <ClCompile Include="pause.cpp">
       <Filter>メイン\画面遷移</Filter>
     </ClCompile>
@@ -171,6 +165,21 @@
     <ClCompile Include="bird.cpp">
       <Filter>オブジェクト\Move2D</Filter>
     </ClCompile>
+    <ClCompile Include="game_system.cpp">
+      <Filter>システム</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="inputjoypad.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="inputkeyboard.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h">
@@ -186,12 +195,6 @@
       <Filter>システム</Filter>
     </ClInclude>
     <ClInclude Include="file.h">
-      <Filter>システム</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>システム</Filter>
-    </ClInclude>
-    <ClInclude Include="inputkeyboard.h">
       <Filter>システム</Filter>
     </ClInclude>
     <ClInclude Include="letter.h">
@@ -275,9 +278,6 @@
     <ClInclude Include="tutorial.h">
       <Filter>メイン\画面遷移</Filter>
     </ClInclude>
-    <ClInclude Include="inputcontroller.h">
-      <Filter>システム</Filter>
-    </ClInclude>
     <ClInclude Include="pause.h">
       <Filter>メイン\画面遷移</Filter>
     </ClInclude>
@@ -295,6 +295,24 @@
     </ClInclude>
     <ClInclude Include="bird.h">
       <Filter>オブジェクト\Move2D</Filter>
+    </ClInclude>
+    <ClInclude Include="game_system.h">
+      <Filter>システム</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputjoypad.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputkeyboard.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputkeydata.h">
+      <Filter>input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
