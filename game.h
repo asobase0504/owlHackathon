@@ -26,14 +26,14 @@ public:
 	static CParticleManager* GetParticleManager() { return m_PaticleManager; }
 	static CPause * GetPause() { return m_Pause; };
 
-	static CBg* GetBg(int number) { return  Bg[number]; };
+	//static CObject2d* GetBg(int number) { return  Bg[number]; };
 
 private:
 	static CParticleManager* m_PaticleManager;	// パーティクルマネジャー
 	static CObject2d* m_player[2];
 
 	static CPause *m_Pause;
-	static CBg * Bg[3];
+	static CObject2d * Bg[3];
 
 	int m_GameCount;
 

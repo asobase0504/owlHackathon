@@ -23,6 +23,12 @@ class CSound;
 class CManager
 {
 public:
+	// スクリーンの幅
+	static const int SCREEN_WIDTH = 1280;
+	// スクリーンの高さ
+	static const int SCREEN_HEIGHT = 720;
+
+public:
 
 	static const D3DXVECTOR3 Pos;
 

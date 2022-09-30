@@ -34,7 +34,7 @@
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
 CPause *CGame::m_Pause = nullptr;
-CBg * CGame::Bg[3];
+CObject2d * CGame::Bg[3];
 
 //========================
 // コンストラクター
@@ -73,9 +73,10 @@ HRESULT CGame::Init(void)
 	m_Pause->Init();
 	m_Pause->SetUp(CObject::PAUSE);
 
-	Bg[0] = CBg::Create();
+	Bg[0] = CObject2d::Create();
 	Bg[0]->SetTexture(CTexture::TEXTURE_WILDERNESS);
-	Bg[0]->SetBgType(CBg::STOP);
+	Bg[0]->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
+	Bg[0]->SetSize(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.5f, 0.0f));
 
 	// 左の人
 	m_player[0] = CObject2d::Create(3);
