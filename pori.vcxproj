@@ -197,6 +197,7 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="time_text.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="tumbleweed.cpp" />
     <ClCompile Include="tutorial.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="sound.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="time_text.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="tumbleweed.h" />
     <ClInclude Include="tutorial.h" />

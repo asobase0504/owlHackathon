@@ -28,10 +28,11 @@
 #include "pause.h"
 
 #include "text.h"
-
+#include "time_text.h"
 #include "tumbleweed.h"
 #include "bird.h"
 #include "curtain.h"
+#include <tchar.h> // _T
 
 #include "game_system.h"
 
@@ -109,10 +110,6 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetSize(D3DXVECTOR3(150.0f, 150.0f, 0.0f));
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
-	// 右の人
-	//m_curtain = CCurtain::Create();
-	
-
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
 
@@ -126,7 +123,6 @@ HRESULT CGame::Init(void)
 	m_pGameSystem = new CGameSystem;
 	m_pGameSystem->SetCountUpToSignal();
 
-
 	return S_OK;
 }
 
@@ -135,6 +131,7 @@ HRESULT CGame::Init(void)
 //========================
 void CGame::Uninit(void)
 {
+	CManager::GetInstance()->GetText()->AllDelete();
 	CManager::GetInstance()->GetSound()->Stop();
 	CRanking::SetScore(CScore::GetScore());
 
@@ -149,9 +146,7 @@ void CGame::Uninit(void)
 	if (m_curtain != nullptr)
 	{
 		m_curtain->Uninit();
-		delete m_curtain;
 		m_curtain = nullptr;
-
 	}
 
 	if (m_Pause != nullptr)
@@ -179,18 +174,6 @@ void CGame::Update(void)
 	m_GameCount++;
 
 	CInput *CInputpInput = CInput::GetKey();
-
-	if (CInputpInput->Trigger(DIK_F1))
-	{
-		//モードの設定
-		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RESULT);
-		return;
-	}
-	if (CInputpInput->Trigger(DIK_F2))
-	{
-		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
-		return;
-	}
 
 	m_PaticleManager->Update();
 
@@ -292,5 +275,4 @@ void CGame::Update(void)
 //========================
 void CGame::Draw(void)
 {
-
 }

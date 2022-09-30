@@ -117,7 +117,6 @@ HRESULT CTitle::Init(void)
 	m_object2d[0]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y - y, 0.0f));
 	m_object2d[0]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 
-
 	//チュートリアルの文字
 	m_object2d[1] = CObject2d::Create(2);
 	m_object2d[1]->SetTexture(CTexture::TEXTURE_PRESSENTER);
