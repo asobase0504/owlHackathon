@@ -175,18 +175,6 @@ void CGame::Update(void)
 
 	CInput *CInputpInput = CInput::GetKey();
 
-	if (CInputpInput->Trigger(DIK_F1))
-	{
-		//ƒ‚[ƒh‚ÌÝ’è
-		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RESULT);
-		return;
-	}
-	if (CInputpInput->Trigger(DIK_F2))
-	{
-		CText::Create(CText::GON,120, 10, "ƒ‚ƒ“ƒnƒ“‚½‚Ì‚µ‚¢...");
-		return;
-	}
-
 	m_PaticleManager->Update();
 
 	m_tumbleweedPopCount--;
