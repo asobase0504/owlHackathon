@@ -283,7 +283,7 @@ void CGame::Update(void)
 	if (m_nCnt < -900)
 	{
 		CInputpInput->ResetInputTime();
-		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RESULT);
+		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_RANKING);
 	}
 }
 
