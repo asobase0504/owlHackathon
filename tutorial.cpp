@@ -4,10 +4,6 @@
 // Author:hamada ryuuga
 //
 //============================
-
-
-
-
 //------------------------
 // インクルード
 //------------------------
@@ -27,9 +23,8 @@
 
 #include "text.h"
 
-
-
 #include "multiply.h"
+
 CMagicBox* CTutorial::m_MagicBox;	
 CParticleManager* CTutorial::m_PaticleManager;
 CPlayer * CTutorial::m_Player;
@@ -73,7 +68,6 @@ HRESULT CTutorial::Init(void)
 	m_Player = CPlayer::Create();
 	m_Player->SetUp(CObject::PLAYER);
 
-
 	m_PaticleManager = new CParticleManager;
 	// パーティクル
 	if (FAILED(m_PaticleManager->Init()))
@@ -84,12 +78,7 @@ HRESULT CTutorial::Init(void)
 	pScore = CScore::Create(D3DXVECTOR3(500.0f, 30.0f, 0.0f));
 	pScore->Set(0);
 
-	
-
-
 	CText::Create(CText::GON, 300,10, "まずはイドウをしてみよう！");
-
-	
 
 	return S_OK;
 
@@ -106,9 +95,6 @@ void CTutorial::Uninit(void)
 	{
 		m_Bg[0]->Uninit();
 	}
-	
-
-
 
 	if (m_PaticleManager != nullptr)
 	{
@@ -127,65 +113,12 @@ void CTutorial::Uninit(void)
 //========================
 void CTutorial::Update(void)
 {
-	m_NextTaskCount++;
-	m_PaticleManager->Update();
-
 	CInput *CInputpInput = CInput::GetKey();
 	if (CInputpInput->Trigger(CInput::KEY_DELETE))
 	{
 		//モードの設定
 		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_TITLE);
 	}
-
-	if (CInputpInput->Trigger(CInput::KEY_RELOAD))
-	{
-		if (m_PaticleManager->GetEmitter().size() == 0)
-		{
-
-			
-		/*	m_MagicBox->CMagicBox::Magicplay((CTexture::TEXTURE)m_Magic);
-			m_Magic++; 
-			if (m_Magic >= 6)
-			{
-				m_Magic = 2;
-			}*/
-		}
-
-	}
-	
-
-
-	if (m_NextTaskCount >= 300)
-	{
-		if (!m_MoveClear
-			&& (CInputpInput->Press(CInput::KEY_UP)
-				|| CInputpInput->Press(CInput::KEY_DOWN)
-				|| CInputpInput->Press(CInput::KEY_RIGHT)
-				|| CInputpInput->Press(CInput::KEY_LEFT))
-			)
-		{
-			CText::Create(CText::GON, 300,10, "ナイス！！うまいのじゃ！\nタマをうってみるのじゃ！");
-			m_MoveClear = true;
-			m_NextTaskCount = 0;
-		}
-		else if (!m_AttackClear && CInputpInput->Press(CInput::KEY_SHOT)&& m_MoveClear)
-		{
-			CText::Create(CText::GON, 300,10, "ナイス！！うまいのじゃ！\nつぎはマホウをハツドウしてみのじゃ！");
-			m_AttackClear = true;
-			m_NextTaskCount = 0;
-		}
-		else if (!m_MagicClear && CInputpInput->Trigger(CInput::KEY_DECISION)&& m_AttackClear)
-		{
-			CText::Create(CText::GON, 500,10, "ナイス！！うまいのじゃ！\nさあこれでチュートリアルはおわりじゃ！\nぶっとばしにいくのじゃ！");
-			m_MagicClear = true;
-			m_NextTaskCount = 0;
-		}
-	}
-#ifdef _DEBUG
-
-	
-
-#endif // DEBUG
 }
 
 //========================

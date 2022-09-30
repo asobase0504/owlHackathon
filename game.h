@@ -10,7 +10,7 @@
 #include "object.h"
 
 class CParticleManager;
-class CPlayer;
+class CObject2d;
 class CPause; 
 
 class CGame :public CObject
@@ -24,21 +24,19 @@ public:
 	void Draw() override;
 
 	static CParticleManager* GetParticleManager() { return m_PaticleManager; }
-	static CPlayer * GetPlayer() { return m_Player; };
 	static CPause * GetPause() { return m_Pause; };
 
 	static CBg* GetBg(int number) { return  Bg[number]; };
-	static CScore*GetScore();
 
 private:
-
-	static CPlayer* m_Player;
 	static CParticleManager* m_PaticleManager;	// パーティクルマネジャー
+	static CObject2d* m_player[2];
+
 	static CPause *m_Pause;
-	static CScore * pScore;
 	static CBg * Bg[3];
 
 	int m_GameCount;
-	int m_SpeedUp;
+
+	int m_tumbleweedPopCount;
 };
 #endif

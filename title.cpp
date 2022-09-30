@@ -38,15 +38,10 @@ HRESULT CTitle::Init(void)
 	D3DXVECTOR3 EnemyPos = CManager::Pos;
 	m_alpha = 1.2f;
 
-	
 	m_addX = 0;
 	m_addY = 0;
 	ModeSelect = false;
 	NextMode = MODE::MODE_GAME;
-
-	m_Player = nullptr;
-	m_Player = CPlayer::Create();
-	m_Player->SetUp(CObject::PLAYER);
 
 	EnemyPos.z -= 30.0f;
 

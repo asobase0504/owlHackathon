@@ -13,9 +13,8 @@
 #include "manager.h"
 #include "object.h"
 #include "light.h"
-#include "player.h"
 #include "file.h"
-
+#include "object2d.h"
 #include "fade.h"
 
 #include "multiply.h"
@@ -30,10 +29,11 @@
 
 #include "text.h"
 
+#include "tumbleweed.h"
+
 CParticleManager*CGame::m_PaticleManager = nullptr;
-CPlayer*CGame::m_Player = nullptr;
+CObject2d* CGame::m_player[2];
 CPause *CGame::m_Pause = nullptr;
-CScore * CGame::pScore;
 CBg * CGame::Bg[3];
 
 //========================
@@ -56,7 +56,6 @@ CGame::~CGame()
 HRESULT CGame::Init(void)
 {
 	m_GameCount = 0;
-	m_SpeedUp = 300;
 
 	srand((unsigned int)time(NULL)); // 現在時刻の情報で初期化
 
@@ -66,9 +65,6 @@ HRESULT CGame::Init(void)
 	{
 		return E_FAIL;
 	}
-
-	m_Player = CPlayer::Create();
-	m_Player->SetUp(CObject::PLAYER);
 
 	SetBossPop(false);
 	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_GAME);
@@ -91,9 +87,19 @@ HRESULT CGame::Init(void)
 	Bg[2]->SetTexture(CTexture::TEXTURE_MOON);
 	Bg[2]->SetBgType(CBg::STOP);
 
+	// 左の人
+	m_player[0] = CObject2d::Create();
+	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.25f, 500.0f, 0.0f));
+	m_player[0]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[0]->SetTexture(CTexture::TEXTURE_STARRY);
 
-	pScore = CScore::Create(D3DXVECTOR3(500.0f, 30.0f, 0.0f));
-	pScore->Set(0);
+	// 右の人
+	m_player[1] = CObject2d::Create();
+	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.75f, 500.0f, 0.0f));
+	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[1]->SetTexture(CTexture::TEXTURE_STARRY);
+
+	m_tumbleweedPopCount = rand() % 50;
 
 	return S_OK;
 }
@@ -104,7 +110,6 @@ HRESULT CGame::Init(void)
 void CGame::Uninit(void)
 {
 	CManager::GetInstance()->GetSound()->Stop();
-	CModelManager::ReleaseAll();
 	CRanking::SetScore(CScore::GetScore());
 
 	if (m_PaticleManager != nullptr)
@@ -115,14 +120,11 @@ void CGame::Uninit(void)
 
 	}
 
-	
-
 	if (m_Pause != nullptr)
 	{
 		m_Pause->Uninit();
 		m_Pause = nullptr;
 	}
-
 }
 
 //========================
@@ -131,16 +133,9 @@ void CGame::Uninit(void)
 void CGame::Update(void)
 {
 	m_GameCount++;
-	// 更新処理
-	if (m_GameCount == m_SpeedUp&&!GetMaxBoss())
-	{
-		m_GameCount = 0;
-		m_SpeedUp += 250;
-	}
 
 	CInput *CInputpInput = CInput::GetKey();
 
-	
 	if (CInputpInput->Trigger(CInput::KEY_DEBUG))
 	{
 		//モードの設定
@@ -149,22 +144,17 @@ void CGame::Update(void)
 	}
 	if (CInputpInput->Trigger(CInput::KEY_F2))
 	{
-	
-		//CText::Create(CText::GON,120, 10, "モンハンたのしい...");
-		CManager::GetInstance()->GetFade()->NextMode(CManager::MODE_NAMESET);
+		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
 		return;
 	}
-	if (GetMaxEnemy() <= 0)
-	{
-		if (GetMaxBoss())
-		{
-		}
-		else
-		{
-			
-		}
-	}
 	m_PaticleManager->Update();
+
+	m_tumbleweedPopCount--;
+	if (m_tumbleweedPopCount <= 0)
+	{
+		m_tumbleweedPopCount = rand() % 50;
+		CTumbleweed::Create({ 1000.0f,300.0f,0.0f }, true);
+	}
 }
 
 //========================
@@ -174,12 +164,3 @@ void CGame::Draw(void)
 {
 
 }
-
-//=============================================================================
-// スコアのデータを取得する関数
-//=============================================================================
-CScore*CGame::GetScore()
-{
-	return pScore;
-}
-

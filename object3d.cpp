@@ -336,12 +336,6 @@ void CObject3d::HitLife(int Damage)
 				
 				break;
 			}
-
-			for (int i = 0; i < 5; i++)
-			{
-				CGame::GetScore()->Add(50);
-				D3DXVECTOR3 scale(3.8f, 3.8f, 3.8f);
-			}
 			m_drop++;
 			if (m_drop >= CreateDrop)
 			{	

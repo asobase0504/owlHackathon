@@ -160,6 +160,7 @@
     <ClCompile Include="3dpolygon.cpp" />
     <ClCompile Include="3dpolygontemplate.cpp" />
     <ClCompile Include="bg.cpp" />
+    <ClCompile Include="bird.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
@@ -192,6 +193,7 @@
     <ClCompile Include="text.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="title.cpp" />
+    <ClCompile Include="tumbleweed.cpp" />
     <ClCompile Include="tutorial.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
@@ -200,6 +202,7 @@
     <ClInclude Include="3dpolygon.h" />
     <ClInclude Include="3dpolygontemplate.h" />
     <ClInclude Include="bg.h" />
+    <ClInclude Include="bird.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="game.h" />
@@ -233,6 +236,7 @@
     <ClInclude Include="text.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="tumbleweed.h" />
     <ClInclude Include="tutorial.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
