@@ -1,17 +1,17 @@
 //=============================================================================
 //
 // 暗転
-// Author : 浜田琉雅
+// Author : YudaKaito
 //
 //=============================================================================
-#ifndef _BLACKOUT_H_			// このマクロ定義がされてなかったら
-#define _BLACKOUT_H_			// 二重インクルード防止のマクロ定義
+#ifndef _BLACKIN_H_			// このマクロ定義がされてなかったら
+#define _BLACKIN_H_			// 二重インクルード防止のマクロ定義
 
 #include "renderer.h"
 #include "object2d.h"
 
 
-class CBlackOut : public CObject2d
+class CBlackIn : public CObject2d
 {
 public:
 
@@ -22,13 +22,13 @@ public:
 		MAX			// あんただれや？
 	};
 
-	CBlackOut();
-	~CBlackOut() override;
+	CBlackIn();
+	~CBlackIn() override;
 	HRESULT Init() override;
 	void Uninit() override;
 	void Update() override;
 	void Draw() override;
-	static CBlackOut* Create(bool isLeft);
+	static CBlackIn* Create(bool isLeft);
 private:
 	bool isLeft;
 	bool isOut;

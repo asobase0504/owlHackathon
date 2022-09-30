@@ -5,28 +5,28 @@
 //
 //============================
 
-#include "blackout.h"
+#include "blackin.h"
 #include "utility.h"
 #include "manager.h"
 
 //------------------------------------
 // コンストラクタ
 //------------------------------------
-CBlackOut::CBlackOut() :CObject2d(3)
+CBlackIn::CBlackIn() :CObject2d(3)
 {
 }
 
 //------------------------------------
 // デストラクタ
 //------------------------------------
-CBlackOut::~CBlackOut()
+CBlackIn::~CBlackIn()
 {
 }
 
 //------------------------------------
 // 初期化
 //------------------------------------
-HRESULT CBlackOut::Init()
+HRESULT CBlackIn::Init()
 {
 	CObject2d::Init();
 
@@ -36,7 +36,7 @@ HRESULT CBlackOut::Init()
 //------------------------------------
 // 終了
 //------------------------------------
-void CBlackOut::Uninit()
+void CBlackIn::Uninit()
 {
 	CObject2d::Uninit();
 }
@@ -44,22 +44,25 @@ void CBlackOut::Uninit()
 //------------------------------------
 // 更新
 //------------------------------------
-void CBlackOut::Update()
+void CBlackIn::Update()
 {
 	CObject2d::Update();
 	//動き
-	move();
-	nLife--;
-	if (nLife <= 0)
+
+	if ((isLeft && m_pos.x >= CManager::GetInstance()->Pos.x * 0.5f) || (!isLeft && m_pos.x <= CManager::GetInstance()->Pos.x * 1.5f))
 	{
-		Uninit();
+
+	}
+	else
+	{
+		move();
 	}
 }
 
 //------------------------------------
 // 描画
 //------------------------------------
-void CBlackOut::Draw()
+void CBlackIn::Draw()
 {
 	CObject2d::Draw();
 }
@@ -67,9 +70,9 @@ void CBlackOut::Draw()
 //------------------------------------
 // create
 //------------------------------------
-CBlackOut *CBlackOut::Create(bool isLeft)
+CBlackIn *CBlackIn::Create(bool isLeft)
 {
-	CBlackOut * pObject = new CBlackOut;
+	CBlackIn * pObject = new CBlackIn;
 
 	if (pObject != nullptr)
 	{
@@ -78,14 +81,14 @@ CBlackOut *CBlackOut::Create(bool isLeft)
 		if (pObject->isLeft)
 		{
 			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-			popPos.x -= CManager::GetInstance()->Pos.x * 0.5f;
-			pObject->SetMove(D3DXVECTOR3(-1.0f, 0.0f, 0.0f));		// moveの設定
+			popPos.x -= CManager::GetInstance()->Pos.x * 1.5f;
+			pObject->SetMove(D3DXVECTOR3(5.0f, 0.0f, 0.0f));		// moveの設定
 		}
 		else
 		{
 			popPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-			popPos.x += CManager::GetInstance()->Pos.x * 0.5f;
-			pObject->SetMove(D3DXVECTOR3(1.0f, 0.0f, 0.0f));		// moveの設定
+			popPos.x += CManager::GetInstance()->Pos.x * 1.5f;
+			pObject->SetMove(D3DXVECTOR3(-5.0f, 0.0f, 0.0f));		// moveの設定
 		}
 
 		popPos = ScreenCastWorld(&popPos, D3DXVECTOR3((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f));		// スクリーンサイズ
@@ -107,7 +110,7 @@ CBlackOut *CBlackOut::Create(bool isLeft)
 //------------------------------------
 // 動き系統
 //------------------------------------
-void CBlackOut::move()
+void CBlackIn::move()
 {
 	//if (isLeft)
 	//{

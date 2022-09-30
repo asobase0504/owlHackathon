@@ -183,6 +183,9 @@
     <ClCompile Include="blackout.cpp">
       <Filter>オブジェクト\Move2D</Filter>
     </ClCompile>
+    <ClCompile Include="blackin.cpp">
+      <Filter>オブジェクト\Move2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h">
@@ -318,6 +321,9 @@
       <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="blackout.h">
+      <Filter>オブジェクト\Move2D</Filter>
+    </ClInclude>
+    <ClInclude Include="blackin.h">
       <Filter>オブジェクト\Move2D</Filter>
     </ClInclude>
   </ItemGroup>

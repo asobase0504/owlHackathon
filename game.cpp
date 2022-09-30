@@ -32,6 +32,7 @@
 #include "tumbleweed.h"
 #include "bird.h"
 #include "blackout.h"
+#include "blackin.h"
 
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
@@ -105,7 +106,10 @@ HRESULT CGame::Init(void)
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
 
 	// âEÇÃêl
-	CBlackOut::Create();
+	CBlackIn::Create(true);
+	CBlackIn::Create(false);
+	//CBlackOut::Create(true);
+	//CBlackOut::Create(false);
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
