@@ -4,9 +4,11 @@
 // Author: Yuda Kaito
 //
 //============================
-
 #include "bird.h"
 #include "utility.h"
+
+#include "sound.h"
+#include "manager.h"
 
 //------------------------------------
 // コンストラクタ
@@ -28,6 +30,8 @@ CBird::~CBird()
 HRESULT CBird::Init()
 {
 	CObject2d::Init();
+
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_CROW);
 
 	return S_OK;
 }
