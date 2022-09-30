@@ -104,7 +104,14 @@ CTumbleweed *CTumbleweed::Create()
 //------------------------------------
 void CTumbleweed::move()
 {
-	m_rot.z+=0.1f;
+	if (m_move.x <= 0.0f)
+	{
+		m_rot.z -= 0.1f;
+	}
+	else
+	{
+		m_rot.z += 0.1f;
+	}
 	//“®‚«“ü‚ê‚½‚¢‚Æ‚«‚Í‚±‚±‚É	SetMove()‚Å•Ï‚¦‚ê‚é‚æ
 	SetRot(m_rot);
 	m_pos += m_move;
