@@ -123,6 +123,8 @@ HRESULT CGame::Init(void)
 	m_pGameSystem = new CGameSystem;
 	m_pGameSystem->SetCountUpToSignal();
 
+	isText = false;
+
 	return S_OK;
 }
 
@@ -240,6 +242,7 @@ void CGame::Update(void)
 	case CGameSystem::STATUS_PL1_WINNING:
 		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_2);
 		m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_3);
+		SetTime();
 		break;
 	case CGameSystem::STATUS_PL2_WINNING:
 		m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_3);
@@ -275,4 +278,14 @@ void CGame::Update(void)
 //========================
 void CGame::Draw(void)
 {
+}
+
+void CGame::SetTime()
+{
+	if (!isText)
+	{
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(0) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 350.0f, 0.0f));
+		CManager::GetInstance()->GetText()->SetText((float)m_pGameSystem->GetPlayerTime(1) * 0.0001f, D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 350.0f, 0.0f));
+		isText = true;
+	}
 }
