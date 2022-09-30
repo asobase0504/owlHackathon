@@ -44,5 +44,7 @@ private:
 
 	int m_tumbleweedPopCount;
 	int m_birdPopCount;
+	int m_nCnt;
+	bool m_bCurtain;
 };
 #endif
