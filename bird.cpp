@@ -67,15 +67,10 @@ void CBird::Draw()
 //------------------------------------
 CBird *CBird::Create()
 {
-	int isLeft = rand() % 2;
-
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(180.0f, 280.0f), 0.0f);
+	D3DXVECTOR3 pos(800.0f, FloatRandam(180.0f, 280.0f), 0.0f);
 	D3DXVECTOR3 move(FloatRandam(4.0f, 7.0f), 0.0f, 0.0f);
 
-	if (isLeft == 0)
-	{
-		move *= -1;
-	}
+	move *= -1;
 
 	CBird * pObject = new CBird;
 
