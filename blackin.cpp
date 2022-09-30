@@ -95,11 +95,11 @@ CBlackIn *CBlackIn::Create(bool isLeft)
 
 		pObject->Init();
 		pObject->SetPos(popPos);
-		pObject->SetTexture(CTexture::TEXTURE_NONE);		// テクスチャ選択
+		pObject->SetTexture(CTexture::TEXTURE_MAKU);		// テクスチャ選択
 		D3DXVECTOR3 size(CManager::Pos);
 		size.x *= 0.5f;
 		pObject->SetSize(size);	// サイズ設定
-		pObject->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 1.0f));	// 色設定
+		pObject->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));	// 色設定
 
 		pObject->nLife = 650;
 	}

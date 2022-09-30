@@ -45,19 +45,6 @@ HRESULT CCurtain::Init()
 //------------------------------------
 void CCurtain::Uninit()
 {
-	for (int i = 0; i < 2; i++)
-	{
-		if (m_blackIn[i] != nullptr)
-		{
-			m_blackIn[i]->Uninit();
-			m_blackIn[i] = nullptr;
-		}
-		if (m_blackOut[i] != nullptr)
-		{
-			m_blackOut[i]->Uninit();
-			m_blackOut[i] = nullptr;
-		}
-	}
 }
 
 //------------------------------------
