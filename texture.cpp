@@ -45,7 +45,7 @@ const char* CTexture::s_FileName[] =
 	"Data/TEXTURE/BG.png",			//Ç±Ç±Ç©ÇÁTITLE
 	"Data/TEXTURE/Title2.png",
 	"Data/TEXTURE/Fox.png",
-	"Data/TEXTURE/gamestart.png",
+	"Data/TEXTURE/PressEnterorA.png",
 	"Data/TEXTURE/start.png",
 	"Data/TEXTURE/tutorial.png",
 	"Data/TEXTURE/ranking.png",

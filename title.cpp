@@ -13,6 +13,8 @@
 #include "sound.h"
 #include "ranking.h"
 #include "2dpolygontemplate.h"
+#include "tumbleweed.h"
+
 //========================
 // コンストラクター
 //========================
@@ -80,18 +82,24 @@ HRESULT CTitle::Init(void)
 		m_list[0]->SetTexture(CTexture::TEXTURE_TITLE);
 		m_list[0]->SetSize(CManager::Pos * 0.5f);
 		D3DXVECTOR3 pos = CManager::Pos;
-		pos.y * 0.5f;
+		pos.y *= 0.5f;
 		m_list[0]->SetPos(pos);
 		m_list[0]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	}
 	
 	//ゲームスタートの文字
-	m_list[1] = CObject2d::Create(1);
-	m_list[1]->SetTexture(CTexture::TEXTURE_FOXTITLE);
-	m_list[1]->SetSize(CManager::Pos);
-	m_list[1]->SetPos(CManager::Pos);
-	m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
+	{
+		m_list[1] = CObject2d::Create(1);
+		m_list[1]->SetTexture(CTexture::TEXTURE_FOXTITLE);
+		D3DXVECTOR3 size = CManager::Pos;
+		size.y *= 0.15f;
+		size.x *= 0.25f;
+		m_list[1]->SetSize(size);
+		D3DXVECTOR3 pos = CManager::Pos;
+		pos.y *= 1.25f;
+		m_list[1]->SetPos(pos);
+		m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	}
 
 	//モード選択時の背景黒くするやつ
 	fade = CObject2d::Create(2);
@@ -117,8 +125,6 @@ HRESULT CTitle::Init(void)
 	m_object2d[1]->SetPos(D3DXVECTOR3(CManager::Pos.x, CManager::Pos.y, 0.0f));
 	m_object2d[1]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 
-
-
 	//ランキングの文字
 	m_object2d[2] = CObject2d::Create(2);
 	m_object2d[2]->SetTexture(CTexture::TEXTURE_TITLERANKIN);
@@ -136,6 +142,8 @@ HRESULT CTitle::Init(void)
 	m_object2d[3]->SetCollar(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 
 	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_TITLE);
+
+	m_tumbleweedPopCount = rand() % 70;
 
 	CRanking::SetScore(0);
 
@@ -157,44 +165,13 @@ void CTitle::Uninit(void)
 //==================
 void CTitle::Update(void)
 {
-	//きつねをもちもちさせるやつ
-	if (!ModeSelect)
-	{//一回押された	
-		if (m_addY <= 10)
-		{
-			Sizcontroller = true;
-		}
-
-		if (m_addY >= 50)
-		{
-			Sizcontroller = false;
-		}
-
-		float a;
-		if (Sizcontroller)
-		{
-			m_addY++;
-			m_addX--;
-			a = sinf((float)m_alpha);
-			m_alpha -= 1.0f / 60;
-
-		}
-		else
-		{
-			m_addY--;
-			m_addX++;
-			a = sinf((float)m_alpha);
-			m_alpha += 1.0f / 60;
-		}
-
-
-		//きつねをもちもちさせるやつ
-		D3DXVECTOR3 addPos = D3DXVECTOR3(1.0f + (float)m_addX, 1.0f + (float)m_addY, 0.0f);
-		//m_Bg[1]->SetSize(CManager::Pos *0.8f + addPos);
-
-		//点滅させる
-		m_list[1]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, a));
+	m_tumbleweedPopCount--;
+	if (m_tumbleweedPopCount <= 0)
+	{
+		m_tumbleweedPopCount = rand() % 150;
+		CTumbleweed::Create();
 	}
+
 	CInput *CInputpInput = CInput::GetKey();
 
 	if (CInputpInput->Trigger(KEY_DECISION))

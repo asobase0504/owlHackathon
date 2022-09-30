@@ -81,7 +81,6 @@ HRESULT CTutorial::Init(void)
 	CText::Create(CText::GON, 300,10, "まずはイドウをしてみよう！");
 
 	return S_OK;
-
 }
 
 //========================
