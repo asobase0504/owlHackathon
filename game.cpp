@@ -132,6 +132,8 @@ HRESULT CGame::Init(void)
 
 	isText = false;
 
+	CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_READY);
+
 	return S_OK;
 }
 
@@ -223,7 +225,7 @@ void CGame::Update(void)
 			m_curtain = CCurtain::Create();
 			m_bCurtain = true;
 			m_pGo->FalseDraw();
-			
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_FIRE);
 		}
 	}
 
