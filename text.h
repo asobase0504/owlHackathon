@@ -37,12 +37,12 @@ private:
 
 private:
 	D3DXCOLOR  m_col;
-	int m_DesTimarMax;		// 消える最大時間
-	int m_DesTimar;			// 消える時間
-	int m_TextSize;			// 文字のサイズ
-	int m_Addnumber;		// 1つの文字が加算されるまでの時間
-	int m_AddCount;			// 文字が加算されるまでのカウント
-	int m_AddLetter;		// 何文字目入れるか指定
+	int m_DesTimarMax;	// 消える最大時間
+	int m_DesTimar;		// 消える時間
+	int m_TextSize;		// 文字のサイズ
+	int m_Addnumber;	// 1つの文字が加算されるまでの時間
+	int m_AddCount;		// 文字が加算されるまでのカウント
+	int m_AddLetter;	// 何文字目入れるか指定
 
 	bool m_isRelease;
 
