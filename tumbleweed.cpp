@@ -1,6 +1,6 @@
 //============================
 //
-// ÇQDpolygonê›íË
+// ëêÇ™ì]Ç™ÇÈ
 // Author:hamada ryuuga
 //
 //============================
@@ -72,7 +72,7 @@ CTumbleweed *CTumbleweed::Create()
 {
 	int isLeft = rand() % 2;
 
-	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-180.0f, -270.0f), 0.0f);
+	D3DXVECTOR3 pos(isLeft == 0 ? 800.0f : -800.0f, FloatRandam(-180.0f, -280.0f), 0.0f);
 	D3DXVECTOR3 move(FloatRandam(2.0f, 5.0f), 0.0f, 0.0f);
 
 	if (isLeft == 0)
@@ -81,9 +81,9 @@ CTumbleweed *CTumbleweed::Create()
 	}
 
 	CTumbleweed * pObject;
-	if (pos.y <= -220.0f)
+	if (pos.y <= -260.0f)
 	{
-		pObject = new CTumbleweed(3);
+		pObject = new CTumbleweed(2);
 	}
 	else
 	{

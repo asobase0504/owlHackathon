@@ -321,8 +321,8 @@ void CObject3d::HitLife(int Damage)
 	{//PlayerˆÈŠO‚Ìˆ—
 		if (m_drop % 3 == 0)
 		{//‰¹ŠÇ—
-			CManager::GetInstance()->GetSound()->Stop(CSound::LABEL_SE_HIT);
-			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_HIT);
+			//CManager::GetInstance()->GetSound()->Stop(CSound::LABEL_SE_HIT);
+			//CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_HIT);
 		}
 		
 		if (m_Life <= 0)

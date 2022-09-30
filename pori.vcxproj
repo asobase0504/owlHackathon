@@ -161,6 +161,8 @@
     <ClCompile Include="3dpolygontemplate.cpp" />
     <ClCompile Include="bg.cpp" />
     <ClCompile Include="bird.cpp" />
+    <ClCompile Include="blackin.cpp" />
+    <ClCompile Include="blackout.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="fade.cpp" />
@@ -205,6 +207,8 @@
     <ClInclude Include="3dpolygontemplate.h" />
     <ClInclude Include="bg.h" />
     <ClInclude Include="bird.h" />
+    <ClInclude Include="blackin.h" />
+    <ClInclude Include="blackout.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="fade.h" />
