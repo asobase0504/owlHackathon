@@ -12,11 +12,12 @@
 //*****************************************************************************
 #include "main.h"
 #include "name.h"
+#include "object.h"
 
 //*****************************************************************************
 // ƒNƒ‰ƒX’è‹`
 //*****************************************************************************
-class CRanking
+class CRanking :public CObject
 {
 private:
 	static const int MAX_RANKING_DIGIT = 8;
@@ -35,7 +36,11 @@ public:
 	CRanking();
 	~CRanking();
 
-	void Init(D3DXVECTOR3 pos);
+	HRESULT Init() override;
+	void Uninit() override;
+	void Update() override;
+	void Draw() override;
+
 	void Create();
 
 private:
