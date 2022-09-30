@@ -108,6 +108,7 @@ HRESULT CGame::Init(void)
 
 	// 右の人
 	m_curtain = CCurtain::Create();
+	
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
@@ -180,7 +181,7 @@ void CGame::Update(void)
 	}
 	if (CInputpInput->Trigger(DIK_F2))
 	{
-		CText::Create(CText::GON, 120, 10, "モンハンたのしい...");
+		CText::Create(CText::GON,120, 10, "モンハンたのしい...");
 		return;
 	}
 
@@ -205,8 +206,7 @@ void CGame::Update(void)
 	if (m_pGameSystem->GetSignal())
 	{
 		m_pGo->FalseDraw();
-		/*CBlackOut::Create(true);
-		CBlackOut::Create(false);*/
+		m_curtain->SetOut();
 	}
 
 	if (!m_pGameSystem->GetGameEnd())
