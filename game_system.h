@@ -4,8 +4,8 @@
 // Author:koduna hurohito
 //
 //============================
-#ifndef _FILE_H_			// このマクロ定義がされてなかったら
-#define _FILE_H_			// 二重インクルード防止のマクロ定義
+#ifndef _GAME_SYATEM_H_			// このマクロ定義がされてなかったら
+#define _GAME_SYATEM_H_			// 二重インクルード防止のマクロ定義
 
 //=====================================
 // インクルード
@@ -14,7 +14,7 @@
 //=====================================
 // クラス宣言
 //=====================================
-class GameSystem
+class CGameSystem
 {
 public:
 	enum GameStatus
@@ -28,13 +28,16 @@ public:
 		STATUS_MAX
 	};
 	static const int PLAYER_COUNT_MAX = 2;
-	static const int AMPLITUDE_UP_TO_SIGNAL = 20;
+	static const int AMPLITUDE_UP_TO_SIGNAL = 10;
 	static const int MINIMUM_TIME_UP_TO_SIGNAL = 5;
 
-	GameSystem();
-	~GameSystem();
+	CGameSystem();
+	~CGameSystem();
 	void Update();
 	void SetCountUpToSignal();
+	void ResultIdentification();
+	GameStatus GetGameStatus() { return m_GameStatu; }
+	bool GetSignal() { return m_bSignal; }
 
 private:
 	bool m_bGameEnd;
@@ -42,5 +45,6 @@ private:
 	int m_nCountUpToSignalMax;
 	int m_fCountUpToSignal;
 	float m_fPlayerTime[PLAYER_COUNT_MAX];
+	GameStatus m_GameStatu;
 };
 #endif

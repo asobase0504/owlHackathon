@@ -32,6 +32,8 @@
 #include "tumbleweed.h"
 #include "bird.h"
 
+#include "game_system.h"
+
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
 CPause *CGame::m_Pause = nullptr;
@@ -106,6 +108,17 @@ HRESULT CGame::Init(void)
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
 
+	// GO
+	m_pGo = CObject2d::Create(3);
+	m_pGo->SetPos(D3DXVECTOR3(CManager::SCREEN_WIDTH * 0.5f, CManager::SCREEN_HEIGHT * 0.3f, 0.0f));
+	m_pGo->SetSize(D3DXVECTOR3(200.0f, 200.0f, 0.0f));
+	m_pGo->SetTexture(CTexture::TEXTURE_GO);
+	m_pGo->TrueDraw();
+
+	m_pGameSystem = new CGameSystem;
+	m_pGameSystem->SetCountUpToSignal();
+
+
 	return S_OK;
 }
 
@@ -129,6 +142,12 @@ void CGame::Uninit(void)
 	{
 		m_Pause->Uninit();
 		m_Pause = nullptr;
+	}
+
+	if (m_pGameSystem != nullptr)
+	{
+		delete m_pGameSystem;
+		m_pGameSystem = nullptr;
 	}
 }
 
@@ -168,6 +187,15 @@ void CGame::Update(void)
 		m_birdPopCount = rand() % 150;
 		CBird::Create();
 	}
+
+	m_pGameSystem->Update();
+
+	if (m_pGameSystem->GetSignal())
+	{
+		m_pGo->FalseDraw();
+	}
+
+
 }
 
 //========================

@@ -12,53 +12,107 @@
 #include <time.h>
 #include <stdlib.h>
 #include <windows.h>
+#include "input.h"
 
 //=====================================
 // コンストラクタ
 //=====================================
-GameSystem::GameSystem()
+CGameSystem::CGameSystem()
 {
 	m_bSignal = false;
 	m_bGameEnd = false;
 	m_nCountUpToSignalMax = -1;
 	m_fCountUpToSignal = -1.0;
+	m_GameStatu = STATUS_WAITING;
 	srand((unsigned)time(NULL)); // 現在時刻の情報で初期化
 }
 
 //=====================================
 // デストラクタ
 //=====================================
-GameSystem::~GameSystem()
+CGameSystem::~CGameSystem()
 {
 }
 
 //=====================================
 // 更新処理
 //=====================================
-void GameSystem::Update()
+void CGameSystem::Update()
 {
 	if (m_bGameEnd)
 	{
 		return;
 	}
+	CInput *pInput = CInput::GetKey();
 
 	float fCnt = (timeGetTime() - m_fCountUpToSignal) / 1000.0f;
 	if (m_nCountUpToSignalMax < fCnt && !m_bSignal)
 	{
 		m_bSignal = true;
-
+		pInput->TimeUpToReactionKeyTimeStart();
 	}
 
+	m_fPlayerTime[0] = pInput->GetTimeUpToReactionKey(0);
+	m_fPlayerTime[1] = pInput->GetTimeUpToReactionKey(1);
 
+	// 結果の識別
+	ResultIdentification();
 }
 
 //=====================================
 // 合図までの時間セット
 //=====================================
-void GameSystem::SetCountUpToSignal()
+void CGameSystem::SetCountUpToSignal()
 {
 	m_bSignal = false;
 	m_bGameEnd = false;
 	m_fCountUpToSignal = timeGetTime();
 	m_nCountUpToSignalMax = rand() % AMPLITUDE_UP_TO_SIGNAL + MINIMUM_TIME_UP_TO_SIGNAL;
+}
+
+//=====================================
+// 結果の識別
+//=====================================
+void CGameSystem::ResultIdentification()
+{
+	if (m_fPlayerTime[0] >= 1000.0f
+		&& m_fPlayerTime[1] >= 1000.0f)
+	{
+		m_GameStatu = STATUS_WAITING;
+		return;
+	}
+
+	if (m_fPlayerTime[0] == 500.0f)
+	{
+		m_GameStatu = STATUS_PL1_CHICKEN;
+		m_bGameEnd = true;
+		return;
+	}
+	else if (m_fPlayerTime[1] == 500.0f)
+	{
+		m_GameStatu = STATUS_PL2_CHICKEN;
+		m_bGameEnd = true;
+		return;
+	}
+	else if (m_fPlayerTime[0] < m_fPlayerTime[1])
+	{
+		m_GameStatu = STATUS_PL1_WINNING;
+		m_bGameEnd = true;
+		return;
+	}
+	else if (m_fPlayerTime[1] < m_fPlayerTime[0])
+	{
+		m_GameStatu = STATUS_PL2_WINNING;
+		m_bGameEnd = true;
+		return;
+	}
+	else if (m_fPlayerTime[0] == m_fPlayerTime[1])
+	{
+		m_GameStatu = STATUS_DRAW;
+		m_bGameEnd = true;
+		return;
+	}
+
+	m_GameStatu = STATUS_WAITING;
+	return;
 }
