@@ -81,7 +81,7 @@ void CRanking::Update()
 {
 	CInput *CInputpInput = CInput::GetKey();
 
-	if (CInputpInput->Press(KEY_DECISION))
+	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		CManager* maneger = CManager::GetInstance();
 		//ƒ‚[ƒh‚Ìİ’è
