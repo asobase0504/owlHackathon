@@ -74,18 +74,8 @@ HRESULT CGame::Init(void)
 	m_Pause->SetUp(CObject::PAUSE);
 
 	Bg[0] = CBg::Create();
-	Bg[0]->SetMove(D3DXVECTOR3(0.0001f, 0.0f, 0.0f));
-	Bg[0]->SetTexture(CTexture::TEXTURE_STARRY);
-	Bg[0]->SetBgType(CBg::MOVE);
-
-	Bg[1] = CBg::Create();
-	Bg[1]->SetMove(D3DXVECTOR3(0.001f, 0.0f, 0.0f));
-	Bg[1]->SetTexture(CTexture::TEXTURE_TOWN);
-	Bg[1]->SetBgType(CBg::MOVE);
-
-	Bg[2] = CBg::Create();
-	Bg[2]->SetTexture(CTexture::TEXTURE_MOON);
-	Bg[2]->SetBgType(CBg::STOP);
+	Bg[0]->SetTexture(CTexture::TEXTURE_WILDERNESS);
+	Bg[0]->SetBgType(CBg::STOP);
 
 	// ç∂ÇÃêl
 	m_player[0] = CObject2d::Create(3);

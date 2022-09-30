@@ -71,6 +71,8 @@ const char* CTexture::s_FileName[] =
 	"Data/TEXTURE/NameSet000.png",
 	"Data/TEXTURE/pipo-gwspinitem013.png",
 	"Data/TEXTURE/explosion.png",
+	"Data/TEXTURE/tumbleweed.png",
+	"Data/TEXTURE/wilderness.jpeg",
 };
 
 static_assert(sizeof(CTexture::s_FileName) / sizeof(CTexture::s_FileName[0]) == CTexture::TEXTURE_MAX, "aho");
