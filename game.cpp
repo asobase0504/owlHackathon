@@ -31,6 +31,7 @@
 
 #include "tumbleweed.h"
 #include "bird.h"
+#include "blackout.h"
 
 CParticleManager*CGame::m_PaticleManager = nullptr;
 CObject2d* CGame::m_player[2];
@@ -92,16 +93,19 @@ HRESULT CGame::Init(void)
 	Saboten[1]->SetSize(D3DXVECTOR3(20.0f, 60.0f, 0.0f));
 
 	// 左の人
-	m_player[0] = CObject2d::Create(3);
+	m_player[0] = CObject2d::Create(1);
 	m_player[0]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 0.45f, 550.0f, 0.0f));
-	m_player[0]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[0]->SetSize(D3DXVECTOR3(150.0f, 150.0f, 0.0f));
 	m_player[0]->SetTexture(CTexture::TEXTURE_PLAYER1_1);
 
 	// 右の人
-	m_player[1] = CObject2d::Create(3);
+	m_player[1] = CObject2d::Create(1);
 	m_player[1]->SetPos(D3DXVECTOR3(CManager::GetInstance()->Pos.x * 1.55f, 550.0f, 0.0f));
-	m_player[1]->SetSize(D3DXVECTOR3(100.0f, 100.0f, 0.0f));
+	m_player[1]->SetSize(D3DXVECTOR3(150.0f, 150.0f, 0.0f));
 	m_player[1]->SetTexture(CTexture::TEXTURE_PLAYER2_1);
+
+	// 右の人
+	CBlackOut::Create();
 
 	m_tumbleweedPopCount = rand() % 70;
 	m_birdPopCount = rand() % 70;
