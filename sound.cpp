@@ -23,13 +23,14 @@ const CSound::SParam CSound::PARAM[] =
 	{ "data/BGM/B00023_kamatamago_kouya-miti.wav", -1 },	// リザルト
 	{ "data/BGM/rizaruto.wav", -1 },						// チュートリアル
 	{ "data/BGM/B00023_kamatamago_kouya-miti.wav", -1 },	// ランキング
-	{ "data/SE/shot.wav", 0 },								// ボタンを押したときの撃つ音
+	{ "data/SE/sen_ge_gun16.wav", 0 },						// ボタンを押したときの撃つ音
 	{ "data/SE/カラスが鳴く夕方.wav", 0 },					// カラス
 	{ "data/SE/缶蹴り.wav", 0 },							// 空き缶の音
 	{ "data/SE/拳銃をチャッと構える.wav", 0 },				// 構える音
 	{ "data/SE/拳銃を落とす.wav", 0 },						// 死んだときの銃を落とす音
 	{ "data/SE/草むしり.wav", 0 },							// 
 	{ "data/SE/風が吹く1.wav", 0 },							// 
+	{ "data/SE/SELECT.wav", 0 },							// 
 };
 
 static_assert(sizeof(CSound::PARAM) / sizeof(CSound::PARAM[0]) == CSound::LABEL_MAX, "aho");

@@ -177,7 +177,7 @@ void CTitle::Update(void)
 	if (CInputpInput->Trigger(KEY_DECISION))
 	{
 		CManager* maneger = CManager::GetInstance();
-		//maneger->GetSound()->Play(CSound::LABEL_SE_ON);
+		CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SHOT);
 		if (ModeSelect)
 		{//一回押された	
 			switch (NextMode)
@@ -223,7 +223,7 @@ void CTitle::Update(void)
 	{
 		if (CInputpInput->Trigger(KEY_UP))
 		{
-			//CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SELECT);
 			//モード選択
 			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
 
@@ -240,7 +240,7 @@ void CTitle::Update(void)
 		}
 		if (CInputpInput->Trigger(KEY_DOWN))
 		{
-			//CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_NO);
+			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_SE_SELECT);
 			//モード選択
 			m_object2d[NextMode]->SetCollar(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.8f));
 
