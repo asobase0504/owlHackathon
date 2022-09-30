@@ -48,6 +48,8 @@ public: /* 定義 */
 		TEXTURE_1PWIN,			// 1PWin
 		TEXTURE_2PWIN,			// 2PWin
 		TEXTURE_DRAW,			// 引き分け
+		TEXTURE_CROW1,			// カラス1
+		TEXTURE_CROW2,			// カラス2
 		TEXTURE_MAX,
 		TEXTURE_NONE,	// 使用しない
 	};
